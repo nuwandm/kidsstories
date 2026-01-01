@@ -59,3 +59,21 @@ export const getRelatedStories = (
 
   return shuffled.slice(0, limit);
 };
+
+/**
+ * Get the next story in the list
+ * Returns null if current story is the last one
+ *
+ * @param currentSlug - Slug of the current story
+ */
+export const getNextStory = (currentSlug: string): StoryIndexItem | null => {
+  const currentIndex = storyIndex.findIndex((story) => story.slug === currentSlug);
+  if (currentIndex === -1 || currentIndex === storyIndex.length - 1) {
+    // If not found or last story, return a random different story
+    const otherStories = storyIndex.filter((story) => story.slug !== currentSlug);
+    return otherStories.length > 0
+      ? otherStories[Math.floor(Math.random() * otherStories.length)]
+      : null;
+  }
+  return storyIndex[currentIndex + 1];
+};

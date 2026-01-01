@@ -4,6 +4,8 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Story } from '@/lib/types';
 import { soundManager } from '@/lib/sounds';
+import { getNextStory } from '@/content/storyIndex';
+import { PetCompanion } from './PetCompanion';
 
 interface BookReaderProps {
   story: Story;
@@ -24,8 +26,10 @@ export function BookReader({ story }: BookReaderProps) {
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipDirection, setFlipDirection] = useState<'next' | 'prev'>('next');
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [isFullscreen, setIsFullscreen] = useState(true); // Default to fullscreen
+  const [isBrowserFullscreen, setIsBrowserFullscreen] = useState(false);
   const [showUI, setShowUI] = useState(true);
+  const [showPet, setShowPet] = useState(false);
+  const [petSelectorTrigger, setPetSelectorTrigger] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const hideUITimeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -33,18 +37,19 @@ export function BookReader({ story }: BookReaderProps) {
   const isFirstPage = currentPage === 0;
   const isLastPage = currentPage === totalPages - 1;
 
-  // Auto-hide UI after inactivity
+  // Get next story for the "Next Story" button
+  const nextStory = getNextStory(story.slug);
+
+  // Auto-hide UI after inactivity (always active in immersive mode)
   const resetUITimer = useCallback(() => {
     setShowUI(true);
     if (hideUITimeout.current) {
       clearTimeout(hideUITimeout.current);
     }
-    if (isFullscreen) {
-      hideUITimeout.current = setTimeout(() => {
-        setShowUI(false);
-      }, 3000);
-    }
-  }, [isFullscreen]);
+    hideUITimeout.current = setTimeout(() => {
+      setShowUI(false);
+    }, 3000);
+  }, []);
 
   useEffect(() => {
     resetUITimer();
@@ -122,27 +127,24 @@ export function BookReader({ story }: BookReaderProps) {
     }, 300);
   }, [currentPage, isFlipping, playPageFlipSound]);
 
-  // Toggle fullscreen
+  // Toggle browser fullscreen (OS-level fullscreen)
   const toggleFullscreen = useCallback(async () => {
     try {
       if (!document.fullscreenElement) {
         await containerRef.current?.requestFullscreen();
-        setIsFullscreen(true);
       } else {
         await document.exitFullscreen();
-        setIsFullscreen(false);
       }
     } catch {
-      // Fullscreen API not available, toggle our custom fullscreen
-      setIsFullscreen(!isFullscreen);
+      // Fullscreen API not available - do nothing, immersive mode is always on
     }
     resetUITimer();
-  }, [isFullscreen, resetUITimer]);
+  }, [resetUITimer]);
 
-  // Listen for fullscreen changes
+  // Listen for browser fullscreen changes (just for icon state)
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      setIsBrowserFullscreen(!!document.fullscreenElement);
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
@@ -164,9 +166,7 @@ export function BookReader({ story }: BookReaderProps) {
           prevPage();
           break;
         case 'Escape':
-          if (isFullscreen) {
-            toggleFullscreen();
-          }
+          // Browser handles Escape for fullscreen exit automatically
           break;
         case 'f':
         case 'F':
@@ -177,7 +177,7 @@ export function BookReader({ story }: BookReaderProps) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextPage, prevPage, toggleFullscreen, isFullscreen, resetUITimer]);
+  }, [nextPage, prevPage, toggleFullscreen, resetUITimer]);
 
   // Touch/swipe support
   const touchStartX = useRef(0);
@@ -200,7 +200,7 @@ export function BookReader({ story }: BookReaderProps) {
   return (
     <div
       ref={containerRef}
-      className={`book-reader-fullscreen ${isFullscreen ? 'fullscreen-active' : ''}`}
+      className="book-reader-fullscreen fullscreen-active"
       onMouseMove={resetUITimer}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
@@ -220,15 +220,19 @@ export function BookReader({ story }: BookReaderProps) {
       {/* Top control bar */}
       <header className={`book-header ${showUI ? 'visible' : 'hidden'}`}>
         <div className="header-left">
-          <button
-            onClick={() => { playClickSound(); toggleFullscreen(); }}
+          <a
+            href="/"
+            className="control-btn close-btn"
+            title="Back to Home"
+            onClick={playClickSound}
             onMouseEnter={playHoverSound}
-            className="control-btn"
-            title={isFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen (F)'}
           >
-            {isFullscreen ? '⛶' : '⛶'}
-            <span className="btn-label">{isFullscreen ? 'Exit' : 'Fullscreen'}</span>
-          </button>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span className="btn-label">Home</span>
+          </a>
         </div>
 
         <div className="header-center">
@@ -237,6 +241,22 @@ export function BookReader({ story }: BookReaderProps) {
 
         <div className="header-right">
           <button
+            onClick={() => {
+              playClickSound();
+              if (showPet) {
+                // If pet is already showing, trigger the selector
+                setPetSelectorTrigger(prev => prev + 1);
+              } else {
+                setShowPet(true);
+              }
+            }}
+            onMouseEnter={playHoverSound}
+            className="control-btn pet-toggle-btn"
+            title={showPet ? "Change reading buddy" : "Get a reading buddy!"}
+          >
+            🐾
+          </button>
+          <button
             onClick={() => { playClickSound(); setSoundEnabled(!soundEnabled); }}
             onMouseEnter={playHoverSound}
             className="control-btn"
@@ -244,17 +264,22 @@ export function BookReader({ story }: BookReaderProps) {
           >
             {soundEnabled ? '🔊' : '🔇'}
           </button>
-          {!isFullscreen && (
-            <a
-              href="/"
-              className="control-btn close-btn"
-              title="Close"
-              onClick={playClickSound}
-              onMouseEnter={playHoverSound}
-            >
-              ✕
-            </a>
-          )}
+          <button
+            onClick={() => { playClickSound(); toggleFullscreen(); }}
+            onMouseEnter={playHoverSound}
+            className="control-btn"
+            title={isBrowserFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen (F)'}
+          >
+            {isBrowserFullscreen ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+            )}
+          </button>
         </div>
       </header>
 
@@ -395,6 +420,16 @@ export function BookReader({ story }: BookReaderProps) {
               >
                 📖 Read Again
               </button>
+              {nextStory && (
+                <a
+                  href={`/stories/${nextStory.slug}`}
+                  className="action-btn next-story"
+                  onClick={playClickSound}
+                  onMouseEnter={playHoverSound}
+                >
+                  ✨ Next Story
+                </a>
+              )}
               <a
                 href="/"
                 className="action-btn home"
@@ -406,6 +441,14 @@ export function BookReader({ story }: BookReaderProps) {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Pet Companion */}
+      {showPet && (
+        <PetCompanion
+          onClose={() => setShowPet(false)}
+          selectorTrigger={petSelectorTrigger}
+        />
       )}
     </div>
   );
