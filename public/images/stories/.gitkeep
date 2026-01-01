@@ -1,0 +1,14 @@
+# This file ensures the images/stories directory is tracked by git
+# Add your story images here in the following structure:
+#
+# public/images/stories/{story-slug}/
+#   ├── cover.webp
+#   ├── page-1.webp
+#   ├── page-2.webp
+#   └── page-N.webp
+#
+# Image requirements:
+# - Format: WebP only
+# - Max size: 200KB per image
+# - Max width: 1200px
+# - Aspect ratio: 16:10 or 4:3 recommended

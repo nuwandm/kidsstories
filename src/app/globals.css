@@ -1,0 +1,306 @@
+/**
+ * Modern Kid-Friendly Global Styles
+ *
+ * Design Philosophy:
+ * - Playful gradients and vibrant colors
+ * - Smooth, delightful animations
+ * - Maximum readability for young readers
+ * - Soft, friendly aesthetics
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+@import './book.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties */
+:root {
+  /* Core colors */
+  --color-primary: #9333ea;
+  --color-primary-light: #a855f7;
+  --color-ocean: #06b6d4;
+  --color-candy: #ec4899;
+  --color-mint: #10b981;
+  --color-sunset: #f97316;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #9333ea 0%, #06b6d4 100%);
+  --gradient-candy: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+  --gradient-ocean: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+  --gradient-sunset: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+  --gradient-magic: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%);
+
+  /* Background */
+  --bg-primary: #faf5ff;
+  --bg-secondary: #f3e8ff;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px -2px rgba(147, 51, 234, 0.15);
+  --shadow-glow: 0 0 40px -10px rgba(147, 51, 234, 0.3);
+}
+
+/* Base layer */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-story text-slate-700 antialiased;
+    background: linear-gradient(180deg, #faf5ff 0%, #f3e8ff 50%, #fdf2f8 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* Improved focus states for accessibility */
+  :focus-visible {
+    @apply outline-none ring-4 ring-primary-400 ring-offset-2;
+  }
+
+  /* Smooth selection colors */
+  ::selection {
+    @apply bg-primary-200 text-primary-900;
+  }
+
+  /* Better image defaults */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold text-slate-800;
+  }
+}
+
+/* Component layer */
+@layer components {
+  /* Main container */
+  .container-story {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl;
+  }
+
+  /* Gradient text effect */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-magic);
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Modern story card */
+  .story-card {
+    @apply relative bg-white rounded-kid-xl overflow-hidden;
+    @apply shadow-soft transition-all duration-500 ease-out;
+    @apply hover:shadow-soft-xl hover:-translate-y-2;
+    @apply border border-white/50;
+  }
+
+  .story-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: var(--gradient-primary);
+    z-index: 0;
+  }
+
+  .story-card:hover::before {
+    @apply opacity-5;
+  }
+
+  /* Glass effect card */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl rounded-kid-xl;
+    @apply border border-white/60 shadow-soft;
+  }
+
+  /* Primary button - modern gradient */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-8 py-4 min-h-[3.5rem];
+    @apply font-display font-bold text-white text-lg;
+    @apply rounded-full transition-all duration-300;
+    @apply shadow-lg hover:shadow-xl;
+    @apply hover:scale-105 active:scale-95;
+    background: var(--gradient-primary);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 10px 40px -10px rgba(147, 51, 234, 0.5);
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-8 py-4 min-h-[3.5rem];
+    @apply font-display font-bold text-primary-600 text-lg;
+    @apply bg-white rounded-full;
+    @apply border-2 border-primary-200;
+    @apply transition-all duration-300;
+    @apply hover:border-primary-400 hover:bg-primary-50;
+    @apply hover:scale-105 active:scale-95;
+  }
+
+  /* Story text - optimized for children */
+  .story-text {
+    @apply text-story leading-relaxed text-slate-700;
+    @apply tracking-wide;
+    font-family: 'Nunito', system-ui, sans-serif;
+    word-spacing: 0.1em;
+  }
+
+  .story-text-lg {
+    @apply text-story-lg leading-relaxed text-slate-700;
+    @apply tracking-wide;
+    font-family: 'Nunito', system-ui, sans-serif;
+    word-spacing: 0.1em;
+  }
+
+  /* Section headings */
+  .section-heading {
+    @apply font-display text-display font-bold text-slate-800;
+  }
+
+  .section-heading-lg {
+    @apply font-display text-display-lg font-bold text-slate-800;
+  }
+
+  /* Decorative badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-4 py-2;
+    @apply text-sm font-bold rounded-full;
+    @apply bg-primary-100 text-primary-700;
+  }
+
+  .badge-gradient {
+    @apply text-white;
+    background: var(--gradient-primary);
+  }
+
+  /* Ad slot with modern styling */
+  .ad-slot {
+    @apply bg-gradient-to-r from-slate-50 to-slate-100;
+    @apply border-2 border-dashed border-slate-200;
+    @apply rounded-kid-lg flex items-center justify-center;
+    @apply text-slate-400 text-sm;
+  }
+
+  /* Page section with decorative background */
+  .section-decorated {
+    @apply relative overflow-hidden;
+  }
+
+  .section-decorated::before {
+    content: '';
+    @apply absolute -top-24 -right-24 w-48 h-48 rounded-full;
+    background: var(--gradient-candy);
+    opacity: 0.1;
+    filter: blur(40px);
+  }
+
+  .section-decorated::after {
+    content: '';
+    @apply absolute -bottom-24 -left-24 w-64 h-64 rounded-full;
+    background: var(--gradient-ocean);
+    opacity: 0.1;
+    filter: blur(60px);
+  }
+
+  /* Floating decoration elements */
+  .float-decoration {
+    @apply absolute pointer-events-none select-none;
+    @apply text-4xl md:text-6xl opacity-20;
+    animation: float 8s ease-in-out infinite;
+  }
+}
+
+/* Utility layer */
+@layer utilities {
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animated gradient background */
+  .bg-animated-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Glow effect on hover */
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Shine effect */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    transform: rotate(30deg) translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .shine:hover::after {
+    transform: rotate(30deg) translateX(100%);
+  }
+
+  /* Stagger animations for lists */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+
+  .story-text {
+    font-size: 14pt;
+    line-height: 1.6;
+    color: black;
+  }
+}

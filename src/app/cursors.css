@@ -1,0 +1,208 @@
+/**
+ * Child-Friendly Custom Cursors
+ *
+ * Fun, colorful cursors that kids will love!
+ * Uses SVG data URIs for crisp rendering at any size.
+ */
+
+/* ============================================
+   CURSOR DEFINITIONS
+   ============================================ */
+
+:root {
+  /* Magic wand cursor - default */
+  --cursor-wand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='wandGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M4 28L26 6' stroke='url(%23wandGrad)' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='4' r='3' fill='%23fbbf24'/%3E%3Cpath d='M26 2l2-1M30 4l1 2M26 6l2 1M30 4l1-2' stroke='%23fbbf24' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") 4 28, auto;
+
+  /* Star pointer cursor - for clickable items */
+  --cursor-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='starGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23fbbf24'/%3E%3Cstop offset='100%25' style='stop-color:%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2l3.5 7.5L28 11l-6 5.5L24 26l-8-4.5L8 26l2-9.5L4 11l8.5-1.5z' fill='url(%23starGrad)' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='16' cy='14' r='2' fill='%23fff' opacity='0.8'/%3E%3C/svg%3E") 16 16, pointer;
+
+  /* Heart cursor - for favorites/love */
+  --cursor-heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='heartGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ec4899'/%3E%3Cstop offset='100%25' style='stop-color:%23f43f5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 28s-12-8-12-16c0-4.5 3.5-8 8-8 2.5 0 4 1.5 4 1.5s1.5-1.5 4-1.5c4.5 0 8 3.5 8 8 0 8-12 16-12 16z' fill='url(%23heartGrad)' stroke='%23fff' stroke-width='1'/%3E%3Cellipse cx='12' cy='12' rx='3' ry='2' fill='%23fff' opacity='0.4' transform='rotate(-30 12 12)'/%3E%3C/svg%3E") 16 16, pointer;
+
+  /* Rainbow hand pointer */
+  --cursor-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='handGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4'/%3E%3Cstop offset='50%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M10 18V8c0-1.1.9-2 2-2s2 .9 2 2v6h1V6c0-1.1.9-2 2-2s2 .9 2 2v8h1V7c0-1.1.9-2 2-2s2 .9 2 2v9h1v-5c0-1.1.9-2 2-2s2 .9 2 2v10c0 5-4 9-9 9h-2c-4 0-8-3-8-8z' fill='url(%23handGrad)' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E") 14 4, pointer;
+
+  /* Left arrow cursor */
+  --cursor-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='leftGrad' x1='100%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4'/%3E%3Cstop offset='100%25' style='stop-color:%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='18' fill='url(%23leftGrad)' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M24 12l-8 8 8 8' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 20 20, w-resize;
+
+  /* Right arrow cursor */
+  --cursor-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='rightGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='18' fill='url(%23rightGrad)' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M16 12l8 8-8 8' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 20 20, e-resize;
+
+  /* Book cursor - for reading areas */
+  --cursor-book: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='bookGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2392400e'/%3E%3Cstop offset='100%25' style='stop-color:%23b45309'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='6' width='24' height='20' rx='2' fill='url(%23bookGrad)' stroke='%23fff' stroke-width='1'/%3E%3Crect x='6' y='8' width='9' height='16' fill='%23fef3c7'/%3E%3Crect x='17' y='8' width='9' height='16' fill='%23fef3c7'/%3E%3Cpath d='M16 8v16' stroke='%2392400e' stroke-width='2'/%3E%3Cpath d='M8 11h5M8 14h5M8 17h4M19 11h5M19 14h5M19 17h4' stroke='%23d4a574' stroke-width='1'/%3E%3C/svg%3E") 16 16, auto;
+
+  /* Sparkle cursor - for magical moments */
+  --cursor-sparkle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 0l2 10 10 2-10 2-2 10-2-10L4 12l10-2z' fill='%23fbbf24'/%3E%3Cpath d='M8 4l1 4 4 1-4 1-1 4-1-4-4-1 4-1z' fill='%23f472b6'/%3E%3Cpath d='M24 20l1 3 3 1-3 1-1 3-1-3-3-1 3-1z' fill='%2306b6d4'/%3E%3C/svg%3E") 16 16, auto;
+}
+
+/* ============================================
+   APPLY CURSORS GLOBALLY
+   ============================================ */
+
+/* Default cursor - magic wand */
+.book-reader-fullscreen {
+  cursor: var(--cursor-wand);
+}
+
+/* Book/reading area cursor */
+.book-page-content,
+.page-text-section {
+  cursor: var(--cursor-book);
+}
+
+/* Star cursor for clickable elements */
+.book-reader-fullscreen a,
+.book-reader-fullscreen button:not(.nav-btn),
+.control-btn,
+.dot,
+.action-btn {
+  cursor: var(--cursor-star) !important;
+}
+
+/* Navigation arrows - directional cursors */
+.click-zone.zone-left,
+.nav-btn.nav-prev {
+  cursor: var(--cursor-left) !important;
+}
+
+.click-zone.zone-right,
+.nav-btn.nav-next {
+  cursor: var(--cursor-right) !important;
+}
+
+/* Heart cursor for close/home buttons */
+.close-btn,
+.action-btn.home {
+  cursor: var(--cursor-heart) !important;
+}
+
+/* Hand pointer for interactive elements */
+.progress-dots .dot:hover {
+  cursor: var(--cursor-hand) !important;
+}
+
+/* Sparkle cursor for celebration */
+.story-complete-overlay {
+  cursor: var(--cursor-sparkle) !important;
+}
+
+.complete-card {
+  cursor: var(--cursor-star) !important;
+}
+
+/* ============================================
+   HOME PAGE CURSORS
+   ============================================ */
+
+/* Magic wand for whole site */
+body {
+  cursor: var(--cursor-wand);
+}
+
+/* Star pointer for links and buttons */
+a, button, [role="button"] {
+  cursor: var(--cursor-star) !important;
+}
+
+/* Story cards get book cursor on hover */
+.story-card:hover {
+  cursor: var(--cursor-book) !important;
+}
+
+/* Heart for footer links */
+footer a {
+  cursor: var(--cursor-heart) !important;
+}
+
+/* ============================================
+   CURSOR TRAIL EFFECT (Optional)
+   ============================================ */
+
+.cursor-trail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: screen;
+  animation: cursorPulse 1s ease-in-out infinite;
+}
+
+.cursor-trail.trail-1 {
+  background: rgba(168, 85, 247, 0.4);
+  animation-delay: 0s;
+}
+
+.cursor-trail.trail-2 {
+  background: rgba(236, 72, 153, 0.3);
+  animation-delay: 0.1s;
+}
+
+.cursor-trail.trail-3 {
+  background: rgba(6, 182, 212, 0.2);
+  animation-delay: 0.2s;
+}
+
+@keyframes cursorPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   CLICK RIPPLE EFFECT
+   ============================================ */
+
+.click-ripple {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.6) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleExpand 0.6s ease-out forwards;
+}
+
+@keyframes rippleExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+/* Sparkle burst on click */
+.sparkle-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99997;
+  font-size: 1.5rem;
+  transform: translate(-50%, -50%);
+  animation: sparkleBurst 0.8s ease-out forwards;
+}
+
+@keyframes sparkleBurst {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
