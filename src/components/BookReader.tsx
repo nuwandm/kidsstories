@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Story } from '@/lib/types';
+import { soundManager } from '@/lib/sounds';
 
 interface BookReaderProps {
   story: Story;
@@ -54,40 +55,27 @@ export function BookReader({ story }: BookReaderProps) {
     };
   }, [resetUITimer]);
 
-  // Play page flip sound
-  const playPageFlipSound = useCallback(() => {
-    if (!soundEnabled) return;
-
-    try {
-      const audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-
-      // Create a more realistic page flip sound
-      const bufferSize = audioContext.sampleRate * 0.15;
-      const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
-      const data = buffer.getChannelData(0);
-
-      for (let i = 0; i < bufferSize; i++) {
-        // White noise with envelope
-        const envelope = Math.exp(-i / (bufferSize * 0.1));
-        data[i] = (Math.random() * 2 - 1) * envelope * 0.3;
-      }
-
-      const source = audioContext.createBufferSource();
-      source.buffer = buffer;
-
-      // Add filter for paper-like sound
-      const filter = audioContext.createBiquadFilter();
-      filter.type = 'bandpass';
-      filter.frequency.value = 2000;
-      filter.Q.value = 0.5;
-
-      source.connect(filter);
-      filter.connect(audioContext.destination);
-      source.start();
-    } catch {
-      // Audio not available
-    }
+  // Sync sound manager with local state
+  useEffect(() => {
+    soundManager.setEnabled(soundEnabled);
   }, [soundEnabled]);
+
+  // Play various sounds using the sound manager
+  const playPageFlipSound = useCallback(() => {
+    soundManager.playPageFlip();
+  }, []);
+
+  const playClickSound = useCallback(() => {
+    soundManager.playClick();
+  }, []);
+
+  const playHoverSound = useCallback(() => {
+    soundManager.playHover();
+  }, []);
+
+  const playCelebrationSound = useCallback(() => {
+    soundManager.playCelebration();
+  }, []);
 
   // Navigate pages
   const nextPage = useCallback(() => {
@@ -98,10 +86,15 @@ export function BookReader({ story }: BookReaderProps) {
     resetUITimer();
 
     setTimeout(() => {
-      setCurrentPage((prev) => prev + 1);
+      const newPage = currentPage + 1;
+      setCurrentPage(newPage);
       setIsFlipping(false);
+      // Play celebration when reaching the last page
+      if (newPage === totalPages - 1) {
+        setTimeout(playCelebrationSound, 300);
+      }
     }, 500);
-  }, [isLastPage, isFlipping, playPageFlipSound, resetUITimer]);
+  }, [isLastPage, isFlipping, playPageFlipSound, resetUITimer, currentPage, totalPages, playCelebrationSound]);
 
   const prevPage = useCallback(() => {
     if (isFirstPage || isFlipping) return;
@@ -228,7 +221,8 @@ export function BookReader({ story }: BookReaderProps) {
       <header className={`book-header ${showUI ? 'visible' : 'hidden'}`}>
         <div className="header-left">
           <button
-            onClick={toggleFullscreen}
+            onClick={() => { playClickSound(); toggleFullscreen(); }}
+            onMouseEnter={playHoverSound}
             className="control-btn"
             title={isFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen (F)'}
           >
@@ -243,14 +237,21 @@ export function BookReader({ story }: BookReaderProps) {
 
         <div className="header-right">
           <button
-            onClick={() => setSoundEnabled(!soundEnabled)}
+            onClick={() => { playClickSound(); setSoundEnabled(!soundEnabled); }}
+            onMouseEnter={playHoverSound}
             className="control-btn"
             title={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
           >
             {soundEnabled ? '🔊' : '🔇'}
           </button>
           {!isFullscreen && (
-            <a href="/" className="control-btn close-btn" title="Close">
+            <a
+              href="/"
+              className="control-btn close-btn"
+              title="Close"
+              onClick={playClickSound}
+              onMouseEnter={playHoverSound}
+            >
               ✕
             </a>
           )}
@@ -315,6 +316,7 @@ export function BookReader({ story }: BookReaderProps) {
         <nav className={`page-navigation ${showUI ? 'visible' : 'hidden'}`}>
           <button
             onClick={prevPage}
+            onMouseEnter={() => !isFirstPage && playHoverSound()}
             disabled={isFirstPage || isFlipping}
             className={`nav-btn nav-prev ${isFirstPage ? 'disabled' : ''}`}
             aria-label="Previous page"
@@ -324,6 +326,7 @@ export function BookReader({ story }: BookReaderProps) {
 
           <button
             onClick={nextPage}
+            onMouseEnter={() => !isLastPage && playHoverSound()}
             disabled={isLastPage || isFlipping}
             className={`nav-btn nav-next ${isLastPage ? 'disabled' : ''}`}
             aria-label="Next page"
@@ -347,7 +350,8 @@ export function BookReader({ story }: BookReaderProps) {
             {story.pages.map((_, index) => (
               <button
                 key={index}
-                onClick={() => goToPage(index)}
+                onClick={() => { playClickSound(); goToPage(index); }}
+                onMouseEnter={playHoverSound}
                 className={`dot ${index === currentPage ? 'active' : ''} ${index < currentPage ? 'read' : ''}`}
                 aria-label={`Page ${index + 1}`}
               />
@@ -384,10 +388,19 @@ export function BookReader({ story }: BookReaderProps) {
               <span>⭐</span>
             </div>
             <div className="complete-actions">
-              <button onClick={() => goToPage(0)} className="action-btn restart">
+              <button
+                onClick={() => { playClickSound(); goToPage(0); }}
+                onMouseEnter={playHoverSound}
+                className="action-btn restart"
+              >
                 📖 Read Again
               </button>
-              <a href="/" className="action-btn home">
+              <a
+                href="/"
+                className="action-btn home"
+                onClick={playClickSound}
+                onMouseEnter={playHoverSound}
+              >
                 🏠 More Stories
               </a>
             </div>
