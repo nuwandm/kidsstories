@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Story } from '@/lib/types';
 import { soundManager } from '@/lib/sounds';
 import { getNextStory } from '@/content/storyIndex';
-import { PetCompanion } from './PetCompanion';
 
 const FULLSCREEN_KEY = 'kidsstories_fullscreen_mode';
 
@@ -15,7 +14,7 @@ interface BookReaderProps {
 }
 
 /**
- * Immersive Fullscreen Book Reader
+ * Immersive Fullscreen Book Reader with Tailwind CSS
  *
  * Features:
  * - Fullscreen reading mode (default)
@@ -23,6 +22,7 @@ interface BookReaderProps {
  * - Realistic page-flip animations
  * - Sound effects for page turns
  * - Keyboard and touch navigation
+ * - Support for text-embedded images (portrait 900x1200) and traditional layout (landscape 1200x800)
  */
 export function BookReader({ story }: BookReaderProps) {
   const router = useRouter();
@@ -32,8 +32,6 @@ export function BookReader({ story }: BookReaderProps) {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [isBrowserFullscreen, setIsBrowserFullscreen] = useState(false);
   const [showUI, setShowUI] = useState(true);
-  const [showPet, setShowPet] = useState(false);
-  const [petSelectorTrigger, setPetSelectorTrigger] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const hideUITimeout = useRef<NodeJS.Timeout | null>(null);
   const hasCheckedFullscreen = useRef(false);
@@ -63,19 +61,16 @@ export function BookReader({ story }: BookReaderProps) {
 
     const shouldRestoreFullscreen = sessionStorage.getItem(FULLSCREEN_KEY) === 'true';
     if (shouldRestoreFullscreen && !document.fullscreenElement && containerRef.current) {
-      // Try to automatically enter fullscreen (navigation click counts as user gesture)
       const attemptFullscreen = async () => {
         try {
           await containerRef.current?.requestFullscreen();
           sessionStorage.removeItem(FULLSCREEN_KEY);
         } catch (error) {
-          // If auto-enter fails, show prominent prompt
           setShowFullscreenPrompt(true);
           sessionStorage.removeItem(FULLSCREEN_KEY);
         }
       };
 
-      // Small delay to ensure DOM is ready
       setTimeout(attemptFullscreen, 100);
     }
   }, []);
@@ -96,7 +91,6 @@ export function BookReader({ story }: BookReaderProps) {
     soundManager.playClick();
   }, []);
 
-  // Auto-focus the fullscreen button when prompt shows
   const fullscreenBtnRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (showFullscreenPrompt && fullscreenBtnRef.current) {
@@ -104,7 +98,7 @@ export function BookReader({ story }: BookReaderProps) {
     }
   }, [showFullscreenPrompt]);
 
-  // Auto-hide UI after inactivity (always active in immersive mode)
+  // Auto-hide UI after inactivity
   const resetUITimer = useCallback(() => {
     setShowUI(true);
     if (hideUITimeout.current) {
@@ -129,22 +123,11 @@ export function BookReader({ story }: BookReaderProps) {
     soundManager.setEnabled(soundEnabled);
   }, [soundEnabled]);
 
-  // Play various sounds using the sound manager
-  const playPageFlipSound = useCallback(() => {
-    soundManager.playPageFlip();
-  }, []);
-
-  const playClickSound = useCallback(() => {
-    soundManager.playClick();
-  }, []);
-
-  const playHoverSound = useCallback(() => {
-    soundManager.playHover();
-  }, []);
-
-  const playCelebrationSound = useCallback(() => {
-    soundManager.playCelebration();
-  }, []);
+  // Play various sounds
+  const playPageFlipSound = useCallback(() => soundManager.playPageFlip(), []);
+  const playClickSound = useCallback(() => soundManager.playClick(), []);
+  const playHoverSound = useCallback(() => soundManager.playHover(), []);
+  const playCelebrationSound = useCallback(() => soundManager.playCelebration(), []);
 
   // Navigate pages
   const nextPage = useCallback(() => {
@@ -158,7 +141,6 @@ export function BookReader({ story }: BookReaderProps) {
       const newPage = currentPage + 1;
       setCurrentPage(newPage);
       setIsFlipping(false);
-      // Play celebration when reaching the last page
       if (newPage === totalPages - 1) {
         setTimeout(playCelebrationSound, 300);
       }
@@ -178,7 +160,6 @@ export function BookReader({ story }: BookReaderProps) {
     }, 500);
   }, [isFirstPage, isFlipping, playPageFlipSound, resetUITimer]);
 
-  // Go to specific page
   const goToPage = useCallback((page: number) => {
     if (page === currentPage || isFlipping) return;
     setFlipDirection(page > currentPage ? 'next' : 'prev');
@@ -191,7 +172,7 @@ export function BookReader({ story }: BookReaderProps) {
     }, 300);
   }, [currentPage, isFlipping, playPageFlipSound]);
 
-  // Toggle browser fullscreen (OS-level fullscreen)
+  // Toggle browser fullscreen
   const toggleFullscreen = useCallback(async () => {
     try {
       if (!document.fullscreenElement) {
@@ -200,17 +181,16 @@ export function BookReader({ story }: BookReaderProps) {
         await document.exitFullscreen();
       }
     } catch {
-      // Fullscreen API not available - do nothing, immersive mode is always on
+      // Fullscreen API not available
     }
     resetUITimer();
   }, [resetUITimer]);
 
-  // Listen for browser fullscreen changes (just for icon state)
+  // Listen for browser fullscreen changes
   useEffect(() => {
     const handleFullscreenChange = () => {
       const isFullscreen = !!document.fullscreenElement;
       setIsBrowserFullscreen(isFullscreen);
-      // Update sessionStorage when fullscreen changes (so we know current state)
       if (isFullscreen) {
         sessionStorage.setItem(FULLSCREEN_KEY, 'true');
       } else {
@@ -225,7 +205,6 @@ export function BookReader({ story }: BookReaderProps) {
   const navigateToNextStory = useCallback(() => {
     if (!nextStory) return;
     playClickSound();
-    // Save fullscreen state before navigating
     if (document.fullscreenElement) {
       sessionStorage.setItem(FULLSCREEN_KEY, 'true');
     }
@@ -248,7 +227,6 @@ export function BookReader({ story }: BookReaderProps) {
           prevPage();
           break;
         case 'Escape':
-          // Browser handles Escape for fullscreen exit automatically
           break;
         case 'f':
         case 'F':
@@ -278,33 +256,48 @@ export function BookReader({ story }: BookReaderProps) {
   };
 
   const currentPageData = story.pages[currentPage];
+  const hasText = currentPageData.text && currentPageData.text.trim() !== '';
 
   return (
     <div
       ref={containerRef}
-      className="book-reader-fullscreen fullscreen-active"
+      className="fixed inset-0 z-[9999] flex flex-col bg-[#1a1a2e] overflow-hidden"
       onMouseMove={resetUITimer}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onClick={resetUITimer}
     >
       {/* Ambient background */}
-      <div className="book-ambient-bg">
-        <div className="ambient-gradient" />
-        <div className="ambient-particles">
-          <span className="particle p1">✨</span>
-          <span className="particle p2">⭐</span>
-          <span className="particle p3">🌟</span>
-          <span className="particle p4">✨</span>
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(ellipse at top, #2d1b4e 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, #1e3a5f 0%, transparent 50%),
+              radial-gradient(ellipse at bottom left, #3d1f1f 0%, transparent 50%),
+              linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)
+            `
+          }}
+        />
+        <div className="absolute inset-0">
+          <span className="absolute top-[10%] left-[5%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite]">✨</span>
+          <span className="absolute top-[20%] right-[8%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite_4s]">⭐</span>
+          <span className="absolute bottom-[15%] left-[10%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite_8s]">🌟</span>
+          <span className="absolute bottom-[25%] right-[5%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite_12s]">✨</span>
         </div>
       </div>
 
       {/* Top control bar */}
-      <header className={`book-header ${showUI ? 'visible' : 'hidden'}`}>
-        <div className="header-left">
+      <header
+        className={`relative z-[100] flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/50 to-transparent transition-all duration-300 ${
+          showUI ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
+        }`}
+      >
+        <div className="flex items-center gap-2">
           <a
             href="/"
-            className="control-btn close-btn"
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white transition-all hover:bg-white/20 hover:scale-105"
             title="Back to Home"
             onClick={playClickSound}
             onMouseEnter={playHoverSound}
@@ -313,35 +306,21 @@ export function BookReader({ story }: BookReaderProps) {
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
-            <span className="btn-label">Home</span>
+            <span className="hidden sm:inline text-sm font-fredoka">Home</span>
           </a>
         </div>
 
-        <div className="header-center">
-          <h1 className="book-title">{story.title}</h1>
+        <div className="flex-1 text-center">
+          <h1 className="font-fredoka font-semibold text-white text-sm sm:text-base md:text-xl drop-shadow-lg whitespace-nowrap overflow-hidden text-ellipsis max-w-[40vw] sm:max-w-[50vw] md:max-w-[60vw] mx-auto">
+            {story.title}
+          </h1>
         </div>
 
-        <div className="header-right">
-          <button
-            onClick={() => {
-              playClickSound();
-              if (showPet) {
-                // If pet is already showing, trigger the selector
-                setPetSelectorTrigger(prev => prev + 1);
-              } else {
-                setShowPet(true);
-              }
-            }}
-            onMouseEnter={playHoverSound}
-            className="control-btn pet-toggle-btn"
-            title={showPet ? "Change reading buddy" : "Get a reading buddy!"}
-          >
-            🐾
-          </button>
+        <div className="flex items-center gap-2">
           <button
             onClick={() => { playClickSound(); setSoundEnabled(!soundEnabled); }}
             onMouseEnter={playHoverSound}
-            className="control-btn"
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full transition-all hover:bg-white/20 hover:scale-105"
             title={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
           >
             {soundEnabled ? '🔊' : '🔇'}
@@ -349,7 +328,7 @@ export function BookReader({ story }: BookReaderProps) {
           <button
             onClick={() => { playClickSound(); toggleFullscreen(); }}
             onMouseEnter={playHoverSound}
-            className="control-btn"
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white transition-all hover:bg-white/20 hover:scale-105"
             title={isBrowserFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen (F)'}
           >
             {isBrowserFullscreen ? (
@@ -366,59 +345,98 @@ export function BookReader({ story }: BookReaderProps) {
       </header>
 
       {/* Main book area */}
-      <main className="book-main">
-        {/* Page container - fits viewport */}
-        <div className={`page-container ${isFlipping ? `flipping-${flipDirection}` : ''}`}>
+      <main className="relative flex-1 flex items-center justify-center p-4 overflow-hidden">
+        {/* Page container */}
+        <div
+          className={`relative w-full max-w-[900px] h-full max-h-[calc(100vh-180px)] ${
+            isFlipping
+              ? flipDirection === 'next'
+                ? 'animate-[flipNext_0.5s_ease-in-out]'
+                : 'animate-[flipPrev_0.5s_ease-in-out]'
+              : ''
+          }`}
+          style={{ perspective: '2000px', transformStyle: 'preserve-3d' }}
+        >
           {/* Book frame */}
-          <div className="book-frame">
-            {/* Left page edge / spine */}
-            <div className="book-spine-edge" />
+          <div className="relative w-full h-full flex rounded-r-2xl rounded-l-lg shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)] overflow-hidden">
+            {/* Book spine */}
+            <div
+              className="w-3 sm:w-5 flex-shrink-0 shadow-[inset_-3px_0_8px_rgba(0,0,0,0.4),3px_0_10px_rgba(0,0,0,0.3)]"
+              style={{
+                background: 'linear-gradient(90deg, #5c3d2e 0%, #8b5a42 40%, #6b4532 60%, #4a2c1a 100%)'
+              }}
+            />
 
             {/* Main page */}
-            <article className={`book-page-content ${!currentPageData.text ? 'full-image' : ''}`}>
-              {/* Page image - top half or full page if no text */}
-              <div className={`page-image-section ${!currentPageData.text ? 'full-page' : ''}`}>
+            <article className={`flex-1 flex flex-col relative overflow-hidden ${
+              hasText ? 'bg-gradient-to-br from-[#fef9f3] via-[#fdf6ed] to-[#fcf3e4]' : 'bg-white'
+            }`}>
+              {/* Paper texture overlay for pages with text */}
+              {hasText && (
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E")`
+                  }}
+                />
+              )}
+
+              {/* Page image */}
+              <div className={`relative ${
+                hasText
+                  ? 'flex-1 min-h-[40%] max-h-[55%]'
+                  : 'flex-1 flex items-center justify-center p-2 sm:p-2.5 md:p-3'
+              }`}>
                 <Image
                   src={currentPageData.image}
                   alt={`Page ${currentPage + 1} illustration`}
                   fill
-                  className="page-image"
+                  className={hasText ? 'object-cover' : 'object-contain rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.12),0_8px_20px_rgba(0,0,0,0.08)]'}
                   priority
                   sizes="(max-width: 768px) 100vw, 80vw"
                 />
-                <div className="image-vignette" />
+                {hasText && (
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      boxShadow: 'inset 0 0 50px rgba(0,0,0,0.1), inset 0 -30px 40px -20px rgba(252, 243, 228, 1)'
+                    }}
+                  />
+                )}
               </div>
 
-              {/* Page number section for image-only pages (outside the image) */}
-              {!currentPageData.text && (
-                <div className="image-only-page-info">
-                  <div className="modern-page-badge">
-                    <span className="badge-text">Page</span>
-                    <span className="badge-num">{currentPage + 1}</span>
-                    <span className="badge-divider">of</span>
-                    <span className="badge-total">{totalPages}</span>
+              {/* Page number for image-only pages */}
+              {!hasText && (
+                <div className="flex items-center justify-center py-1 px-2 sm:py-1.5 sm:px-3 bg-[rgba(250,250,250,0.95)] border-t border-black/5 flex-shrink-0 min-h-[20px] sm:min-h-[22px]">
+                  <div className="flex items-center gap-1 font-fredoka animate-[fadeInUp_0.5s_ease-out]">
+                    <span className="text-[0.5rem] sm:text-[0.5625rem] font-medium text-gray-400 uppercase tracking-wider">Page</span>
+                    <span className="text-[0.625rem] sm:text-[0.6875rem] lg:text-xs font-bold text-gray-800 leading-none">{currentPage + 1}</span>
+                    <span className="text-[0.5rem] sm:text-[0.5625rem] font-medium text-gray-400 lowercase">of</span>
+                    <span className="text-[0.5625rem] sm:text-[0.625rem] lg:text-[0.6875rem] font-semibold text-gray-600 leading-none">{totalPages}</span>
                   </div>
                 </div>
               )}
 
-              {/* Page text - bottom half (only if text exists) */}
-              {currentPageData.text && (
-                <div className="page-text-section">
+              {/* Page text section */}
+              {hasText && (
+                <div className="flex-1 flex flex-col px-6 py-4 sm:px-10 sm:py-6 lg:px-14 lg:py-8 bg-gradient-to-b from-[#fef9f3] to-[#fdf6ed]">
                   {/* Page number badge */}
-                  <div className="page-badge">
-                    <span className="page-num">{currentPage + 1}</span>
-                    <span className="page-total">/ {totalPages}</span>
+                  <div className="flex items-baseline justify-center gap-1 mb-3">
+                    <span className="font-fredoka text-2xl font-bold text-amber-800">{currentPage + 1}</span>
+                    <span className="font-fredoka text-sm text-amber-700 opacity-70">/ {totalPages}</span>
                   </div>
 
                   {/* Story text */}
-                  <div className="text-content">
-                    <p className="story-paragraph">{currentPageData.text}</p>
+                  <div className="flex-1 flex items-center overflow-hidden">
+                    <p className="font-nunito text-lg sm:text-xl lg:text-[1.375rem] leading-[1.8] sm:leading-[1.9] lg:leading-[2] text-stone-700 text-justify hyphens-auto max-h-full overflow-auto first-letter:float-left first-letter:font-fredoka first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-bold first-letter:leading-[0.8] first-letter:mr-2 first-letter:mt-0.5 first-letter:text-amber-800 first-letter:drop-shadow-[2px_2px_4px_rgba(0,0,0,0.1)]">
+                      {currentPageData.text}
+                    </p>
                   </div>
 
                   {/* Decorative footer */}
-                  <div className="page-decoration">
+                  <div className="flex items-center justify-center gap-4 mt-auto pt-3 text-amber-300/60 text-xs">
                     <span>✦</span>
-                    <div className="decoration-bar" />
+                    <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-300/60 to-transparent" />
                     <span>✦</span>
                   </div>
                 </div>
@@ -426,77 +444,99 @@ export function BookReader({ story }: BookReaderProps) {
             </article>
 
             {/* Page stack effect */}
-            <div className="page-stack">
-              <div className="stack-page s1" />
-              <div className="stack-page s2" />
+            <div className="absolute -right-1.5 top-0.5 bottom-0.5 w-1.5 pointer-events-none">
+              <div className="absolute inset-0 bg-[#f5e6d3] rounded-r-[2px] opacity-80" />
+              <div className="absolute inset-0 right-0.5 bg-[#f5e6d3] rounded-r-[2px] opacity-50" />
             </div>
           </div>
         </div>
 
         {/* Navigation arrows */}
-        <nav className={`page-navigation ${showUI ? 'visible' : 'hidden'}`}>
+        <nav className={`absolute inset-0 flex items-center justify-between px-3 sm:px-6 pointer-events-none transition-opacity duration-300 ${
+          showUI ? 'opacity-100' : 'opacity-0'
+        }`}>
           <button
             onClick={prevPage}
             onMouseEnter={() => !isFirstPage && playHoverSound()}
             disabled={isFirstPage || isFlipping}
-            className={`nav-btn nav-prev ${isFirstPage ? 'disabled' : ''}`}
+            className={`relative flex items-center justify-center w-14 h-14 sm:w-18 sm:h-18 lg:w-20 lg:h-20 bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-xl border-2 border-white/80 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] pointer-events-auto transition-all duration-300 overflow-hidden ${
+              isFirstPage
+                ? 'opacity-35 cursor-not-allowed'
+                : 'hover:scale-110 hover:border-purple-500 hover:shadow-[0_8px_30px_rgba(168,85,247,0.35)] active:scale-95'
+            }`}
             aria-label="Previous page"
           >
-            <svg className="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-purple-600 relative z-10 transition-all ${
+              !isFirstPage && 'group-hover:animate-[arrowBounceLeft_0.6s_ease_infinite]'
+            }`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />
             </svg>
-            <span className="nav-ripple"></span>
+            <span className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 opacity-0 hover:opacity-10 transition-all duration-400 rounded-full" />
           </button>
 
           <button
             onClick={nextPage}
             onMouseEnter={() => !isLastPage && playHoverSound()}
             disabled={isLastPage || isFlipping}
-            className={`nav-btn nav-next ${isLastPage ? 'disabled' : ''}`}
+            className={`relative flex items-center justify-center w-14 h-14 sm:w-18 sm:h-18 lg:w-20 lg:h-20 bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-xl border-2 border-white/80 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] pointer-events-auto transition-all duration-300 overflow-hidden ${
+              isLastPage
+                ? 'opacity-35 cursor-not-allowed'
+                : 'hover:scale-110 hover:border-purple-500 hover:shadow-[0_8px_30px_rgba(168,85,247,0.35)] active:scale-95 animate-[subtlePulse_3s_ease-in-out_infinite]'
+            }`}
             aria-label="Next page"
           >
-            <svg className="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-purple-600 relative z-10 transition-all ${
+              !isLastPage && 'group-hover:animate-[arrowBounceRight_0.6s_ease_infinite]'
+            }`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
-            <span className="nav-ripple"></span>
+            <span className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 opacity-0 hover:opacity-10 transition-all duration-400 rounded-full" />
           </button>
         </nav>
 
         {/* Click zones for navigation */}
-        <div className="click-zones">
-          <div className="click-zone zone-left" onClick={prevPage} />
-          <div className="click-zone zone-right" onClick={nextPage} />
+        <div className="absolute inset-0 flex pointer-events-none">
+          <div className="flex-1 cursor-w-resize pointer-events-auto" onClick={prevPage} />
+          <div className="flex-1 cursor-e-resize pointer-events-auto" onClick={nextPage} />
         </div>
       </main>
 
       {/* Bottom progress bar */}
-      <footer className={`book-footer ${showUI ? 'visible' : 'hidden'}`}>
-        <div className="progress-wrapper">
+      <footer className={`relative z-[100] px-6 py-4 bg-gradient-to-t from-black/50 to-transparent transition-all duration-300 ${
+        showUI ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'
+      }`}>
+        <div className="max-w-[600px] mx-auto">
           {/* Progress dots */}
-          <div className="progress-dots">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-3 flex-wrap max-w-full px-2 sm:px-0">
             {story.pages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => { playClickSound(); goToPage(index); }}
                 onMouseEnter={playHoverSound}
-                className={`dot ${index === currentPage ? 'active' : ''} ${index < currentPage ? 'read' : ''}`}
+                className={`w-2.5 h-2.5 rounded-full border-0 cursor-pointer transition-all ${
+                  index === currentPage
+                    ? 'w-3.5 h-3.5 bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.5)]'
+                    : index < currentPage
+                    ? 'bg-amber-400/60 hover:bg-amber-400/80'
+                    : 'bg-white/30 hover:bg-white/60'
+                } hover:scale-125`}
                 aria-label={`Page ${index + 1}`}
               />
             ))}
           </div>
 
           {/* Progress bar */}
-          <div className="progress-track">
+          <div className="h-1 bg-white/20 rounded-full overflow-hidden mb-3">
             <div
-              className="progress-fill"
+              className="h-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full transition-all duration-300"
               style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
             />
           </div>
 
           {/* Keyboard hints */}
-          <div className="keyboard-hints">
-            <kbd>←</kbd>
-            <kbd>→</kbd>
+          <div className="hidden sm:flex items-center justify-center gap-2 text-xs text-white/50 font-fredoka">
+            <kbd className="px-2 py-1 bg-white/10 rounded">←</kbd>
+            <kbd className="px-2 py-1 bg-white/10 rounded">→</kbd>
             <span>or tap sides</span>
           </div>
         </div>
@@ -504,27 +544,27 @@ export function BookReader({ story }: BookReaderProps) {
 
       {/* End of story overlay */}
       {isLastPage && (
-        <div className="story-complete-overlay">
-          <div className="complete-card">
-            <div className="complete-emoji">🎉</div>
-            <h2 className="complete-title">The End!</h2>
-            <p className="complete-message">Great job reading this story!</p>
-            <div className="complete-stars">
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-xl z-[200] animate-[fadeIn_0.5s_ease]">
+          <div className="text-center px-6 py-8 sm:px-12 sm:py-10 mx-4 max-w-[calc(100vw-2rem)] bg-gradient-to-br from-amber-100 to-amber-200 rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.3)] animate-[popIn_0.5s_cubic-bezier(0.175,0.885,0.32,1.275)]">
+            <div className="text-6xl sm:text-7xl mb-4 animate-[bounce_0.6s_ease_infinite]">🎉</div>
+            <h2 className="font-fredoka text-3xl sm:text-4xl font-bold text-amber-900 mb-2">The End!</h2>
+            <p className="font-nunito text-lg sm:text-xl text-amber-800 mb-4">Great job reading this story!</p>
+            <div className="flex justify-center gap-2 text-4xl mb-6">
+              <span className="opacity-0 animate-[starPop_0.5s_ease_forwards_0.3s]">⭐</span>
+              <span className="opacity-0 animate-[starPop_0.5s_ease_forwards_0.5s]">⭐</span>
+              <span className="opacity-0 animate-[starPop_0.5s_ease_forwards_0.7s]">⭐</span>
             </div>
-            <div className="complete-actions">
+            <div className="flex gap-4 justify-center flex-wrap">
               <button
                 onClick={() => { playClickSound(); goToPage(0); }}
                 onMouseEnter={playHoverSound}
-                className="action-btn restart"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-fredoka font-semibold bg-amber-800 text-white transition-all hover:scale-105 hover:shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
               >
                 📖 Read Again
               </button>
               {nextStory && (
                 <button
-                  className="action-btn next-story"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-fredoka font-semibold bg-gradient-to-br from-purple-500 to-pink-500 text-white transition-all hover:scale-105 hover:shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
                   onClick={navigateToNextStory}
                   onMouseEnter={playHoverSound}
                 >
@@ -533,7 +573,7 @@ export function BookReader({ story }: BookReaderProps) {
               )}
               <a
                 href="/"
-                className="action-btn home"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-fredoka font-semibold bg-white text-amber-800 border-2 border-amber-800 transition-all hover:scale-105 hover:shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
                 onClick={playClickSound}
                 onMouseEnter={playHoverSound}
               >
@@ -544,35 +584,27 @@ export function BookReader({ story }: BookReaderProps) {
         </div>
       )}
 
-      {/* Pet Companion */}
-      {showPet && (
-        <PetCompanion
-          onClose={() => setShowPet(false)}
-          selectorTrigger={petSelectorTrigger}
-        />
-      )}
-
       {/* Fullscreen restore prompt */}
       {showFullscreenPrompt && (
-        <div className="fullscreen-prompt">
-          <div className="fullscreen-prompt-card">
-            <span className="fullscreen-prompt-icon">📺</span>
-            <p className="fullscreen-prompt-text">
+        <div className="fixed inset-0 z-[400] flex items-center justify-center bg-black/70 backdrop-blur-xl animate-[fadeIn_0.3s_ease-out] p-4">
+          <div className="flex flex-col items-center gap-6 px-8 py-10 sm:px-10 sm:py-12 bg-gradient-to-br from-amber-100 to-amber-200 rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.3)] max-w-[90vw] text-center animate-[popIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)]">
+            <span className="text-5xl animate-[bounce_1s_ease-in-out_infinite]">📺</span>
+            <p className="font-fredoka text-lg sm:text-xl font-bold text-amber-900 leading-relaxed">
               You were reading in fullscreen mode.
               <br />
               Continue in fullscreen?
             </p>
-            <div className="fullscreen-prompt-actions">
+            <div className="flex gap-3 flex-wrap justify-center">
               <button
                 ref={fullscreenBtnRef}
-                className="fullscreen-prompt-btn primary"
+                className="px-6 py-3 rounded-full font-fredoka font-semibold bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-[0_4px_15px_rgba(168,85,247,0.3)] transition-all hover:scale-105 hover:shadow-[0_6px_20px_rgba(168,85,247,0.5)] active:scale-95 min-w-[120px]"
                 onClick={handleRestoreFullscreen}
                 autoFocus
               >
                 ✨ Yes, Continue Fullscreen
               </button>
               <button
-                className="fullscreen-prompt-btn secondary"
+                className="px-6 py-3 rounded-full font-fredoka font-semibold bg-white text-amber-900 border-2 border-amber-900 transition-all hover:bg-amber-100 hover:scale-105 active:scale-95 min-w-[120px]"
                 onClick={dismissFullscreenPrompt}
               >
                 No thanks
@@ -581,6 +613,57 @@ export function BookReader({ story }: BookReaderProps) {
           </div>
         </div>
       )}
+
+      {/* Custom animations keyframes */}
+      <style jsx>{`
+        @keyframes floatSlow {
+          0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+          50% { transform: translateY(-30px) rotate(180deg); opacity: 0.5; }
+        }
+        @keyframes flipNext {
+          0% { transform: rotateY(0deg); }
+          50% { transform: rotateY(-15deg) scale(0.95); }
+          100% { transform: rotateY(0deg); }
+        }
+        @keyframes flipPrev {
+          0% { transform: rotateY(0deg); }
+          50% { transform: rotateY(15deg) scale(0.95); }
+          100% { transform: rotateY(0deg); }
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes arrowBounceLeft {
+          0%, 100% { transform: translateX(0) scale(1.1); }
+          50% { transform: translateX(-3px) scale(1.1); }
+        }
+        @keyframes arrowBounceRight {
+          0%, 100% { transform: translateX(0) scale(1.1); }
+          50% { transform: translateX(3px) scale(1.1); }
+        }
+        @keyframes subtlePulse {
+          0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.5) inset; }
+          50% { box-shadow: 0 4px 25px rgba(168, 85, 247, 0.25), 0 0 0 1px rgba(255,255,255,0.5) inset; }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes popIn {
+          0% { transform: scale(0); opacity: 0; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes starPop {
+          0% { opacity: 0; transform: scale(0); }
+          50% { transform: scale(1.3); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
     </div>
   );
 }
