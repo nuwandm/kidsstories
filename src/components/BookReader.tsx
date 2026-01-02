@@ -56,23 +56,34 @@ export function BookReader({ story }: BookReaderProps) {
     };
   }, []);
 
-  // Check if we should prompt to restore fullscreen mode
+  // Auto-restore fullscreen mode when navigating between stories
   useEffect(() => {
     if (hasCheckedFullscreen.current) return;
     hasCheckedFullscreen.current = true;
 
     const shouldRestoreFullscreen = sessionStorage.getItem(FULLSCREEN_KEY) === 'true';
-    if (shouldRestoreFullscreen && !document.fullscreenElement) {
-      // Show prompt to re-enter fullscreen (can't auto-enter without user gesture)
-      setShowFullscreenPrompt(true);
-      // Clear the flag
-      sessionStorage.removeItem(FULLSCREEN_KEY);
+    if (shouldRestoreFullscreen && !document.fullscreenElement && containerRef.current) {
+      // Try to automatically enter fullscreen (navigation click counts as user gesture)
+      const attemptFullscreen = async () => {
+        try {
+          await containerRef.current?.requestFullscreen();
+          sessionStorage.removeItem(FULLSCREEN_KEY);
+        } catch (error) {
+          // If auto-enter fails, show prominent prompt
+          setShowFullscreenPrompt(true);
+          sessionStorage.removeItem(FULLSCREEN_KEY);
+        }
+      };
+
+      // Small delay to ensure DOM is ready
+      setTimeout(attemptFullscreen, 100);
     }
   }, []);
 
   // Handle fullscreen restore from prompt
   const handleRestoreFullscreen = useCallback(async () => {
     setShowFullscreenPrompt(false);
+    soundManager.playClick();
     try {
       await containerRef.current?.requestFullscreen();
     } catch {
@@ -82,7 +93,16 @@ export function BookReader({ story }: BookReaderProps) {
 
   const dismissFullscreenPrompt = useCallback(() => {
     setShowFullscreenPrompt(false);
+    soundManager.playClick();
   }, []);
+
+  // Auto-focus the fullscreen button when prompt shows
+  const fullscreenBtnRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (showFullscreenPrompt && fullscreenBtnRef.current) {
+      fullscreenBtnRef.current.focus();
+    }
+  }, [showFullscreenPrompt]);
 
   // Auto-hide UI after inactivity (always active in immersive mode)
   const resetUITimer = useCallback(() => {
@@ -523,13 +543,19 @@ export function BookReader({ story }: BookReaderProps) {
         <div className="fullscreen-prompt">
           <div className="fullscreen-prompt-card">
             <span className="fullscreen-prompt-icon">📺</span>
-            <p className="fullscreen-prompt-text">Continue reading in fullscreen?</p>
+            <p className="fullscreen-prompt-text">
+              You were reading in fullscreen mode.
+              <br />
+              Continue in fullscreen?
+            </p>
             <div className="fullscreen-prompt-actions">
               <button
+                ref={fullscreenBtnRef}
                 className="fullscreen-prompt-btn primary"
                 onClick={handleRestoreFullscreen}
+                autoFocus
               >
-                Yes, Fullscreen
+                ✨ Yes, Continue Fullscreen
               </button>
               <button
                 className="fullscreen-prompt-btn secondary"

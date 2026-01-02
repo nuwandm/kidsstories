@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { ConditionalLayout } from '@/components/ConditionalLayout';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
+import { SuppressWarnings } from './suppress-warnings';
 import './globals.css';
 
 /**
@@ -101,6 +103,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
+        {/* Suppress development warnings */}
+        <SuppressWarnings />
+
         {/* Skip link for keyboard/screen reader users */}
         <a
           href="#main-content"
@@ -109,8 +114,16 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        {/* Conditional layout: hides header/footer on story pages */}
-        <ConditionalLayout>{children}</ConditionalLayout>
+        {/* Site header with navigation */}
+        <Header />
+
+        {/* Main content area */}
+        <main id="main-content" className="flex-grow">
+          {children}
+        </main>
+
+        {/* Site footer */}
+        <Footer />
       </body>
     </html>
   );
