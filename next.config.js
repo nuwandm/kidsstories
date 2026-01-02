@@ -1,24 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // NOTE: We do NOT use 'output: export' for Vercel deployment
-  // Vercel handles static generation automatically and provides:
-  // - Automatic image optimization via their CDN
-  // - Better caching and performance
-  // - No need for 'unoptimized: true' which would hurt performance
+  // Static export for GitHub Pages deployment
+  // GitHub Pages doesn't support Next.js server features, so we use static export
+  output: 'export',
 
   // Trailing slashes for cleaner URLs and better SEO
   trailingSlash: true,
 
-  // Image optimization settings (Vercel handles this automatically)
+  // Image optimization settings for static export
   images: {
-    // Define allowed image formats - WebP for best compression
-    formats: ['image/webp'],
+    // Disable image optimization for static export (GitHub Pages)
+    // Next.js Image component will still provide responsive images but without server-side optimization
+    unoptimized: true,
     // Device sizes for responsive images
     deviceSizes: [640, 750, 828, 1080, 1200],
     // Image sizes for srcset generation
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // Remote image patterns for placeholder images during development
-    // Remove these when using local images in production
+    // Remote image patterns for external images
     remotePatterns: [
       {
         protocol: 'https',
