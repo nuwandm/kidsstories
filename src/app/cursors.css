@@ -10,108 +10,104 @@
    ============================================ */
 
 :root {
-  /* Magic wand cursor - default */
-  --cursor-wand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='wandGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M4 28L26 6' stroke='url(%23wandGrad)' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='28' cy='4' r='3' fill='%23fbbf24'/%3E%3Cpath d='M26 2l2-1M30 4l1 2M26 6l2 1M30 4l1-2' stroke='%23fbbf24' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") 4 28, auto;
+  /* Colorful rainbow pointer - default */
+  --cursor-rainbow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='rainbow' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ec4899'/%3E%3Cstop offset='33%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='66%25' style='stop-color:%2306b6d4'/%3E%3Cstop offset='100%25' style='stop-color:%23fbbf24'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8 8L8 32L24 20Z' fill='url(%23rainbow)' stroke='%23fff' stroke-width='3' filter='url(%23glow)'/%3E%3Ccircle cx='14' cy='18' r='3' fill='%23fff' opacity='0.6'/%3E%3C/svg%3E") 8 8, auto;
 
-  /* Star pointer cursor - for clickable items */
-  --cursor-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='starGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23fbbf24'/%3E%3Cstop offset='100%25' style='stop-color:%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 2l3.5 7.5L28 11l-6 5.5L24 26l-8-4.5L8 26l2-9.5L4 11l8.5-1.5z' fill='url(%23starGrad)' stroke='%23fff' stroke-width='1'/%3E%3Ccircle cx='16' cy='14' r='2' fill='%23fff' opacity='0.8'/%3E%3C/svg%3E") 16 16, pointer;
+  /* Big shiny star cursor - for clickable items */
+  --cursor-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='starGlow'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='starGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23fbbf24'/%3E%3Cstop offset='100%25' style='stop-color:%23f97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M24 4l5 12L42 18l-10 9L35 42l-11-7L13 42l3-15L6 18l13-2z' fill='url(%23starGrad)' stroke='%23fff' stroke-width='2.5' filter='url(%23starGlow)'/%3E%3Ccircle cx='24' cy='20' r='4' fill='%23fff' opacity='0.9'/%3E%3Cpath d='M20 16l2-2 2 2-2 2z' fill='%23fff' opacity='0.7'/%3E%3C/svg%3E") 24 24, pointer;
 
-  /* Heart cursor - for favorites/love */
-  --cursor-heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='heartGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ec4899'/%3E%3Cstop offset='100%25' style='stop-color:%23f43f5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M16 28s-12-8-12-16c0-4.5 3.5-8 8-8 2.5 0 4 1.5 4 1.5s1.5-1.5 4-1.5c4.5 0 8 3.5 8 8 0 8-12 16-12 16z' fill='url(%23heartGrad)' stroke='%23fff' stroke-width='1'/%3E%3Cellipse cx='12' cy='12' rx='3' ry='2' fill='%23fff' opacity='0.4' transform='rotate(-30 12 12)'/%3E%3C/svg%3E") 16 16, pointer;
+  /* Cute heart cursor - for favorites/love */
+  --cursor-heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='heartGlow'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='heartGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ec4899'/%3E%3Cstop offset='100%25' style='stop-color:%23f43f5e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M24 42s-16-12-16-24c0-6 5-11 11-11 3.5 0 5 2 5 2s1.5-2 5-2c6 0 11 5 11 11 0 12-16 24-16 24z' fill='url(%23heartGrad)' stroke='%23fff' stroke-width='2.5' filter='url(%23heartGlow)'/%3E%3Cellipse cx='17' cy='16' rx='5' ry='3' fill='%23fff' opacity='0.5' transform='rotate(-30 17 16)'/%3E%3Cpath d='M21 22c1-1 2-1 3-1' stroke='%23fff' stroke-width='1.5' opacity='0.4' stroke-linecap='round'/%3E%3C/svg%3E") 24 24, pointer;
 
-  /* Rainbow hand pointer */
-  --cursor-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='handGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4'/%3E%3Cstop offset='50%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M10 18V8c0-1.1.9-2 2-2s2 .9 2 2v6h1V6c0-1.1.9-2 2-2s2 .9 2 2v8h1V7c0-1.1.9-2 2-2s2 .9 2 2v9h1v-5c0-1.1.9-2 2-2s2 .9 2 2v10c0 5-4 9-9 9h-2c-4 0-8-3-8-8z' fill='url(%23handGrad)' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E") 14 4, pointer;
+  /* Colorful hand pointer */
+  --cursor-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='handGlow'%3E%3CfeGaussianBlur stdDeviation='1.5' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='handGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4'/%3E%3Cstop offset='50%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M14 26V11c0-1.7 1.3-3 3-3s3 1.3 3 3v9h2V8c0-1.7 1.3-3 3-3s3 1.3 3 3v12h2V10c0-1.7 1.3-3 3-3s3 1.3 3 3v13h2v-7c0-1.7 1.3-3 3-3s3 1.3 3 3v14c0 7-6 13-13 13h-3c-6 0-12-4-12-12z' fill='url(%23handGrad)' stroke='%23fff' stroke-width='2' filter='url(%23handGlow)'/%3E%3C/svg%3E") 20 6, pointer;
 
-  /* Left arrow cursor */
-  --cursor-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='leftGrad' x1='100%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4'/%3E%3Cstop offset='100%25' style='stop-color:%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='18' fill='url(%23leftGrad)' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M24 12l-8 8 8 8' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 20 20, w-resize;
+  /* Big left arrow cursor with glow */
+  --cursor-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cdefs%3E%3Cfilter id='arrowGlow'%3E%3CfeGaussianBlur stdDeviation='2.5' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='leftGrad' x1='100%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2306b6d4'/%3E%3Cstop offset='100%25' style='stop-color:%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='28' cy='28' r='24' fill='url(%23leftGrad)' stroke='%23fff' stroke-width='3' filter='url(%23arrowGlow)'/%3E%3Cpath d='M34 16l-12 12 12 12' stroke='%23fff' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M30 20l-6 8 6 8' stroke='%23fff' stroke-width='2' fill='none' opacity='0.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 28 28, w-resize;
 
-  /* Right arrow cursor */
-  --cursor-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='rightGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='18' fill='url(%23rightGrad)' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M16 12l8 8-8 8' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 20 20, e-resize;
+  /* Big right arrow cursor with glow */
+  --cursor-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cdefs%3E%3Cfilter id='arrowGlow2'%3E%3CfeGaussianBlur stdDeviation='2.5' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='rightGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='28' cy='28' r='24' fill='url(%23rightGrad)' stroke='%23fff' stroke-width='3' filter='url(%23arrowGlow2)'/%3E%3Cpath d='M22 16l12 12-12 12' stroke='%23fff' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M26 20l6 8-6 8' stroke='%23fff' stroke-width='2' fill='none' opacity='0.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 28 28, e-resize;
 
-  /* Book cursor - for reading areas */
-  --cursor-book: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='bookGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2392400e'/%3E%3Cstop offset='100%25' style='stop-color:%23b45309'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='6' width='24' height='20' rx='2' fill='url(%23bookGrad)' stroke='%23fff' stroke-width='1'/%3E%3Crect x='6' y='8' width='9' height='16' fill='%23fef3c7'/%3E%3Crect x='17' y='8' width='9' height='16' fill='%23fef3c7'/%3E%3Cpath d='M16 8v16' stroke='%2392400e' stroke-width='2'/%3E%3Cpath d='M8 11h5M8 14h5M8 17h4M19 11h5M19 14h5M19 17h4' stroke='%23d4a574' stroke-width='1'/%3E%3C/svg%3E") 16 16, auto;
+  /* Colorful book cursor - for reading areas */
+  --cursor-book: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='bookGlow'%3E%3CfeGaussianBlur stdDeviation='1.5' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='bookGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f97316'/%3E%3Cstop offset='100%25' style='stop-color:%23dc2626'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='8' y='10' width='32' height='28' rx='3' fill='url(%23bookGrad)' stroke='%23fff' stroke-width='2' filter='url(%23bookGlow)'/%3E%3Crect x='10' y='12' width='13' height='24' fill='%23fffbeb' rx='1'/%3E%3Crect x='25' y='12' width='13' height='24' fill='%23fffbeb' rx='1'/%3E%3Cpath d='M24 12v24' stroke='%23dc2626' stroke-width='2.5'/%3E%3Cpath d='M13 17h6M13 21h6M13 25h5M28 17h6M28 21h6M28 25h5' stroke='%23fbbf24' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='15' r='1.5' fill='%23fbbf24'/%3E%3Ccircle cx='31' cy='15' r='1.5' fill='%23fbbf24'/%3E%3C/svg%3E") 24 24, auto;
 
-  /* Sparkle cursor - for magical moments */
-  --cursor-sparkle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 0l2 10 10 2-10 2-2 10-2-10L4 12l10-2z' fill='%23fbbf24'/%3E%3Cpath d='M8 4l1 4 4 1-4 1-1 4-1-4-4-1 4-1z' fill='%23f472b6'/%3E%3Cpath d='M24 20l1 3 3 1-3 1-1 3-1-3-3-1 3-1z' fill='%2306b6d4'/%3E%3C/svg%3E") 16 16, auto;
+  /* Mega sparkle cursor - for magical moments */
+  --cursor-sparkle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='sparkleGlow'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M24 2l3 14 14 3-14 3-3 14-3-14L7 19l14-3z' fill='%23fbbf24' stroke='%23fff' stroke-width='2' filter='url(%23sparkleGlow)'/%3E%3Cpath d='M10 8l2 6 6 2-6 2-2 6-2-6-6-2 6-2z' fill='%23f472b6' stroke='%23fff' stroke-width='1.5' filter='url(%23sparkleGlow)'/%3E%3Cpath d='M36 30l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z' fill='%2306b6d4' stroke='%23fff' stroke-width='1.5' filter='url(%23sparkleGlow)'/%3E%3Ccircle cx='24' cy='19' r='3' fill='%23fff' opacity='0.8'/%3E%3C/svg%3E") 24 24, auto;
+
+  /* Magic wand cursor with trail */
+  --cursor-wand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='wandGlow'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3ClinearGradient id='wandGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 40L36 10' stroke='url(%23wandGrad)' stroke-width='5' stroke-linecap='round' filter='url(%23wandGlow)'/%3E%3Ccircle cx='40' cy='6' r='5' fill='%23fbbf24' stroke='%23fff' stroke-width='2' filter='url(%23wandGlow)'/%3E%3Cpath d='M36 2l4-1.5M44 6l1.5 4M36 10l4 1.5M44 6l1.5-4' stroke='%23fbbf24' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M15 28l2 1 1 2-1 2-2 1-2-1-1-2 1-2z' fill='%23fbbf24' opacity='0.7'/%3E%3Cpath d='M23 20l1.5 0.5 0.5 1.5-0.5 1.5-1.5 0.5-1.5-0.5-0.5-1.5 0.5-1.5z' fill='%2306b6d4' opacity='0.7'/%3E%3C/svg%3E") 6 40, auto;
 }
 
 /* ============================================
    APPLY CURSORS GLOBALLY
    ============================================ */
 
-/* Default cursor - magic wand */
-.book-reader-fullscreen {
-  cursor: var(--cursor-wand);
+/* Default cursor - colorful rainbow pointer */
+body {
+  cursor: var(--cursor-rainbow);
+}
+
+/* Default for book reader */
+.book-reader-fullscreen,
+.fixed.inset-0.z-\\[9999\\] {
+  cursor: var(--cursor-rainbow);
 }
 
 /* Book/reading area cursor */
 .book-page-content,
-.page-text-section {
+.page-text-section,
+article {
   cursor: var(--cursor-book);
 }
 
-/* Star cursor for clickable elements */
-.book-reader-fullscreen a,
-.book-reader-fullscreen button:not(.nav-btn),
-.control-btn,
-.dot,
-.action-btn {
+/* Big shiny star for all clickable elements */
+a,
+button,
+[role="button"],
+.cursor-pointer {
   cursor: var(--cursor-star) !important;
 }
 
-/* Navigation arrows - directional cursors */
-.click-zone.zone-left,
-.nav-btn.nav-prev {
+/* Navigation arrows - big directional cursors */
+.cursor-w-resize,
+[class*="zone-left"] {
   cursor: var(--cursor-left) !important;
 }
 
-.click-zone.zone-right,
-.nav-btn.nav-next {
+.cursor-e-resize,
+[class*="zone-right"] {
   cursor: var(--cursor-right) !important;
 }
 
-/* Heart cursor for close/home buttons */
-.close-btn,
-.action-btn.home {
+/* Heart cursor for home/love buttons */
+a[href="/"],
+a[href*="home"] {
   cursor: var(--cursor-heart) !important;
 }
 
-/* Hand pointer for interactive elements */
-.progress-dots .dot:hover {
+/* Colorful hand for interactive hover states */
+button:hover:not(:disabled),
+a:hover {
   cursor: var(--cursor-hand) !important;
 }
 
-/* Sparkle cursor for celebration */
-.story-complete-overlay {
+/* Mega sparkle cursor for celebration */
+.story-complete-overlay,
+[class*="complete"] {
   cursor: var(--cursor-sparkle) !important;
 }
 
-.complete-card {
-  cursor: var(--cursor-star) !important;
-}
-
-/* ============================================
-   HOME PAGE CURSORS
-   ============================================ */
-
-/* Magic wand for whole site */
-body {
-  cursor: var(--cursor-wand);
-}
-
-/* Star pointer for links and buttons */
-a, button, [role="button"] {
-  cursor: var(--cursor-star) !important;
+/* Magic wand for magical interactions */
+[class*="magic"],
+[class*="sparkle"],
+[class*="glow"] {
+  cursor: var(--cursor-wand) !important;
 }
 
 /* Story cards get book cursor on hover */
-.story-card:hover {
+.story-card:hover,
+[class*="story-card"]:hover {
   cursor: var(--cursor-book) !important;
-}
-
-/* Heart for footer links */
-footer a {
-  cursor: var(--cursor-heart) !important;
 }
 
 /* ============================================
