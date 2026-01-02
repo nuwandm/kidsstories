@@ -292,8 +292,48 @@
   max-height: 55%;
 }
 
+/* Full page image when text is embedded - Modern, clean design */
+.page-image-section.full-page {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 1.5rem 1rem;
+  min-height: 0;
+}
+
+@media (min-width: 640px) {
+  .page-image-section.full-page {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-image-section.full-page {
+    padding: 2.5rem 2rem;
+  }
+}
+
 .page-image {
   object-fit: cover;
+}
+
+/* Full image mode - centered and contained with modern shadow */
+.page-image-section.full-page .page-image {
+  object-fit: contain;
+  border-radius: 0.75rem;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 8px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Full image mode - modern white background */
+.book-page-content.full-image {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
 }
 
 .image-vignette {
@@ -303,6 +343,11 @@
     inset 0 0 50px rgba(0,0,0,0.1),
     inset 0 -30px 40px -20px rgba(252, 243, 228, 1);
   pointer-events: none;
+}
+
+/* Remove vignette for full-page images */
+.page-image-section.full-page .image-vignette {
+  display: none;
 }
 
 /* Page text section */
@@ -340,6 +385,121 @@
   margin-bottom: 0.75rem;
 }
 
+/* ============================================
+   IMAGE-ONLY PAGE INFO (MODERN DESIGN)
+   ============================================ */
+
+/* Page info section for image-only pages - positioned below image */
+.image-only-page-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #fafafa 100%
+  );
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 640px) {
+  .image-only-page-info {
+    padding: 1.5rem 1.5rem;
+  }
+}
+
+/* Modern page badge - clean typography and spacing */
+.modern-page-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: 'Fredoka', sans-serif;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge text - "Page" */
+.badge-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (min-width: 640px) {
+  .badge-text {
+    font-size: 1rem;
+  }
+}
+
+/* Badge number - current page (emphasized) */
+.badge-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 640px) {
+  .badge-num {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .badge-num {
+    font-size: 2.5rem;
+  }
+}
+
+/* Badge divider - "of" */
+.badge-divider {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: lowercase;
+}
+
+@media (min-width: 640px) {
+  .badge-divider {
+    font-size: 1rem;
+  }
+}
+
+/* Badge total - total pages */
+.badge-total {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #6b7280;
+  line-height: 1;
+}
+
+@media (min-width: 640px) {
+  .badge-total {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .badge-total {
+    font-size: 1.625rem;
+  }
+}
+
+/* Traditional page badge styles (for pages with text) */
 .page-num {
   font-family: 'Fredoka', sans-serif;
   font-size: 1.5rem;

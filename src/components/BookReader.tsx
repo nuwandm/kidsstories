@@ -375,9 +375,9 @@ export function BookReader({ story }: BookReaderProps) {
             <div className="book-spine-edge" />
 
             {/* Main page */}
-            <article className="book-page-content">
-              {/* Page image - top half */}
-              <div className="page-image-section">
+            <article className={`book-page-content ${!currentPageData.text ? 'full-image' : ''}`}>
+              {/* Page image - top half or full page if no text */}
+              <div className={`page-image-section ${!currentPageData.text ? 'full-page' : ''}`}>
                 <Image
                   src={currentPageData.image}
                   alt={`Page ${currentPage + 1} illustration`}
@@ -389,26 +389,40 @@ export function BookReader({ story }: BookReaderProps) {
                 <div className="image-vignette" />
               </div>
 
-              {/* Page text - bottom half */}
-              <div className="page-text-section">
-                {/* Page number badge */}
-                <div className="page-badge">
-                  <span className="page-num">{currentPage + 1}</span>
-                  <span className="page-total">/ {totalPages}</span>
+              {/* Page number section for image-only pages (outside the image) */}
+              {!currentPageData.text && (
+                <div className="image-only-page-info">
+                  <div className="modern-page-badge">
+                    <span className="badge-text">Page</span>
+                    <span className="badge-num">{currentPage + 1}</span>
+                    <span className="badge-divider">of</span>
+                    <span className="badge-total">{totalPages}</span>
+                  </div>
                 </div>
+              )}
 
-                {/* Story text */}
-                <div className="text-content">
-                  <p className="story-paragraph">{currentPageData.text}</p>
-                </div>
+              {/* Page text - bottom half (only if text exists) */}
+              {currentPageData.text && (
+                <div className="page-text-section">
+                  {/* Page number badge */}
+                  <div className="page-badge">
+                    <span className="page-num">{currentPage + 1}</span>
+                    <span className="page-total">/ {totalPages}</span>
+                  </div>
 
-                {/* Decorative footer */}
-                <div className="page-decoration">
-                  <span>✦</span>
-                  <div className="decoration-bar" />
-                  <span>✦</span>
+                  {/* Story text */}
+                  <div className="text-content">
+                    <p className="story-paragraph">{currentPageData.text}</p>
+                  </div>
+
+                  {/* Decorative footer */}
+                  <div className="page-decoration">
+                    <span>✦</span>
+                    <div className="decoration-bar" />
+                    <span>✦</span>
+                  </div>
                 </div>
-              </div>
+              )}
             </article>
 
             {/* Page stack effect */}

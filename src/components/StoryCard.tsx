@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { StoryCardProps } from '@/lib/types';
+import { isStoryNew } from '@/lib/utils';
 
 /**
  * Modern, Engaging Story Card Component
@@ -11,8 +12,10 @@ import { StoryCardProps } from '@/lib/types';
  * - Decorative elements for kid appeal
  * - Optimized image loading
  * - Playful "Read Now" button
+ * - "New" badge for recently uploaded stories (within 7 days)
  */
 export function StoryCard({ story, priority = false }: StoryCardProps) {
+  const showNewBadge = isStoryNew(story.uploadedDate);
   return (
     <article className="group relative animate-slide-up">
       <Link
@@ -22,13 +25,15 @@ export function StoryCard({ story, priority = false }: StoryCardProps) {
       >
         {/* Card container */}
         <div className="relative bg-white rounded-kid-xl overflow-hidden shadow-soft transition-all duration-500 ease-out group-hover:shadow-soft-xl group-hover:-translate-y-3 border-2 border-white/80 group-hover:border-primary-200">
-          {/* Decorative corner badge */}
-          <div className="absolute top-4 right-4 z-20">
-            <div className="flex items-center gap-1 px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full shadow-md group-hover:scale-110 transition-transform duration-300">
-              <span className="text-sm">✨</span>
-              <span className="text-xs font-bold text-primary-600">New</span>
+          {/* Decorative corner badge - only show if story is new (within 7 days) */}
+          {showNewBadge && (
+            <div className="absolute top-4 right-4 z-20">
+              <div className="flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-primary-500 to-candy-500 backdrop-blur-sm rounded-full shadow-md group-hover:scale-110 transition-transform duration-300 animate-pulse-soft">
+                <span className="text-sm">✨</span>
+                <span className="text-xs font-bold text-white">New</span>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Image container */}
           <div className="relative aspect-[4/3] overflow-hidden">

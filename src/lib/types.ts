@@ -7,11 +7,15 @@
 
 /**
  * Represents a single page within a story
- * Each page has text content and an accompanying image
+ * Each page has an image and optional text
+ *
+ * Two scenarios supported:
+ * 1. Separate text and image: Provide both `text` and `image`
+ * 2. Text embedded in image: Provide only `image`, leave `text` empty or omit it
  */
 export interface StoryPage {
-  /** The narrative text for this page */
-  text: string;
+  /** The narrative text for this page (optional - omit if text is embedded in image) */
+  text?: string;
   /** Path to the page image (relative to public folder) */
   image: string;
 }
@@ -27,6 +31,8 @@ export interface Story {
   title: string;
   /** Path to the cover image (relative to public folder) */
   coverImage: string;
+  /** Date when the story was uploaded (ISO 8601 format) */
+  uploadedDate: string;
   /** Array of story pages in reading order */
   pages: StoryPage[];
 }
@@ -48,6 +54,8 @@ export interface StoryIndexItem {
   title: string;
   /** Path to the cover image (relative to public folder) */
   coverImage: string;
+  /** Date when the story was uploaded (ISO 8601 format) */
+  uploadedDate: string;
 }
 
 /**
