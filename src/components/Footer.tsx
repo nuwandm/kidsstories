@@ -27,9 +27,9 @@ export function Footer() {
       <div className="bg-white/80 backdrop-blur-xl border-t border-white/50">
         <div className="container-story py-12 sm:py-16">
           {/* Top section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 lg:gap-8">
             {/* Brand section */}
-            <div className="text-center md:text-left">
+            <div className="text-center sm:text-left sm:col-span-2 lg:col-span-1">
               <Link href="/" className="inline-flex items-center gap-3 group">
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:shadow-xl transition-all duration-300"
@@ -53,7 +53,7 @@ export function Footer() {
               </p>
 
               {/* Decorative emojis */}
-              <div className="flex items-center justify-center md:justify-start gap-2 mt-4">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mt-4">
                 <span className="text-xl">✨</span>
                 <span className="text-xl">📖</span>
                 <span className="text-xl">🌟</span>
@@ -82,18 +82,18 @@ export function Footer() {
             </div>
 
             {/* For parents section */}
-            <div className="text-center md:text-right">
-              <h3 className="font-display font-bold text-slate-800 mb-4 flex items-center justify-center md:justify-end gap-2">
+            <div className="text-center sm:text-left lg:text-right">
+              <h3 className="font-display font-bold text-slate-800 mb-4 flex items-center justify-center sm:justify-start lg:justify-end gap-2">
                 <span className="text-lg">👨‍👩‍👧</span>
                 For Parents
               </h3>
-              <p className="text-slate-600 text-sm leading-relaxed max-w-xs mx-auto md:ml-auto md:mr-0">
+              <p className="text-slate-600 text-sm leading-relaxed max-w-xs mx-auto sm:mx-0 lg:ml-auto lg:mr-0">
                 All stories are carefully crafted to be age-appropriate,
                 educational, and entertaining for children under 10.
               </p>
 
               {/* Trust badges */}
-              <div className="flex items-center justify-center md:justify-end gap-3 mt-4">
+              <div className="flex items-center justify-center sm:justify-start lg:justify-end gap-3 mt-4">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-mint-100 rounded-full">
                   <span className="text-sm">✓</span>
                   <span className="text-xs font-bold text-mint-700">Safe</span>

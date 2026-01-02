@@ -17,9 +17,9 @@ export function AdSlot({
   className = '',
 }: AdSlotProps) {
   const formatClasses = {
-    horizontal: 'h-24 sm:h-28',
-    vertical: 'h-64 w-40',
-    square: 'h-64 w-64',
+    horizontal: 'h-24 sm:h-28 w-full',
+    vertical: 'h-64 w-32 sm:w-40',
+    square: 'h-48 w-48 sm:h-64 sm:w-64 max-w-full',
   };
 
   return (

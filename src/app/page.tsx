@@ -33,29 +33,29 @@ export default function HomePage() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Decorative floating elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <span className="float-decoration top-32 left-[10%] text-5xl">🌟</span>
+      {/* Decorative floating elements - hidden on mobile for cleaner layout */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
+        <span className="float-decoration top-32 left-[10%] text-4xl md:text-5xl">🌟</span>
         <span
-          className="float-decoration top-48 right-[15%] text-4xl"
+          className="float-decoration top-48 right-[15%] text-3xl md:text-4xl"
           style={{ animationDelay: '1s' }}
         >
           ✨
         </span>
         <span
-          className="float-decoration top-96 left-[5%] text-3xl"
+          className="float-decoration top-96 left-[5%] text-2xl md:text-3xl hidden md:block"
           style={{ animationDelay: '2s' }}
         >
           🌈
         </span>
         <span
-          className="float-decoration bottom-48 right-[8%] text-4xl"
+          className="float-decoration bottom-48 right-[8%] text-3xl md:text-4xl"
           style={{ animationDelay: '1.5s' }}
         >
           🦋
         </span>
         <span
-          className="float-decoration bottom-32 left-[12%] text-5xl"
+          className="float-decoration bottom-32 left-[12%] text-4xl md:text-5xl hidden md:block"
           style={{ animationDelay: '0.5s' }}
         >
           🌸
@@ -80,7 +80,7 @@ export default function HomePage() {
           </div>
 
           {/* Main heading */}
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-balance animate-slide-up max-w-4xl mx-auto">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-balance animate-slide-up max-w-4xl mx-auto">
             <span className="text-gradient">Magical Stories</span>
             <br />
             <span className="text-slate-800">for Amazing Kids</span>
@@ -153,7 +153,7 @@ export default function HomePage() {
               Popular Stories
             </span>
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-slate-800">
+          <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-slate-800">
             Choose Your Adventure
           </h2>
           <p className="mt-2 text-slate-500 font-display">

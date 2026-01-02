@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Story } from '@/lib/types';
 import { soundManager } from '@/lib/sounds';
 import { getNextStory } from '@/content/storyIndex';
 import { PetCompanion } from './PetCompanion';
+
+const FULLSCREEN_KEY = 'kidsstories_fullscreen_mode';
 
 interface BookReaderProps {
   story: Story;
@@ -22,6 +25,7 @@ interface BookReaderProps {
  * - Keyboard and touch navigation
  */
 export function BookReader({ story }: BookReaderProps) {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipDirection, setFlipDirection] = useState<'next' | 'prev'>('next');
@@ -32,6 +36,8 @@ export function BookReader({ story }: BookReaderProps) {
   const [petSelectorTrigger, setPetSelectorTrigger] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const hideUITimeout = useRef<NodeJS.Timeout | null>(null);
+  const hasCheckedFullscreen = useRef(false);
+  const [showFullscreenPrompt, setShowFullscreenPrompt] = useState(false);
 
   const totalPages = story.pages.length;
   const isFirstPage = currentPage === 0;
@@ -39,6 +45,44 @@ export function BookReader({ story }: BookReaderProps) {
 
   // Get next story for the "Next Story" button
   const nextStory = getNextStory(story.slug);
+
+  // Disable scroll restoration to suppress Next.js warnings about position: fixed
+  useEffect(() => {
+    const originalScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+
+    return () => {
+      window.history.scrollRestoration = originalScrollRestoration;
+    };
+  }, []);
+
+  // Check if we should prompt to restore fullscreen mode
+  useEffect(() => {
+    if (hasCheckedFullscreen.current) return;
+    hasCheckedFullscreen.current = true;
+
+    const shouldRestoreFullscreen = sessionStorage.getItem(FULLSCREEN_KEY) === 'true';
+    if (shouldRestoreFullscreen && !document.fullscreenElement) {
+      // Show prompt to re-enter fullscreen (can't auto-enter without user gesture)
+      setShowFullscreenPrompt(true);
+      // Clear the flag
+      sessionStorage.removeItem(FULLSCREEN_KEY);
+    }
+  }, []);
+
+  // Handle fullscreen restore from prompt
+  const handleRestoreFullscreen = useCallback(async () => {
+    setShowFullscreenPrompt(false);
+    try {
+      await containerRef.current?.requestFullscreen();
+    } catch {
+      // Fullscreen not available
+    }
+  }, []);
+
+  const dismissFullscreenPrompt = useCallback(() => {
+    setShowFullscreenPrompt(false);
+  }, []);
 
   // Auto-hide UI after inactivity (always active in immersive mode)
   const resetUITimer = useCallback(() => {
@@ -144,11 +188,29 @@ export function BookReader({ story }: BookReaderProps) {
   // Listen for browser fullscreen changes (just for icon state)
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsBrowserFullscreen(!!document.fullscreenElement);
+      const isFullscreen = !!document.fullscreenElement;
+      setIsBrowserFullscreen(isFullscreen);
+      // Update sessionStorage when fullscreen changes (so we know current state)
+      if (isFullscreen) {
+        sessionStorage.setItem(FULLSCREEN_KEY, 'true');
+      } else {
+        sessionStorage.removeItem(FULLSCREEN_KEY);
+      }
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
+
+  // Navigate to next story while preserving fullscreen mode
+  const navigateToNextStory = useCallback(() => {
+    if (!nextStory) return;
+    playClickSound();
+    // Save fullscreen state before navigating
+    if (document.fullscreenElement) {
+      sessionStorage.setItem(FULLSCREEN_KEY, 'true');
+    }
+    router.push(`/stories/${nextStory.slug}`);
+  }, [nextStory, playClickSound, router]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -427,14 +489,13 @@ export function BookReader({ story }: BookReaderProps) {
                 📖 Read Again
               </button>
               {nextStory && (
-                <a
-                  href={`/stories/${nextStory.slug}`}
+                <button
                   className="action-btn next-story"
-                  onClick={playClickSound}
+                  onClick={navigateToNextStory}
                   onMouseEnter={playHoverSound}
                 >
                   ✨ Next Story
-                </a>
+                </button>
               )}
               <a
                 href="/"
@@ -455,6 +516,30 @@ export function BookReader({ story }: BookReaderProps) {
           onClose={() => setShowPet(false)}
           selectorTrigger={petSelectorTrigger}
         />
+      )}
+
+      {/* Fullscreen restore prompt */}
+      {showFullscreenPrompt && (
+        <div className="fullscreen-prompt">
+          <div className="fullscreen-prompt-card">
+            <span className="fullscreen-prompt-icon">📺</span>
+            <p className="fullscreen-prompt-text">Continue reading in fullscreen?</p>
+            <div className="fullscreen-prompt-actions">
+              <button
+                className="fullscreen-prompt-btn primary"
+                onClick={handleRestoreFullscreen}
+              >
+                Yes, Fullscreen
+              </button>
+              <button
+                className="fullscreen-prompt-btn secondary"
+                onClick={dismissFullscreenPrompt}
+              >
+                No thanks
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { ConditionalLayout } from '@/components/ConditionalLayout';
 import './globals.css';
 
 /**
@@ -110,16 +109,8 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        {/* Site header with navigation */}
-        <Header />
-
-        {/* Main content area */}
-        <main id="main-content" className="flex-grow">
-          {children}
-        </main>
-
-        {/* Site footer */}
-        <Footer />
+        {/* Conditional layout: hides header/footer on story pages */}
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   );
