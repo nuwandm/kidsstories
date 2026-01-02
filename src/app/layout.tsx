@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Header } from '@/components/Header';
+import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { SuppressWarnings } from './suppress-warnings';
 import './globals.css';
@@ -115,7 +115,7 @@ export default function RootLayout({
         </a>
 
         {/* Site header with navigation */}
-        <Header />
+        <Navigation />
 
         {/* Main content area */}
         <main id="main-content" className="flex-grow">

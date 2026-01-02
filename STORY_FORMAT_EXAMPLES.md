@@ -12,6 +12,8 @@ Text appears below the image in the book reader.
   "title": "My Amazing Story",
   "coverImage": "/images/stories/my-story/cover.png",
   "uploadedDate": "2026-01-02T10:00:00Z",
+  "ageGroup": "6-8",
+  "category": "Adventure",
   "pages": [
     {
       "text": "Once upon a time, there was a brave little hero...",
@@ -41,6 +43,8 @@ Text is part of the image itself. No separate text section needed.
   "title": "My Comic Book Story",
   "coverImage": "/images/stories/my-comic-story/cover.png",
   "uploadedDate": "2026-01-02T10:00:00Z",
+  "ageGroup": "3-5",
+  "category": "Funny",
   "pages": [
     {
       "image": "/images/stories/my-comic-story/page1.png"
@@ -71,6 +75,8 @@ You can mix both formats in the same story!
   "title": "A Mixed Format Story",
   "coverImage": "/images/stories/mixed-story/cover.png",
   "uploadedDate": "2026-01-02T10:00:00Z",
+  "ageGroup": "9-12",
+  "category": "Fantasy",
   "pages": [
     {
       "text": "This page has separate text below the image.",
@@ -127,3 +133,62 @@ Recommended sizes:
 - **Cover images:** 800x600px (landscape)
 - **Traditional pages (with text):** 1200x800px (landscape, 3:2 ratio)
 - **Full-page images (no text):** 900x1200px or 800x1000px (portrait, 3:4 ratio)
+
+---
+
+## Story Metadata Fields
+
+All stories must include the following metadata fields:
+
+### Required Fields:
+
+- **`slug`** (string): URL-friendly identifier (lowercase, hyphens only)
+  - Example: `"my-adventure-story"`
+
+- **`title`** (string): Display title of the story
+  - Example: `"My Amazing Adventure"`
+
+- **`coverImage`** (string): Path to cover image
+  - Example: `"/images/stories/my-story/cover.png"`
+
+- **`uploadedDate`** (string): ISO 8601 date format
+  - Example: `"2026-01-02T10:00:00Z"`
+
+- **`ageGroup`** (string): Target age group - one of:
+  - `"3-5"` - Preschool/Early readers
+  - `"6-8"` - Early elementary
+  - `"9-12"` - Late elementary/Middle school
+
+- **`category`** (string): Story category - one of:
+  - `"Adventure"` - Exciting journeys and quests
+  - `"Fantasy"` - Magic and imagination
+  - `"Educational"` - Learning and discovery
+  - `"Bedtime"` - Calming stories for sleep
+  - `"Funny"` - Humor and comedy
+  - `"Animal"` - Stories about animals
+  - `"Friendship"` - Stories about relationships
+  - `"Science"` - Science and exploration
+
+### Usage in Story Listing:
+These fields are used for filtering and searching on the `/stories` page:
+- Users can filter by age group to find age-appropriate stories
+- Users can filter by category to find specific types of stories
+- Users can search by title to find specific stories
+
+### Example Complete Story:
+```json
+{
+  "slug": "space-adventure",
+  "title": "Journey to the Stars",
+  "coverImage": "/images/stories/space-adventure/cover.png",
+  "uploadedDate": "2026-01-02T10:00:00Z",
+  "ageGroup": "9-12",
+  "category": "Science",
+  "pages": [
+    {
+      "text": "In a distant galaxy...",
+      "image": "/images/stories/space-adventure/page1.png"
+    }
+  ]
+}
+```

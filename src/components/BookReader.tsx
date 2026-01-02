@@ -382,19 +382,32 @@ export function BookReader({ story }: BookReaderProps) {
               )}
 
               {/* Page image */}
-              <div className={`relative ${
+              <div className={`${
                 hasText
-                  ? 'flex-1 min-h-[40%] max-h-[55%]'
-                  : 'flex-1 flex items-center justify-center p-2 sm:p-2.5 md:p-3'
+                  ? 'relative flex-1 min-h-[40%] max-h-[55%]'
+                  : 'flex-1 flex items-center justify-center p-2 sm:p-2.5 md:p-3 min-h-0'
               }`}>
-                <Image
-                  src={currentPageData.image}
-                  alt={`Page ${currentPage + 1} illustration`}
-                  fill
-                  className={hasText ? 'object-cover' : 'object-contain rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.12),0_8px_20px_rgba(0,0,0,0.08)]'}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                />
+                {hasText ? (
+                  <Image
+                    src={currentPageData.image}
+                    alt={`Page ${currentPage + 1} illustration`}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                  />
+                ) : (
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={currentPageData.image}
+                      alt={`Page ${currentPage + 1} illustration`}
+                      fill
+                      className="object-contain rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.12),0_8px_20px_rgba(0,0,0,0.08)]"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                    />
+                  </div>
+                )}
                 {hasText && (
                   <div
                     className="absolute inset-0 pointer-events-none"

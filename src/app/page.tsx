@@ -135,6 +135,18 @@ export default function HomePage() {
               🦄
             </span>
           </div>
+
+          {/* View All Stories Button */}
+          <div className="mt-10">
+            <a
+              href="/stories"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white rounded-full font-display font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+            >
+              <span className="text-2xl">📚</span>
+              <span>Browse All Stories</span>
+              <span className="text-xl">→</span>
+            </a>
+          </div>
         </div>
       </section>
 

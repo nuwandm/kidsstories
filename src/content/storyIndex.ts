@@ -25,6 +25,8 @@ export const storyIndex: StoryIndexItem[] = [
     // Replace with local images for production: '/images/stories/nila-and-kavi/cover.webp'
     coverImage: 'https://picsum.photos/seed/nila-cover/800/600',
     uploadedDate: '2025-12-28T10:00:00Z', // Recent - will show "New" badge
+    ageGroup: '6-8',
+    category: 'Adventure',
   },
   {
     slug: 'bunny-adventure',
@@ -32,7 +34,9 @@ export const storyIndex: StoryIndexItem[] = [
     // Using picsum.photos for placeholder images during development
     // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
     coverImage: 'https://picsum.photos/seed/bunny-cover/800/600',
-    uploadedDate: '2024-12-01T10:00:00Z', // Older - no "New" badge
+    uploadedDate: '2025-12-25T10:00:00Z',
+    ageGroup: '3-5',
+    category: 'Animal',
   },
 ];
 

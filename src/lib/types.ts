@@ -21,6 +21,16 @@ export interface StoryPage {
 }
 
 /**
+ * Age group categories for filtering stories
+ */
+export type AgeGroup = '3-5' | '6-8' | '9-12';
+
+/**
+ * Story categories for filtering
+ */
+export type Category = 'Adventure' | 'Fantasy' | 'Educational' | 'Bedtime' | 'Funny' | 'Animal' | 'Friendship' | 'Science';
+
+/**
  * Represents a complete story with all its content
  * This is the full data structure stored in individual JSON files
  */
@@ -33,6 +43,10 @@ export interface Story {
   coverImage: string;
   /** Date when the story was uploaded (ISO 8601 format) */
   uploadedDate: string;
+  /** Target age group for the story */
+  ageGroup: AgeGroup;
+  /** Story category for filtering */
+  category: Category;
   /** Array of story pages in reading order */
   pages: StoryPage[];
 }
@@ -56,6 +70,10 @@ export interface StoryIndexItem {
   coverImage: string;
   /** Date when the story was uploaded (ISO 8601 format) */
   uploadedDate: string;
+  /** Target age group for the story */
+  ageGroup: AgeGroup;
+  /** Story category for filtering */
+  category: Category;
 }
 
 /**
