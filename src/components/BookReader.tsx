@@ -149,7 +149,7 @@ export function BookReader({ story }: BookReaderProps) {
     playClickSound();
   }, [playClickSound]);
 
-  // Handle navbar hover
+  // Handle navbar hover (desktop)
   const handleNavbarMouseEnter = useCallback(() => {
     setShowNavbar(true);
     if (navbarTimeoutRef.current) {
@@ -162,6 +162,20 @@ export function BookReader({ story }: BookReaderProps) {
       setShowNavbar(false);
     }, 1000);
   }, []);
+
+  // Toggle navbar on tap/click (mobile & desktop)
+  const toggleNavbar = useCallback(() => {
+    setShowNavbar((prev) => !prev);
+    if (navbarTimeoutRef.current) {
+      clearTimeout(navbarTimeoutRef.current);
+    }
+    // Auto-hide after 5 seconds on mobile
+    if (!showNavbar) {
+      navbarTimeoutRef.current = setTimeout(() => {
+        setShowNavbar(false);
+      }, 5000);
+    }
+  }, [showNavbar]);
 
   // Navigate pages
   const nextPage = useCallback(() => {
@@ -316,9 +330,33 @@ export function BookReader({ story }: BookReaderProps) {
         />
       </div>
 
-      {/* Hover-activated navbar trigger zone */}
+      {/* Navbar toggle button - visible on mobile */}
+      <button
+        onClick={toggleNavbar}
+        onMouseEnter={handleNavbarMouseEnter}
+        className="fixed top-2 right-2 z-[95] flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-full transition-all duration-300 shadow-lg lg:opacity-0 lg:pointer-events-none"
+        aria-label="Toggle menu"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`transition-transform duration-300 ${showNavbar ? 'rotate-90' : ''}`}
+        >
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      {/* Hover-activated navbar trigger zone (desktop only) */}
       <div
-        className="absolute top-0 left-0 right-0 h-12 z-[90]"
+        className="absolute top-0 left-0 right-0 h-12 z-[90] hidden lg:block"
         onMouseEnter={handleNavbarMouseEnter}
       />
 
