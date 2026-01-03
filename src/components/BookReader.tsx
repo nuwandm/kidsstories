@@ -385,13 +385,13 @@ export function BookReader({ story }: BookReaderProps) {
               <div className={`${
                 hasText
                   ? 'relative flex-1 min-h-[40%] max-h-[55%]'
-                  : 'relative flex-1 min-h-0'
+                  : 'story-image-container'
               }`}>
                 <Image
                   src={currentPageData.image}
                   alt={`Page ${currentPage + 1} illustration`}
                   fill
-                  className="object-cover"
+                  className={hasText ? 'object-cover' : 'object-contain'}
                   priority
                   sizes="(max-width: 768px) 100vw, 80vw"
                 />
@@ -616,6 +616,53 @@ export function BookReader({ story }: BookReaderProps) {
 
       {/* Custom animations keyframes */}
       <style jsx>{`
+        /* Responsive Story Image Container - Orientation-Based Aspect Ratios */
+        .story-image-container {
+          position: relative;
+          width: 100%;
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Mobile Portrait: 3:4 aspect ratio (taller images) */
+        @media (max-width: 767px) and (orientation: portrait) {
+          .story-image-container {
+            aspect-ratio: 3 / 4;
+            min-height: 400px;
+            max-height: calc(100vh - 200px);
+          }
+        }
+
+        /* Mobile Landscape: 16:9 with minimum height to prevent tiny images */
+        @media (max-width: 767px) and (orientation: landscape) {
+          .story-image-container {
+            aspect-ratio: 16 / 9;
+            min-height: 300px;
+            max-height: calc(100vh - 120px);
+          }
+        }
+
+        /* Tablet Portrait: 3:4 aspect ratio */
+        @media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+          .story-image-container {
+            aspect-ratio: 3 / 4;
+            min-height: 500px;
+            max-height: calc(100vh - 220px);
+          }
+        }
+
+        /* Tablet Landscape & Desktop: 4:3 aspect ratio */
+        @media (min-width: 768px) and (orientation: landscape),
+               (min-width: 1024px) {
+          .story-image-container {
+            aspect-ratio: 4 / 3;
+            min-height: 400px;
+            max-height: calc(100vh - 180px);
+          }
+        }
+
         @keyframes floatSlow {
           0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
           50% { transform: translateY(-30px) rotate(180deg); opacity: 0.5; }
