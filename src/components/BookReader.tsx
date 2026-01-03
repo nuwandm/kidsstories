@@ -360,104 +360,176 @@ export function BookReader({ story }: BookReaderProps) {
         onMouseEnter={handleNavbarMouseEnter}
       />
 
-      {/* Hoverable top navbar */}
+      {/* Hoverable top navbar - Mobile optimized */}
       <nav
         onMouseEnter={handleNavbarMouseEnter}
         onMouseLeave={handleNavbarMouseLeave}
-        className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 bg-gradient-to-b from-black/80 via-black/70 to-transparent backdrop-blur-xl border-b border-white/10 transition-all duration-500 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-[100] bg-gradient-to-b from-black/80 via-black/70 to-transparent backdrop-blur-xl border-b border-white/10 transition-all duration-500 ease-out ${
           showNavbar ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
-        {/* Left section - Home button */}
-        <div className="flex items-center gap-2">
+        {/* Mobile layout (< 640px) - Icons only, no title */}
+        <div className="flex sm:hidden items-center justify-between px-3 py-2.5">
+          {/* Left - Home */}
           <a
             href="/"
-            className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
+            className="flex items-center justify-center w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all active:scale-95 shadow-lg"
             title="Back to Home"
             onClick={playClickSound}
-            onMouseEnter={playHoverSound}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
-            <span className="hidden sm:inline font-fredoka font-medium text-sm">Home</span>
           </a>
+
+          {/* Right - Control buttons */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={toggleEyeComfort}
+              className={`flex items-center justify-center w-10 h-10 backdrop-blur-sm border rounded-xl transition-all active:scale-95 shadow-lg ${
+                eyeComfortMode
+                  ? 'bg-amber-500/30 border-amber-400/40 text-amber-100'
+                  : 'bg-white/10 border-white/20 text-white'
+              }`}
+              title={eyeComfortMode ? 'Disable Eye Comfort' : 'Eye Comfort'}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+
+            <button
+              onClick={() => { playClickSound(); setSoundEnabled(!soundEnabled); }}
+              className="flex items-center justify-center w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white transition-all active:scale-95 shadow-lg"
+              title={soundEnabled ? 'Mute' : 'Unmute'}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {soundEnabled ? (
+                  <>
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  </>
+                ) : (
+                  <>
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <line x1="23" y1="9" x2="17" y2="15"/>
+                    <line x1="17" y1="9" x2="23" y2="15"/>
+                  </>
+                )}
+              </svg>
+            </button>
+
+            <button
+              onClick={() => { playClickSound(); toggleFullscreen(); }}
+              className="flex items-center justify-center w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white transition-all active:scale-95 shadow-lg"
+              title={isBrowserFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {isBrowserFullscreen ? (
+                  <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+                ) : (
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Center section - Story info */}
-        <div className="flex-1 text-center px-4">
-          <h1 className="font-fredoka font-semibold text-white text-sm sm:text-base md:text-lg truncate max-w-[300px] sm:max-w-[400px] md:max-w-[500px] mx-auto drop-shadow-lg">
-            {story.title}
-          </h1>
-          <p className="text-xs text-white/70 font-medium mt-1">
-            Page {currentPage + 1} of {totalPages}
-          </p>
-        </div>
+        {/* Tablet+ layout (≥ 640px) - Full navbar with title */}
+        <div className="hidden sm:flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5">
+          {/* Left section - Home button */}
+          <div className="flex items-center gap-2">
+            <a
+              href="/"
+              className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
+              title="Back to Home"
+              onClick={playClickSound}
+              onMouseEnter={playHoverSound}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span className="font-fredoka font-medium text-sm">Home</span>
+            </a>
+          </div>
 
-        {/* Right section - Control buttons */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={toggleEyeComfort}
-            onMouseEnter={playHoverSound}
-            className={`flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 backdrop-blur-sm border rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg ${
-              eyeComfortMode
-                ? 'bg-amber-500/30 border-amber-400/40 text-amber-100 hover:bg-amber-500/40'
-                : 'bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/30'
-            }`}
-            title={eyeComfortMode ? 'Disable Eye Comfort Mode' : 'Enable Eye Comfort Mode'}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-            <span className="hidden lg:inline font-fredoka font-medium text-sm">
-              {eyeComfortMode ? 'Comfort On' : 'Eye Comfort'}
-            </span>
-          </button>
+          {/* Center section - Story info */}
+          <div className="flex-1 text-center px-4">
+            <h1 className="font-fredoka font-semibold text-white text-sm sm:text-base md:text-lg truncate max-w-[300px] sm:max-w-[400px] md:max-w-[500px] mx-auto drop-shadow-lg">
+              {story.title}
+            </h1>
+            <p className="text-xs text-white/70 font-medium mt-1">
+              Page {currentPage + 1} of {totalPages}
+            </p>
+          </div>
 
-          <button
-            onClick={() => { playClickSound(); setSoundEnabled(!soundEnabled); }}
-            onMouseEnter={playHoverSound}
-            className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
-            title={soundEnabled ? 'Mute Sounds' : 'Enable Sounds'}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              {soundEnabled ? (
-                <>
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                </>
-              ) : (
-                <>
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                  <line x1="23" y1="9" x2="17" y2="15"/>
-                  <line x1="17" y1="9" x2="23" y2="15"/>
-                </>
-              )}
-            </svg>
-            <span className="hidden lg:inline font-fredoka font-medium text-sm">
-              {soundEnabled ? 'Sound' : 'Muted'}
-            </span>
-          </button>
+          {/* Right section - Control buttons */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleEyeComfort}
+              onMouseEnter={playHoverSound}
+              className={`flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 backdrop-blur-sm border rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg ${
+                eyeComfortMode
+                  ? 'bg-amber-500/30 border-amber-400/40 text-amber-100 hover:bg-amber-500/40'
+                  : 'bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/30'
+              }`}
+              title={eyeComfortMode ? 'Disable Eye Comfort Mode' : 'Enable Eye Comfort Mode'}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <span className="hidden lg:inline font-fredoka font-medium text-sm">
+                {eyeComfortMode ? 'Comfort On' : 'Eye Comfort'}
+              </span>
+            </button>
 
-          <button
-            onClick={() => { playClickSound(); toggleFullscreen(); }}
-            onMouseEnter={playHoverSound}
-            className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
-            title={isBrowserFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen (F)'}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              {isBrowserFullscreen ? (
-                <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
-              ) : (
-                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-              )}
-            </svg>
-            <span className="hidden lg:inline font-fredoka font-medium text-sm">
-              {isBrowserFullscreen ? 'Exit' : 'Fullscreen'}
-            </span>
-          </button>
+            <button
+              onClick={() => { playClickSound(); setSoundEnabled(!soundEnabled); }}
+              onMouseEnter={playHoverSound}
+              className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
+              title={soundEnabled ? 'Mute Sounds' : 'Enable Sounds'}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {soundEnabled ? (
+                  <>
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  </>
+                ) : (
+                  <>
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <line x1="23" y1="9" x2="17" y2="15"/>
+                    <line x1="17" y1="9" x2="23" y2="15"/>
+                  </>
+                )}
+              </svg>
+              <span className="hidden lg:inline font-fredoka font-medium text-sm">
+                {soundEnabled ? 'Sound' : 'Muted'}
+              </span>
+            </button>
+
+            <button
+              onClick={() => { playClickSound(); toggleFullscreen(); }}
+              onMouseEnter={playHoverSound}
+              className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
+              title={isBrowserFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen (F)'}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {isBrowserFullscreen ? (
+                  <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+                ) : (
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                )}
+              </svg>
+              <span className="hidden lg:inline font-fredoka font-medium text-sm">
+                {isBrowserFullscreen ? 'Exit' : 'Fullscreen'}
+              </span>
+            </button>
+          </div>
         </div>
       </nav>
 
