@@ -8,6 +8,7 @@ import { soundManager } from '@/lib/sounds';
 import { getNextStory } from '@/content/storyIndex';
 
 const FULLSCREEN_KEY = 'kidsstories_fullscreen_mode';
+const EYE_COMFORT_KEY = 'kidsstories_eye_comfort_mode';
 
 interface BookReaderProps {
   story: Story;
@@ -32,6 +33,9 @@ export function BookReader({ story }: BookReaderProps) {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [isBrowserFullscreen, setIsBrowserFullscreen] = useState(false);
   const [showUI, setShowUI] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [eyeComfortMode, setEyeComfortMode] = useState(false);
+  const navbarTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const hideUITimeout = useRef<NodeJS.Timeout | null>(null);
   const hasCheckedFullscreen = useRef(false);
@@ -98,7 +102,7 @@ export function BookReader({ story }: BookReaderProps) {
     }
   }, [showFullscreenPrompt]);
 
-  // Auto-hide UI after inactivity
+  // Auto-hide UI after inactivity (increased to 5 seconds)
   const resetUITimer = useCallback(() => {
     setShowUI(true);
     if (hideUITimeout.current) {
@@ -106,7 +110,7 @@ export function BookReader({ story }: BookReaderProps) {
     }
     hideUITimeout.current = setTimeout(() => {
       setShowUI(false);
-    }, 3000);
+    }, 5000); // Increased from 3000 to 5000ms
   }, []);
 
   useEffect(() => {
@@ -123,11 +127,41 @@ export function BookReader({ story }: BookReaderProps) {
     soundManager.setEnabled(soundEnabled);
   }, [soundEnabled]);
 
+  // Initialize eye comfort mode from localStorage
+  useEffect(() => {
+    const savedComfortMode = localStorage.getItem(EYE_COMFORT_KEY) === 'true';
+    setEyeComfortMode(savedComfortMode);
+  }, []);
+
   // Play various sounds
   const playPageFlipSound = useCallback(() => soundManager.playPageFlip(), []);
   const playClickSound = useCallback(() => soundManager.playClick(), []);
   const playHoverSound = useCallback(() => soundManager.playHover(), []);
   const playCelebrationSound = useCallback(() => soundManager.playCelebration(), []);
+
+  // Toggle eye comfort mode
+  const toggleEyeComfort = useCallback(() => {
+    setEyeComfortMode((prev) => {
+      const newValue = !prev;
+      localStorage.setItem(EYE_COMFORT_KEY, String(newValue));
+      return newValue;
+    });
+    playClickSound();
+  }, [playClickSound]);
+
+  // Handle navbar hover
+  const handleNavbarMouseEnter = useCallback(() => {
+    setShowNavbar(true);
+    if (navbarTimeoutRef.current) {
+      clearTimeout(navbarTimeoutRef.current);
+    }
+  }, []);
+
+  const handleNavbarMouseLeave = useCallback(() => {
+    navbarTimeoutRef.current = setTimeout(() => {
+      setShowNavbar(false);
+    }, 1000);
+  }, []);
 
   // Navigate pages
   const nextPage = useCallback(() => {
@@ -261,94 +295,139 @@ export function BookReader({ story }: BookReaderProps) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex flex-col bg-[#1a1a2e] overflow-hidden"
+      className={`fixed inset-0 z-[9999] flex flex-col overflow-hidden transition-colors duration-500 ${
+        eyeComfortMode
+          ? 'bg-[#2a2520] eye-comfort'
+          : 'bg-[#1a1a2e]'
+      }`}
       onMouseMove={resetUITimer}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onClick={resetUITimer}
     >
-      {/* Ambient background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Simplified professional background */}
+      <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse at top, #2d1b4e 0%, transparent 50%),
-              radial-gradient(ellipse at bottom right, #1e3a5f 0%, transparent 50%),
-              radial-gradient(ellipse at bottom left, #3d1f1f 0%, transparent 50%),
-              linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)
-            `
-          }}
+          className={`absolute inset-0 transition-all duration-500 ${
+            eyeComfortMode
+              ? 'bg-gradient-to-br from-[#2a2520] via-[#241f1a] to-[#1f1b16]'
+              : 'bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f1419]'
+          }`}
         />
-        <div className="absolute inset-0">
-          <span className="absolute top-[10%] left-[5%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite]">✨</span>
-          <span className="absolute top-[20%] right-[8%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite_4s]">⭐</span>
-          <span className="absolute bottom-[15%] left-[10%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite_8s]">🌟</span>
-          <span className="absolute bottom-[25%] right-[5%] text-2xl opacity-30 animate-[floatSlow_15s_ease-in-out_infinite_12s]">✨</span>
-        </div>
       </div>
 
-      {/* Top control bar */}
-      <header
-        className={`relative z-[100] flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/50 to-transparent transition-all duration-300 ${
-          showUI ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
+      {/* Hover-activated navbar trigger zone */}
+      <div
+        className="absolute top-0 left-0 right-0 h-12 z-[90]"
+        onMouseEnter={handleNavbarMouseEnter}
+      />
+
+      {/* Hoverable top navbar */}
+      <nav
+        onMouseEnter={handleNavbarMouseEnter}
+        onMouseLeave={handleNavbarMouseLeave}
+        className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5 bg-gradient-to-b from-black/80 via-black/70 to-transparent backdrop-blur-xl border-b border-white/10 transition-all duration-500 ease-out ${
+          showNavbar ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
+        {/* Left section - Home button */}
         <div className="flex items-center gap-2">
           <a
             href="/"
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white transition-all hover:bg-white/20 hover:scale-105"
+            className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
             title="Back to Home"
             onClick={playClickSound}
             onMouseEnter={playHoverSound}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
-            <span className="hidden sm:inline text-sm font-fredoka">Home</span>
+            <span className="hidden sm:inline font-fredoka font-medium text-sm">Home</span>
           </a>
         </div>
 
-        <div className="flex-1 text-center">
-          <h1 className="font-fredoka font-semibold text-white text-sm sm:text-base md:text-xl drop-shadow-lg whitespace-nowrap overflow-hidden text-ellipsis max-w-[40vw] sm:max-w-[50vw] md:max-w-[60vw] mx-auto">
+        {/* Center section - Story info */}
+        <div className="flex-1 text-center px-4">
+          <h1 className="font-fredoka font-semibold text-white text-sm sm:text-base md:text-lg truncate max-w-[300px] sm:max-w-[400px] md:max-w-[500px] mx-auto drop-shadow-lg">
             {story.title}
           </h1>
+          <p className="text-xs text-white/70 font-medium mt-1">
+            Page {currentPage + 1} of {totalPages}
+          </p>
         </div>
 
+        {/* Right section - Control buttons */}
         <div className="flex items-center gap-2">
+          <button
+            onClick={toggleEyeComfort}
+            onMouseEnter={playHoverSound}
+            className={`flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 backdrop-blur-sm border rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg ${
+              eyeComfortMode
+                ? 'bg-amber-500/30 border-amber-400/40 text-amber-100 hover:bg-amber-500/40'
+                : 'bg-white/10 border-white/20 text-white hover:bg-white/20 hover:border-white/30'
+            }`}
+            title={eyeComfortMode ? 'Disable Eye Comfort Mode' : 'Enable Eye Comfort Mode'}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span className="hidden lg:inline font-fredoka font-medium text-sm">
+              {eyeComfortMode ? 'Comfort On' : 'Eye Comfort'}
+            </span>
+          </button>
+
           <button
             onClick={() => { playClickSound(); setSoundEnabled(!soundEnabled); }}
             onMouseEnter={playHoverSound}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full transition-all hover:bg-white/20 hover:scale-105"
-            title={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
+            className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
+            title={soundEnabled ? 'Mute Sounds' : 'Enable Sounds'}
           >
-            {soundEnabled ? '🔊' : '🔇'}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {soundEnabled ? (
+                <>
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                </>
+              ) : (
+                <>
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                  <line x1="23" y1="9" x2="17" y2="15"/>
+                  <line x1="17" y1="9" x2="23" y2="15"/>
+                </>
+              )}
+            </svg>
+            <span className="hidden lg:inline font-fredoka font-medium text-sm">
+              {soundEnabled ? 'Sound' : 'Muted'}
+            </span>
           </button>
+
           <button
             onClick={() => { playClickSound(); toggleFullscreen(); }}
             onMouseEnter={playHoverSound}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white transition-all hover:bg-white/20 hover:scale-105"
+            className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-xl text-white transition-all hover:scale-105 active:scale-95 shadow-lg"
             title={isBrowserFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen (F)'}
           >
-            {isBrowserFullscreen ? (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {isBrowserFullscreen ? (
                 <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
-              </svg>
-            ) : (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              ) : (
                 <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-              </svg>
-            )}
+              )}
+            </svg>
+            <span className="hidden lg:inline font-fredoka font-medium text-sm">
+              {isBrowserFullscreen ? 'Exit' : 'Fullscreen'}
+            </span>
           </button>
         </div>
-      </header>
+      </nav>
 
-      {/* Main book area */}
-      <main className="relative flex-1 flex items-center justify-center p-4 overflow-hidden">
+      {/* Main book area - Space optimized */}
+      <main className="relative flex-1 flex items-center justify-center p-2 sm:p-3 overflow-hidden">
         {/* Page container */}
         <div
-          className={`relative w-full max-w-[900px] h-full max-h-[calc(100vh-180px)] ${
+          className={`relative w-full max-w-[1000px] h-full max-h-full ${
             isFlipping
               ? flipDirection === 'next'
                 ? 'animate-[flipNext_0.5s_ease-in-out]'
@@ -357,19 +436,30 @@ export function BookReader({ story }: BookReaderProps) {
           }`}
           style={{ perspective: '2000px', transformStyle: 'preserve-3d' }}
         >
-          {/* Book frame */}
-          <div className="relative w-full h-full flex rounded-r-2xl rounded-l-lg shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)] overflow-hidden">
-            {/* Book spine */}
+          {/* Minimal book frame */}
+          <div className={`relative w-full h-full flex rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ${
+            eyeComfortMode
+              ? 'shadow-amber-900/20'
+              : 'shadow-black/30'
+          }`}>
+            {/* Minimal spine indicator */}
             <div
-              className="w-3 sm:w-5 flex-shrink-0 shadow-[inset_-3px_0_8px_rgba(0,0,0,0.4),3px_0_10px_rgba(0,0,0,0.3)]"
-              style={{
-                background: 'linear-gradient(90deg, #5c3d2e 0%, #8b5a42 40%, #6b4532 60%, #4a2c1a 100%)'
-              }}
+              className={`w-1 sm:w-2 flex-shrink-0 transition-all duration-500 ${
+                eyeComfortMode
+                  ? 'bg-gradient-to-r from-[#3d2f1f] to-[#5a4a3a]'
+                  : 'bg-gradient-to-r from-[#2a2a3e] to-[#3a3a4e]'
+              }`}
             />
 
             {/* Main page */}
-            <article className={`flex-1 flex flex-col relative overflow-hidden ${
-              hasText ? 'bg-gradient-to-br from-[#fef9f3] via-[#fdf6ed] to-[#fcf3e4]' : 'bg-white'
+            <article className={`flex-1 flex flex-col relative overflow-hidden transition-colors duration-500 ${
+              hasText
+                ? eyeComfortMode
+                  ? 'bg-gradient-to-br from-[#f5ebe0] via-[#ede0d4] to-[#e6ccb2]'
+                  : 'bg-gradient-to-br from-[#fef9f3] via-[#fdf6ed] to-[#fcf3e4]'
+                : eyeComfortMode
+                  ? 'bg-[#f8f4f0]'
+                  : 'bg-white'
             }`}>
               {/* Paper texture overlay for pages with text */}
               {hasText && (
@@ -405,92 +495,91 @@ export function BookReader({ story }: BookReaderProps) {
                 )}
               </div>
 
-              {/* Page number for image-only pages */}
+              {/* Compact page number for image-only pages */}
               {!hasText && (
-                <div className="flex items-center justify-center py-1 px-2 sm:py-1.5 sm:px-3 bg-[rgba(250,250,250,0.95)] border-t border-black/5 flex-shrink-0 min-h-[20px] sm:min-h-[22px]">
-                  <div className="flex items-center gap-1 font-fredoka animate-[fadeInUp_0.5s_ease-out]">
-                    <span className="text-[0.5rem] sm:text-[0.5625rem] font-medium text-gray-400 uppercase tracking-wider">Page</span>
-                    <span className="text-[0.625rem] sm:text-[0.6875rem] lg:text-xs font-bold text-gray-800 leading-none">{currentPage + 1}</span>
-                    <span className="text-[0.5rem] sm:text-[0.5625rem] font-medium text-gray-400 lowercase">of</span>
-                    <span className="text-[0.5625rem] sm:text-[0.625rem] lg:text-[0.6875rem] font-semibold text-gray-600 leading-none">{totalPages}</span>
-                  </div>
+                <div className={`absolute bottom-0 left-0 right-0 flex items-center justify-center py-1.5 px-2 backdrop-blur-sm transition-colors duration-500 ${
+                  eyeComfortMode
+                    ? 'bg-[#ede3d8]/90 border-t border-amber-900/10'
+                    : 'bg-white/90 border-t border-black/5'
+                }`}>
+                  <span className={`text-[10px] sm:text-xs font-fredoka font-medium uppercase tracking-wide transition-colors ${
+                    eyeComfortMode ? 'text-amber-900/60' : 'text-gray-400'
+                  }`}>
+                    Page {currentPage + 1} / {totalPages}
+                  </span>
                 </div>
               )}
 
-              {/* Page text section */}
+              {/* Page text section - Space optimized */}
               {hasText && (
-                <div className="flex-1 flex flex-col px-6 py-4 sm:px-10 sm:py-6 lg:px-14 lg:py-8 bg-gradient-to-b from-[#fef9f3] to-[#fdf6ed]">
-                  {/* Page number badge */}
-                  <div className="flex items-baseline justify-center gap-1 mb-3">
-                    <span className="font-fredoka text-2xl font-bold text-amber-800">{currentPage + 1}</span>
-                    <span className="font-fredoka text-sm text-amber-700 opacity-70">/ {totalPages}</span>
-                  </div>
-
-                  {/* Story text */}
+                <div className={`flex-1 flex flex-col px-4 py-3 sm:px-8 sm:py-5 lg:px-12 lg:py-6 transition-colors duration-500 ${
+                  eyeComfortMode
+                    ? 'bg-gradient-to-b from-[#f5ebe0] to-[#ede0d4]'
+                    : 'bg-gradient-to-b from-[#fef9f3] to-[#fdf6ed]'
+                }`}>
+                  {/* Story text - Eye comfort optimized */}
                   <div className="flex-1 flex items-center overflow-hidden">
-                    <p className="font-nunito text-lg sm:text-xl lg:text-[1.375rem] leading-[1.8] sm:leading-[1.9] lg:leading-[2] text-stone-700 text-justify hyphens-auto max-h-full overflow-auto first-letter:float-left first-letter:font-fredoka first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-bold first-letter:leading-[0.8] first-letter:mr-2 first-letter:mt-0.5 first-letter:text-amber-800 first-letter:drop-shadow-[2px_2px_4px_rgba(0,0,0,0.1)]">
+                    <p className={`font-nunito text-base sm:text-lg lg:text-xl leading-[1.7] sm:leading-[1.8] lg:leading-[1.9] text-justify hyphens-auto max-h-full overflow-auto transition-colors duration-500 first-letter:float-left first-letter:font-fredoka first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-bold first-letter:leading-[0.8] first-letter:mr-2 first-letter:mt-0.5 ${
+                      eyeComfortMode
+                        ? 'text-[#3e2a1c] first-letter:text-[#8b5a2b]'
+                        : 'text-stone-700 first-letter:text-amber-800'
+                    }`}>
                       {currentPageData.text}
                     </p>
                   </div>
 
-                  {/* Decorative footer */}
-                  <div className="flex items-center justify-center gap-4 mt-auto pt-3 text-amber-300/60 text-xs">
+                  {/* Minimal decorative footer */}
+                  <div className={`flex items-center justify-center gap-3 mt-auto pt-2 text-xs transition-colors duration-500 ${
+                    eyeComfortMode ? 'text-amber-800/40' : 'text-amber-300/60'
+                  }`}>
                     <span>✦</span>
-                    <div className="w-12 h-px bg-gradient-to-r from-transparent via-amber-300/60 to-transparent" />
+                    <div className={`w-10 h-px ${
+                      eyeComfortMode
+                        ? 'bg-gradient-to-r from-transparent via-amber-800/40 to-transparent'
+                        : 'bg-gradient-to-r from-transparent via-amber-300/60 to-transparent'
+                    }`} />
                     <span>✦</span>
                   </div>
                 </div>
               )}
             </article>
-
-            {/* Page stack effect */}
-            <div className="absolute -right-1.5 top-0.5 bottom-0.5 w-1.5 pointer-events-none">
-              <div className="absolute inset-0 bg-[#f5e6d3] rounded-r-[2px] opacity-80" />
-              <div className="absolute inset-0 right-0.5 bg-[#f5e6d3] rounded-r-[2px] opacity-50" />
-            </div>
           </div>
         </div>
 
-        {/* Navigation arrows */}
-        <nav className={`absolute inset-0 flex items-center justify-between px-3 sm:px-6 pointer-events-none transition-opacity duration-300 ${
+        {/* Compact navigation arrows */}
+        <nav className={`absolute inset-0 flex items-center justify-between px-2 sm:px-4 pointer-events-none transition-opacity duration-300 ${
           showUI ? 'opacity-100' : 'opacity-0'
         }`}>
           <button
             onClick={prevPage}
             onMouseEnter={() => !isFirstPage && playHoverSound()}
             disabled={isFirstPage || isFlipping}
-            className={`relative flex items-center justify-center w-14 h-14 sm:w-18 sm:h-18 lg:w-20 lg:h-20 bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-xl border-2 border-white/80 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] pointer-events-auto transition-all duration-300 overflow-hidden ${
+            className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-black/30 backdrop-blur-md border border-white/20 rounded-lg pointer-events-auto transition-all duration-300 ${
               isFirstPage
-                ? 'opacity-35 cursor-not-allowed'
-                : 'hover:scale-110 hover:border-purple-500 hover:shadow-[0_8px_30px_rgba(168,85,247,0.35)] active:scale-95'
+                ? 'opacity-20 cursor-not-allowed'
+                : 'hover:bg-black/50 hover:border-white/40 hover:scale-105 active:scale-95'
             }`}
             aria-label="Previous page"
           >
-            <svg className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-purple-600 relative z-10 transition-all ${
-              !isFirstPage && 'group-hover:animate-[arrowBounceLeft_0.6s_ease_infinite]'
-            }`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />
             </svg>
-            <span className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 opacity-0 hover:opacity-10 transition-all duration-400 rounded-full" />
           </button>
 
           <button
             onClick={nextPage}
             onMouseEnter={() => !isLastPage && playHoverSound()}
             disabled={isLastPage || isFlipping}
-            className={`relative flex items-center justify-center w-14 h-14 sm:w-18 sm:h-18 lg:w-20 lg:h-20 bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-xl border-2 border-white/80 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] pointer-events-auto transition-all duration-300 overflow-hidden ${
+            className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-black/30 backdrop-blur-md border border-white/20 rounded-lg pointer-events-auto transition-all duration-300 ${
               isLastPage
-                ? 'opacity-35 cursor-not-allowed'
-                : 'hover:scale-110 hover:border-purple-500 hover:shadow-[0_8px_30px_rgba(168,85,247,0.35)] active:scale-95 animate-[subtlePulse_3s_ease-in-out_infinite]'
+                ? 'opacity-20 cursor-not-allowed'
+                : 'hover:bg-black/50 hover:border-white/40 hover:scale-105 active:scale-95'
             }`}
             aria-label="Next page"
           >
-            <svg className={`w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-purple-600 relative z-10 transition-all ${
-              !isLastPage && 'group-hover:animate-[arrowBounceRight_0.6s_ease_infinite]'
-            }`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
-            <span className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 opacity-0 hover:opacity-10 transition-all duration-400 rounded-full" />
           </button>
         </nav>
 
@@ -501,43 +590,42 @@ export function BookReader({ story }: BookReaderProps) {
         </div>
       </main>
 
-      {/* Bottom progress bar */}
-      <footer className={`relative z-[100] px-6 py-4 bg-gradient-to-t from-black/50 to-transparent transition-all duration-300 ${
+      {/* Compact bottom progress bar */}
+      <footer className={`relative z-[100] px-3 py-2 sm:px-4 sm:py-2.5 bg-black/40 backdrop-blur-md border-t border-white/5 transition-all duration-300 ${
         showUI ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full pointer-events-none'
       }`}>
-        <div className="max-w-[600px] mx-auto">
+        <div className="max-w-[800px] mx-auto flex items-center gap-3 sm:gap-4">
           {/* Progress dots */}
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-3 flex-wrap max-w-full px-2 sm:px-0">
+          <div className="flex items-center gap-1 flex-wrap">
             {story.pages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => { playClickSound(); goToPage(index); }}
                 onMouseEnter={playHoverSound}
-                className={`w-2.5 h-2.5 rounded-full border-0 cursor-pointer transition-all ${
+                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full border-0 cursor-pointer transition-all ${
                   index === currentPage
-                    ? 'w-3.5 h-3.5 bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.5)]'
+                    ? 'w-2 h-2 sm:w-2.5 sm:h-2.5 bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.4)]'
                     : index < currentPage
-                    ? 'bg-amber-400/60 hover:bg-amber-400/80'
-                    : 'bg-white/30 hover:bg-white/60'
-                } hover:scale-125`}
+                    ? 'bg-amber-400/50 hover:bg-amber-400/70'
+                    : 'bg-white/25 hover:bg-white/50'
+                } hover:scale-110`}
                 aria-label={`Page ${index + 1}`}
               />
             ))}
           </div>
 
           {/* Progress bar */}
-          <div className="h-1 bg-white/20 rounded-full overflow-hidden mb-3">
+          <div className="flex-1 h-0.5 bg-white/15 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full transition-all duration-300"
               style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
             />
           </div>
 
-          {/* Keyboard hints */}
-          <div className="hidden sm:flex items-center justify-center gap-2 text-xs text-white/50 font-fredoka">
-            <kbd className="px-2 py-1 bg-white/10 rounded">←</kbd>
-            <kbd className="px-2 py-1 bg-white/10 rounded">→</kbd>
-            <span>or tap sides</span>
+          {/* Compact keyboard hints */}
+          <div className="hidden lg:flex items-center gap-1.5 text-[10px] text-white/40">
+            <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-white/60">←</kbd>
+            <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-white/60">→</kbd>
           </div>
         </div>
       </footer>
@@ -620,47 +708,21 @@ export function BookReader({ story }: BookReaderProps) {
         .story-image-container {
           position: relative;
           width: 100%;
-          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          flex: 1;
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: background 0.5s ease;
+          min-height: 0;
         }
 
-        /* Mobile Portrait: 3:4 aspect ratio (taller images) */
-        @media (max-width: 767px) and (orientation: portrait) {
-          .story-image-container {
-            aspect-ratio: 3 / 4;
-            min-height: 400px;
-            max-height: calc(100vh - 200px);
-          }
+        /* Eye comfort mode background */
+        .story-image-container {
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
-        /* Mobile Landscape: 16:9 with minimum height to prevent tiny images */
-        @media (max-width: 767px) and (orientation: landscape) {
-          .story-image-container {
-            aspect-ratio: 16 / 9;
-            min-height: 300px;
-            max-height: calc(100vh - 120px);
-          }
-        }
-
-        /* Tablet Portrait: 3:4 aspect ratio */
-        @media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
-          .story-image-container {
-            aspect-ratio: 3 / 4;
-            min-height: 500px;
-            max-height: calc(100vh - 220px);
-          }
-        }
-
-        /* Tablet Landscape & Desktop: 4:3 aspect ratio */
-        @media (min-width: 768px) and (orientation: landscape),
-               (min-width: 1024px) {
-          .story-image-container {
-            aspect-ratio: 4 / 3;
-            min-height: 400px;
-            max-height: calc(100vh - 180px);
-          }
+        .eye-comfort .story-image-container {
+          background: linear-gradient(135deg, #f5ebe0 0%, #ede0d4 100%);
         }
 
         @keyframes floatSlow {
