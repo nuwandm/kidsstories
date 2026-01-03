@@ -105,20 +105,23 @@ You can mix both formats in the same story!
 
 ### For Traditional Stories (Scenario 1):
 - Keep text concise (max 2-3 sentences per page)
-- Images should be 1200x800px or similar 3:2 aspect ratio
+- Images should be 1200x800px (3:2 aspect ratio)
 - Text will automatically wrap and scroll if too long
+- Images use `object-cover` for edge-to-edge display
 
-### For Image-Only Stories (Scenario 2):
-- Images should be 900x1200px or similar portrait aspect
+### For Image-Only Stories (Scenario 2): text inside images
+- Images should be **1080x1440px** (3:4 portrait aspect ratio)
 - Design images with text placement in mind
 - Page numbers appear below the image (not overlaid), so use full image space
 - Use high-contrast backgrounds behind text in your images
-- Modern, clean presentation with white background
+- **Full-bleed display:** Images fill the entire page area with no white borders
+- Images use `object-cover` to maintain immersive reading experience
 
 ### For Mixed Stories (Scenario 3):
 - Use image-only pages for action sequences or full illustrations
 - Use text pages for dialogue or narration
 - Maintain visual consistency despite layout changes
+- Ensure portrait images are 1080x1440px and landscape images are 1200x800px
 
 ---
 
@@ -129,10 +132,24 @@ All scenarios:
 - Location: `/public/images/stories/[story-slug]/`
 - Naming: `page1.png`, `page2.png`, `cover.png`, etc.
 
-Recommended sizes:
-- **Cover images:** 800x600px (landscape)
+**Recommended sizes (Full-Bleed Experience):**
+- **Cover images:** 800x600px (landscape, 4:3 ratio)
 - **Traditional pages (with text):** 1200x800px (landscape, 3:2 ratio)
-- **Full-page images (no text):** 900x1200px or 800x1000px (portrait, 3:4 ratio)
+- **Full-page images (no text):**
+  - **Primary (Recommended):** 1080x1440px (portrait, 3:4 ratio)
+  - **High Quality:** 1200x1600px (portrait, 3:4 ratio)
+  - **Alternative:** 1200x1200px (square, 1:1 ratio - works for all layouts)
+
+**Aspect Ratio Guidelines:**
+- Portrait images: Maintain **3:4 aspect ratio** (e.g., 1080x1440, 1200x1600)
+- Landscape images: Maintain **3:2 aspect ratio** (e.g., 1200x800, 1800x1200)
+- Square images: **1:1 aspect ratio** for universal compatibility
+
+**Why these sizes?**
+- 1080x1440px matches modern mobile device screens (3:4 ratio)
+- Scales beautifully on desktop displays
+- Full-bleed `object-cover` ensures no white borders
+- Optimal file size vs quality balance
 
 ---
 
