@@ -6,6 +6,14 @@ import Image from 'next/image';
 import { Story } from '@/lib/types';
 import { soundManager } from '@/lib/sounds';
 import { getNextStory } from '@/content/storyIndex';
+import {
+  getReadingProgress,
+  setReadingProgress,
+  addToReadingHistory,
+  updateReadingStats,
+  getPreferences,
+  updatePreference,
+} from '@/lib/storage';
 
 const FULLSCREEN_KEY = 'kidsstories_fullscreen_mode';
 const EYE_COMFORT_KEY = 'kidsstories_eye_comfort_mode';
@@ -27,7 +35,14 @@ interface BookReaderProps {
  */
 export function BookReader({ story }: BookReaderProps) {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(0);
+
+  // Initialize current page from reading progress
+  const [currentPage, setCurrentPage] = useState(() => {
+    const progress = getReadingProgress(story.slug);
+    // If story was completed, start from beginning, otherwise resume where left off
+    return progress && !progress.completed ? progress.currentPage : 0;
+  });
+
   const [isFlipping, setIsFlipping] = useState(false);
   const [flipDirection, setFlipDirection] = useState<'next' | 'prev'>('next');
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -47,6 +62,27 @@ export function BookReader({ story }: BookReaderProps) {
 
   // Get next story for the "Next Story" button
   const nextStory = getNextStory(story.slug);
+
+  // Add to reading history when story opens
+  useEffect(() => {
+    addToReadingHistory({
+      slug: story.slug,
+      title: story.title,
+      lastRead: new Date().toISOString(),
+      coverImage: story.coverImage,
+    });
+  }, [story.slug, story.title, story.coverImage]);
+
+  // Save reading progress whenever page changes
+  useEffect(() => {
+    const isCompleted = currentPage === totalPages - 1;
+    setReadingProgress(story.slug, currentPage, totalPages, isCompleted);
+
+    // Update reading stats
+    if (currentPage > 0) {
+      updateReadingStats(story.category, 1, isCompleted);
+    }
+  }, [currentPage, totalPages, story.slug, story.category]);
 
   // Disable scroll restoration to suppress Next.js warnings about position: fixed
   useEffect(() => {

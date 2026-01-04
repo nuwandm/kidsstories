@@ -1,19 +1,32 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { storyIndex } from '@/content/storyIndex';
 import { AgeGroup, Category } from '@/lib/types';
+import { getFavorites } from '@/lib/storage';
 
 export default function StoriesPage() {
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<AgeGroup | 'all'>('all');
   const [selectedCategory, setSelectedCategory] = useState<Category | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [favorites, setFavorites] = useState<string[]>([]);
+
+  // Load favorites on mount
+  useEffect(() => {
+    setFavorites(getFavorites());
+  }, []);
 
   // Filter stories based on selected filters and search query
   const filteredStories = useMemo(() => {
     return storyIndex.filter((story) => {
+      // Filter by favorites
+      if (showFavoritesOnly && !favorites.includes(story.slug)) {
+        return false;
+      }
+
       // Filter by age group
       if (selectedAgeGroup !== 'all' && story.ageGroup !== selectedAgeGroup) {
         return false;
@@ -32,16 +45,17 @@ export default function StoriesPage() {
 
       return true;
     });
-  }, [selectedAgeGroup, selectedCategory, searchQuery]);
+  }, [selectedAgeGroup, selectedCategory, searchQuery, showFavoritesOnly, favorites]);
 
   // Reset all filters
   const resetFilters = () => {
     setSelectedAgeGroup('all');
     setSelectedCategory('all');
     setSearchQuery('');
+    setShowFavoritesOnly(false);
   };
 
-  const hasActiveFilters = selectedAgeGroup !== 'all' || selectedCategory !== 'all' || searchQuery.trim() !== '';
+  const hasActiveFilters = selectedAgeGroup !== 'all' || selectedCategory !== 'all' || searchQuery.trim() !== '' || showFavoritesOnly;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-orange-50">
@@ -50,7 +64,7 @@ export default function StoriesPage() {
         <div className="container-story py-3 sm:py-4">
           <div className="flex flex-col gap-3">
             {/* Filter Controls Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-3">
               {/* Search Input */}
               <div className="lg:col-span-2">
                 <input
@@ -60,6 +74,20 @@ export default function StoriesPage() {
                   placeholder="🔍 Search stories..."
                   className="w-full px-4 py-2 rounded-full border border-purple-200 focus:border-purple-400 focus:outline-none font-nunito text-sm transition-all"
                 />
+              </div>
+
+              {/* Favorites Filter */}
+              <div>
+                <button
+                  onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                  className={`w-full px-4 py-2 rounded-full border font-nunito text-sm transition-all ${
+                    showFavoritesOnly
+                      ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white border-pink-600'
+                      : 'border-purple-200 bg-white hover:border-purple-400'
+                  }`}
+                >
+                  {showFavoritesOnly ? '❤️ Favorites' : '🤍 Show Favorites'}
+                </button>
               </div>
 
               {/* Age Group Filter */}

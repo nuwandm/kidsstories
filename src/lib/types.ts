@@ -74,6 +74,8 @@ export interface StoryIndexItem {
   ageGroup: AgeGroup;
   /** Story category for filtering */
   category: Category;
+  /** Number of pages in the story (optional for backwards compatibility) */
+  pageCount?: number;
 }
 
 /**

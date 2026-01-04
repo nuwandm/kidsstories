@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { storyIndex, getTotalStoryCount } from '@/content/storyIndex';
 import { StoryCard } from '@/components/StoryCard';
 import { AdSlot } from '@/components/AdSlot';
+import { RecentlyRead } from '@/components/RecentlyRead';
 
 /**
  * Modern, Engaging Home Page
@@ -154,6 +155,9 @@ export default function HomePage() {
       <div className="container-story mb-12 sm:mb-16">
         <AdSlot slotId="home-header" format="horizontal" />
       </div>
+
+      {/* Recently Read Section */}
+      <RecentlyRead />
 
       {/* Stories Section */}
       <section className="container-story pb-16 sm:pb-24">

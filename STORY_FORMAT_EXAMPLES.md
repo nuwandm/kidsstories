@@ -110,12 +110,13 @@ You can mix both formats in the same story!
 - Images use `object-cover` for edge-to-edge display
 
 ### For Image-Only Stories (Scenario 2): text inside images
-- Images should be **1080x1440px** (3:4 portrait aspect ratio)
-- Design images with text placement in mind
+- Images should be **1080x1440px** (3:4 portrait aspect ratio) or **1200x1600px** for higher quality
+- Design images with text placement in mind - ensure all important content (faces, characters, text) is centered
 - Page numbers appear below the image (not overlaid), so use full image space
 - Use high-contrast backgrounds behind text in your images
-- **Full-bleed display:** Images fill the entire page area with no white borders
-- Images use `object-cover` to maintain immersive reading experience
+- **Responsive display:** Images use `object-contain` to show the entire image without cropping
+- **Adaptive aspect ratios:** Container adjusts based on device orientation (3:4 portrait, 16:9 landscape, 4:3 desktop)
+- **No cropping guarantee:** All image content remains visible across all devices
 
 ### For Mixed Stories (Scenario 3):
 - Use image-only pages for action sequences or full illustrations
@@ -148,8 +149,114 @@ All scenarios:
 **Why these sizes?**
 - 1080x1440px matches modern mobile device screens (3:4 ratio)
 - Scales beautifully on desktop displays
-- Full-bleed `object-cover` ensures no white borders
+- Works perfectly with `object-contain` to show entire image without cropping
 - Optimal file size vs quality balance
+
+---
+
+## Responsive Image Behavior
+
+The book reader uses **adaptive aspect ratios** based on device orientation to ensure optimal viewing:
+
+### Mobile Portrait (< 768px width, portrait orientation)
+- **Container aspect ratio:** 3:4
+- **Min height:** 400px
+- **Max height:** calc(100vh - 200px)
+- **Image fit:** `object-contain` (entire image visible, no cropping)
+- **Background:** Soft gradient fill for letterboxing
+
+### Mobile Landscape (< 768px width, landscape orientation)
+- **Container aspect ratio:** 16:9
+- **Min height:** 300px (prevents tiny images)
+- **Max height:** calc(100vh - 120px)
+- **Image fit:** `object-contain`
+- **Rationale:** Wider container prevents images from becoming too small in low-height landscape viewports
+
+### Tablet Portrait (768px - 1023px, portrait orientation)
+- **Container aspect ratio:** 3:4
+- **Min height:** 500px
+- **Max height:** calc(100vh - 220px)
+- **Image fit:** `object-contain`
+
+### Tablet Landscape & Desktop (≥ 768px landscape or ≥ 1024px)
+- **Container aspect ratio:** 4:3
+- **Min height:** 400px
+- **Max height:** calc(100vh - 180px)
+- **Image fit:** `object-contain`
+- **Optimal for:** Larger screens with more horizontal space
+
+### Key Benefits:
+✅ **No image cropping** - Characters, faces, and text always fully visible
+✅ **No duplicate images needed** - Single image works across all devices
+✅ **Responsive to orientation changes** - Adapts when device rotates
+✅ **Minimum height enforcement** - Images never become too small
+✅ **Professional appearance** - Soft gradient background fills letterbox space
+✅ **Eye Comfort Mode** - Reduces blue light with warm color temperature
+
+---
+
+## Professional Reading Features
+
+### Eye Comfort Mode
+The book reader includes an **Eye Comfort Mode** designed for extended reading sessions:
+
+**Features:**
+- **Warm color temperature** - Reduces blue light emission
+- **Sepia-toned backgrounds** - Easier on the eyes (#f5ebe0, #ede0d4)
+- **Adjusted text colors** - Softer contrast for comfortable reading
+- **Persistent preference** - Saves user's choice in localStorage
+- **Smooth transitions** - 500ms fade between modes
+
+**Color Palette:**
+- Normal Mode: Cool whites (#fff, #f8f9fa)
+- Eye Comfort: Warm sepia (#f5ebe0, #ede0d4, #e6ccb2)
+- Text (Normal): Stone gray (#57534e)
+- Text (Comfort): Warm brown (#3e2a1c)
+
+### Space-Optimized Layout
+
+**Compact Header** (was 64px, now 40-48px):
+- Minimal padding (py-2 sm:py-2.5)
+- Integrated page counter
+- Compact icon buttons (16px icons)
+- Glassmorphism design (backdrop-blur-md)
+
+**Maximized Content Area**:
+- Reduced outer padding (p-2 sm:p-3)
+- Larger max-width (900px → 1000px)
+- Removed decorative page stack effect
+- Minimal spine indicator (2px vs 20px)
+
+**Compact Footer** (was 80px, now 40-48px):
+- Horizontal progress layout
+- Smaller progress dots (1.5px → 2.5px)
+- Thinner progress bar (0.5px height)
+- Inline keyboard hints
+
+**Overall Space Savings:**
+- Header: ~20px saved
+- Footer: ~35px saved
+- Padding: ~16px saved
+- **Total: ~70px more screen space for content**
+
+### Professional UI Elements
+
+**Glass morphism Design:**
+```css
+bg-black/40 backdrop-blur-md border border-white/5
+```
+
+**Compact Navigation Arrows:**
+- Size: 40px → 56px (was 56px → 80px)
+- Style: Rounded rectangles (rounded-lg)
+- Minimal design with subtle hover effects
+- Consistent with modern UI patterns
+
+**Typography Optimization:**
+- Reduced first-letter size (60px → 48px sm screens)
+- Tighter line heights (1.9 → 1.8)
+- Smaller base font (20px → 18px)
+- Better readability at smaller sizes
 
 ---
 

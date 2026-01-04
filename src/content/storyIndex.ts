@@ -27,6 +27,7 @@ export const storyIndex: StoryIndexItem[] = [
     uploadedDate: '2025-12-28T10:00:00Z', // Recent - will show "New" badge
     ageGroup: '6-8',
     category: 'Adventure',
+    pageCount: 7,
   },
   {
     slug: 'bunny-adventure',
@@ -37,6 +38,7 @@ export const storyIndex: StoryIndexItem[] = [
     uploadedDate: '2025-12-25T10:00:00Z',
     ageGroup: '3-5',
     category: 'Animal',
+    pageCount: 7,
   },
 ];
 
