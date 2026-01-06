@@ -55,6 +55,7 @@ export function BookReader({ story }: BookReaderProps) {
   const hideUITimeout = useRef<NodeJS.Timeout | null>(null);
   const hasCheckedFullscreen = useRef(false);
   const [showFullscreenPrompt, setShowFullscreenPrompt] = useState(false);
+  const [showEndMessage, setShowEndMessage] = useState(false);
 
   const totalPages = story.pages.length;
   const isFirstPage = currentPage === 0;
@@ -215,7 +216,15 @@ export function BookReader({ story }: BookReaderProps) {
 
   // Navigate pages
   const nextPage = useCallback(() => {
-    if (isLastPage || isFlipping) return;
+    if (isFlipping) return;
+
+    // If on last page, show end message instead of flipping
+    if (isLastPage) {
+      setShowEndMessage(true);
+      playCelebrationSound();
+      return;
+    }
+
     setFlipDirection('next');
     setIsFlipping(true);
     playPageFlipSound();
@@ -225,11 +234,8 @@ export function BookReader({ story }: BookReaderProps) {
       const newPage = currentPage + 1;
       setCurrentPage(newPage);
       setIsFlipping(false);
-      if (newPage === totalPages - 1) {
-        setTimeout(playCelebrationSound, 300);
-      }
     }, 500);
-  }, [isLastPage, isFlipping, playPageFlipSound, resetUITimer, currentPage, totalPages, playCelebrationSound]);
+  }, [isLastPage, isFlipping, playPageFlipSound, resetUITimer, currentPage, playCelebrationSound]);
 
   const prevPage = useCallback(() => {
     if (isFirstPage || isFlipping) return;
@@ -777,7 +783,7 @@ export function BookReader({ story }: BookReaderProps) {
       </footer>
 
       {/* End of story overlay */}
-      {isLastPage && (
+      {showEndMessage && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-xl z-[200] animate-[fadeIn_0.5s_ease]">
           <div className="text-center px-6 py-8 sm:px-12 sm:py-10 mx-4 max-w-[calc(100vw-2rem)] bg-gradient-to-br from-amber-100 to-amber-200 rounded-3xl shadow-[0_25px_50px_rgba(0,0,0,0.3)] animate-[popIn_0.5s_cubic-bezier(0.175,0.885,0.32,1.275)]">
             <div className="text-6xl sm:text-7xl mb-4 animate-[bounce_0.6s_ease_infinite]">🎉</div>
@@ -790,7 +796,7 @@ export function BookReader({ story }: BookReaderProps) {
             </div>
             <div className="flex gap-4 justify-center flex-wrap">
               <button
-                onClick={() => { playClickSound(); goToPage(0); }}
+                onClick={() => { playClickSound(); setShowEndMessage(false); goToPage(0); }}
                 onMouseEnter={playHoverSound}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-fredoka font-semibold bg-amber-800 text-white transition-all hover:scale-105 hover:shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
               >
