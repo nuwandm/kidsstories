@@ -1,0 +1,31 @@
+{
+  "slug": "Bunny-big-day",
+  "title": "Bunny's Big Day",
+  "coverImage": "/images/stories/Bunny-big-day/cover.webp",
+  "uploadedDate": "2026-01-06T10:00:00Z",
+  "ageGroup": "0-2",
+  "category": "Educational",
+  "pages": [
+    {
+      "image": "/images/stories/Bunny-big-day/page1.webp"
+    },
+    {
+      "image": "/images/stories/Bunny-big-day/page2.webp"
+    },
+    {
+      "image": "/images/stories/Bunny-big-day/page3.webp"
+    },
+    {
+      "image": "/images/stories/Bunny-big-day/page4.webp"
+    },
+    {
+      "image": "/images/stories/Bunny-big-day/page5.webp"
+    },
+    {
+      "image": "/images/stories/Bunny-big-day/page6.webp"
+    },
+    {
+      "image": "/images/stories/Bunny-big-day/page7.webp"
+    }
+  ]
+}

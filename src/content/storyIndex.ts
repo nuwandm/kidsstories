@@ -1,4 +1,4 @@
-import { StoryIndexItem } from '@/lib/types';
+import { StoryIndexItem } from "@/lib/types";
 
 /**
  * Lightweight story index for the home page
@@ -19,25 +19,36 @@ import { StoryIndexItem } from '@/lib/types';
  */
 export const storyIndex: StoryIndexItem[] = [
   {
-    slug: 'nila-and-kavi',
-    title: 'The Little Adventure of Nila and Kavi',
+    slug: "nila-and-kavi",
+    title: "The Little Adventure of Nila and Kavi",
     // Using picsum.photos for placeholder images during development
     // Replace with local images for production: '/images/stories/nila-and-kavi/cover.webp'
-    coverImage: 'https://picsum.photos/seed/nila-cover/800/600',
-    uploadedDate: '2025-12-28T10:00:00Z', // Recent - will show "New" badge
-    ageGroup: '6-8',
-    category: 'Adventure',
+    coverImage: "https://picsum.photos/seed/nila-cover/800/600",
+    uploadedDate: "2025-12-28T10:00:00Z", // Recent - will show "New" badge
+    ageGroup: "6-8",
+    category: "Adventure",
     pageCount: 7,
   },
   {
-    slug: 'bunny-adventure',
-    title: 'The Brave Little Bunny',
+    slug: "bunny-adventure",
+    title: "The Brave Little Bunny",
     // Using picsum.photos for placeholder images during development
     // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
-    coverImage: 'https://picsum.photos/seed/bunny-cover/800/600',
-    uploadedDate: '2025-12-25T10:00:00Z',
-    ageGroup: '3-5',
-    category: 'Animal',
+    coverImage: "https://picsum.photos/seed/bunny-cover/800/600",
+    uploadedDate: "2025-12-25T10:00:00Z",
+    ageGroup: "3-5",
+    category: "Animal",
+    pageCount: 7,
+  },
+  {
+    slug: "Bunny-big-day",
+    title: "Bunny's Big Day",
+    // Using picsum.photos for placeholder images during development
+    // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
+    coverImage: "/images/stories/Bunny-big-day/cover.webp",
+    uploadedDate: "2026-01-06T10:00:00Z",
+    ageGroup: "3-5",
+    category: "Educational",
     pageCount: 7,
   },
 ];
@@ -75,10 +86,14 @@ export const getRelatedStories = (
  * @param currentSlug - Slug of the current story
  */
 export const getNextStory = (currentSlug: string): StoryIndexItem | null => {
-  const currentIndex = storyIndex.findIndex((story) => story.slug === currentSlug);
+  const currentIndex = storyIndex.findIndex(
+    (story) => story.slug === currentSlug
+  );
   if (currentIndex === -1 || currentIndex === storyIndex.length - 1) {
     // If not found or last story, return a random different story
-    const otherStories = storyIndex.filter((story) => story.slug !== currentSlug);
+    const otherStories = storyIndex.filter(
+      (story) => story.slug !== currentSlug
+    );
     return otherStories.length > 0
       ? otherStories[Math.floor(Math.random() * otherStories.length)]
       : null;
