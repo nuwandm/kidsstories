@@ -376,16 +376,20 @@ export function BookReader({ story }: BookReaderProps) {
       <button
         onClick={toggleNavbar}
         onMouseEnter={handleNavbarMouseEnter}
-        className="fixed top-2 right-2 z-[95] flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 rounded-full transition-all duration-300 shadow-lg lg:opacity-0 lg:pointer-events-none"
+        className={`fixed top-3 right-3 z-[95] flex items-center justify-center w-12 h-12 backdrop-blur-md border-2 rounded-full transition-all duration-300 shadow-xl lg:opacity-0 lg:pointer-events-none ${
+          showNavbar
+            ? 'bg-white/20 border-white/40 scale-95'
+            : 'bg-black/50 border-white/30 hover:bg-black/70 hover:border-white/50 hover:scale-105 animate-pulse'
+        }`}
         aria-label="Toggle menu"
       >
         <svg
-          width="20"
-          height="20"
+          width="22"
+          height="22"
           viewBox="0 0 24 24"
           fill="none"
           stroke="white"
-          strokeWidth="2"
+          strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
           className={`transition-transform duration-300 ${showNavbar ? 'rotate-90' : ''}`}
@@ -395,6 +399,20 @@ export function BookReader({ story }: BookReaderProps) {
           <line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
+
+      {/* Mobile menu hint - shows on first load */}
+      {!showNavbar && (
+        <div className="fixed top-16 right-3 z-[94] lg:hidden pointer-events-none animate-[fadeIn_1s_ease-in-out]">
+          <div className="bg-black/70 backdrop-blur-md text-white text-xs px-3 py-2 rounded-lg border border-white/20 shadow-lg">
+            <div className="flex items-center gap-2">
+              <span>Tap for menu</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M7 13l5-5 5 5M7 6l5 5 5-5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hover-activated navbar trigger zone (desktop only) */}
       <div
