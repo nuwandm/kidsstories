@@ -109,10 +109,10 @@ const config: Config = {
         'display-lg': ['3rem', { lineHeight: '3.5rem', fontWeight: '800' }],
         'display-xl': ['3.75rem', { lineHeight: '4.25rem', fontWeight: '800' }],
       },
-      // Playful font family
+      // Child-friendly font family
       fontFamily: {
-        'display': ['Fredoka', 'Comic Sans MS', 'cursive', 'system-ui'],
-        'story': ['Nunito', 'system-ui', 'sans-serif'],
+        'display': ['Poppins', 'system-ui', 'sans-serif'],
+        'story': ['Open Sans', 'system-ui', 'sans-serif'],
       },
       // Generous border radius for friendly UI
       borderRadius: {

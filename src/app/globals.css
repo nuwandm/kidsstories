@@ -8,7 +8,7 @@
  * - Soft, friendly aesthetics
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700;800&display=swap');
 @import './cursors.css';
 
 @tailwind base;
@@ -151,14 +151,14 @@
   .story-text {
     @apply text-story leading-relaxed text-slate-700;
     @apply tracking-wide;
-    font-family: 'Nunito', system-ui, sans-serif;
+    font-family: 'Open Sans', system-ui, sans-serif;
     word-spacing: 0.1em;
   }
 
   .story-text-lg {
     @apply text-story-lg leading-relaxed text-slate-700;
     @apply tracking-wide;
-    font-family: 'Nunito', system-ui, sans-serif;
+    font-family: 'Open Sans', system-ui, sans-serif;
     word-spacing: 0.1em;
   }
 
