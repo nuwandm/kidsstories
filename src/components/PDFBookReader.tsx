@@ -8,16 +8,12 @@ import { soundManager } from '@/lib/sounds';
 import { getNextStory } from '@/content/storyIndex';
 import { addToReadingHistory, getReadingProgress, setReadingProgress } from '@/lib/storage';
 import { buildPdfUrl } from '@/lib/pdfUtils';
+import { PDFLoadingScreen } from './PDFLoadingScreen';
 
 // Dynamically import PDFViewer to avoid SSR issues
 const PDFViewer = dynamic(() => import('./PDFViewer').then((mod) => mod.PDFViewer), {
   ssr: false,
-  loading: () => (
-    <div className="flex flex-col items-center justify-center h-full">
-      <div className="w-16 h-16 border-4 border-white/20 border-t-amber-400 rounded-full animate-spin mb-4" />
-      <p className="font-fredoka text-white text-lg">Loading PDF viewer...</p>
-    </div>
-  ),
+  loading: () => <PDFLoadingScreen message="Preparing the magic..." />,
 });
 
 const FULLSCREEN_KEY = 'kidsstories_fullscreen_mode';

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as pdfjsLib from "pdfjs-dist";
+import { PDFLoadingScreen } from "./PDFLoadingScreen";
 
 // Set worker path
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
@@ -132,12 +133,10 @@ export function PDFViewer({
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center w-full h-full">
-        <div className="w-16 h-16 border-4 border-white/20 border-t-amber-400 rounded-full animate-spin mb-4" />
-        <p className="font-fredoka text-white text-lg">
-          Loading... {loadingProgress}%
-        </p>
-      </div>
+      <PDFLoadingScreen
+        progress={loadingProgress}
+        message="Opening your storybook..."
+      />
     );
   }
 
