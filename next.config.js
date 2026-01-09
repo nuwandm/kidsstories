@@ -4,6 +4,14 @@ const nextConfig = {
   // GitHub Pages doesn't support Next.js server features, so we use static export
   output: 'export',
 
+  // Webpack configuration for PDF.js worker
+  webpack: (config) => {
+    // Handle PDF.js worker
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
+    return config;
+  },
+
   // Trailing slashes for cleaner URLs and better SEO
   trailingSlash: true,
 

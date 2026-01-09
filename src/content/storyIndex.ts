@@ -11,13 +11,39 @@ import { StoryIndexItem } from "@/lib/types";
  * - Home page loads ~50 bytes per story instead of full content
  * - Scales to 1000+ stories without performance issues
  * - No story text or page images loaded until story is opened
+ * - PDF stories load from Cloudflare R2 on demand (zero initial bundle impact)
  *
  * To add a new story:
  * 1. Create a JSON file in src/content/stories/{slug}.json
  * 2. Add images to public/images/stories/{slug}/
  * 3. Add an entry to this array
+ *
+ * For PDF stories:
+ * 1. Upload PDF to Cloudflare R2 bucket
+ * 2. Create JSON with pdfFileName and isPdf: true
+ * 3. Add entry here with isPdf: true
  */
 export const storyIndex: StoryIndexItem[] = [
+  {
+    slug: "miko-banana-rescue",
+    title: "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
+    coverImage: "/images/stories/miko-banana-rescue/cover.webp",
+    uploadedDate: "2026-01-09T10:00:00Z",
+    ageGroup: "3-5",
+    category: "Adventure",
+    pageCount: 12,
+    isPdf: true, // PDF story from Cloudflare R2
+  },
+  {
+    slug: "jungle-friends-adventure",
+    title: "Jungle Friends: Miko and Ella's Amazing Adventure",
+    coverImage: "/images/stories/jungle-friends/cover.webp",
+    uploadedDate: "2026-01-09T12:00:00Z",
+    ageGroup: "6-8",
+    category: "Friendship",
+    pageCount: 12,
+    isPdf: true, // PDF story from Cloudflare R2
+  },
   {
     slug: "nila-and-kavi",
     title: "The Little Adventure of Nila and Kavi",

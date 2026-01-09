@@ -1,14 +1,18 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { storyIndex } from '@/content/storyIndex';
-import { loadStory } from '@/lib/loadStory';
+import { loadStory, isPdfStory } from '@/lib/loadStory';
 import { StoryReader } from '@/components/StoryReader';
+import { PDFBookReader } from '@/components/PDFBookReader';
+import { Story, PdfStory } from '@/lib/types';
 
 /**
  * Story Page - Immersive Fullscreen Reading Experience
  *
  * When a story is opened, the BookReader takes over the entire viewport
  * providing a focused, distraction-free reading experience.
+ *
+ * Supports both traditional page-based stories and PDF stories from Google Drive.
  */
 
 export const dynamic = 'force-static';
@@ -33,11 +37,18 @@ export async function generateMetadata({
 
   try {
     const story = await loadStory(slug);
-    const firstPageText = story.pages[0]?.text || '';
-    const description =
-      firstPageText.length > 155
-        ? firstPageText.slice(0, 152) + '...'
-        : firstPageText;
+
+    // Get description based on story type
+    let description = '';
+    if (isPdfStory(story)) {
+      description = `Read ${story.title} - an interactive story for kids aged ${story.ageGroup}`;
+    } else {
+      const firstPageText = story.pages[0]?.text || '';
+      description =
+        firstPageText.length > 155
+          ? firstPageText.slice(0, 152) + '...'
+          : firstPageText;
+    }
 
     return {
       title: story.title,
@@ -80,7 +91,11 @@ export default async function StoryPage({ params }: StoryPageProps) {
     notFound();
   }
 
-  // The StoryReader/BookReader takes over the entire viewport
-  // No additional layout elements needed - pure reading experience
-  return <StoryReader story={story} />;
+  // Render the appropriate reader based on story type
+  // PDF stories use PDFBookReader, regular stories use StoryReader/BookReader
+  if (isPdfStory(story)) {
+    return <PDFBookReader story={story as PdfStory} />;
+  }
+
+  return <StoryReader story={story as Story} />;
 }
