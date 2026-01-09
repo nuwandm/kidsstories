@@ -41,7 +41,7 @@ export function PDFViewer({
 
         const loadingTask = pdfjsLib.getDocument(url);
 
-        loadingTask.onProgress = (progress) => {
+        loadingTask.onProgress = (progress: { loaded: number; total: number }) => {
           if (progress.total > 0) {
             setLoadingProgress(Math.round((progress.loaded / progress.total) * 100));
           }
