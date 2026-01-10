@@ -35,17 +35,6 @@ export const storyIndex: StoryIndexItem[] = [
     isPdf: true, // PDF story from Cloudflare R2
   },
   {
-    slug: "nila-and-kavi",
-    title: "The Little Adventure of Nila and Kavi",
-    // Using picsum.photos for placeholder images during development
-    // Replace with local images for production: '/images/stories/nila-and-kavi/cover.webp'
-    coverImage: "https://picsum.photos/seed/nila-cover/800/600",
-    uploadedDate: "2025-12-28T10:00:00Z", // Recent - will show "New" badge
-    ageGroup: "6-8",
-    category: "Adventure",
-    pageCount: 7,
-  },
-  {
     slug: "bunny-adventure",
     title: "The Brave Little Bunny",
     // Using picsum.photos for placeholder images during development
