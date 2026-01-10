@@ -1,0 +1,30 @@
+{
+  "slug": "marie-curie",
+  "name": "Marie Curie",
+  "title": "Scientist",
+  "portrait": "👩‍🔬",
+  "birthYear": 1867,
+  "deathYear": 1934,
+  "country": "Poland/France",
+  "category": "Scientist",
+  "famousFor": "Discovered radioactivity and two new elements",
+  "quote": "Nothing in life is to be feared, it is only to be understood.",
+  "achievements": [
+    "First woman to win a Nobel Prize",
+    "Only person to win Nobel Prizes in two different sciences",
+    "Discovered the elements polonium and radium",
+    "First woman professor at the University of Paris"
+  ],
+  "funFacts": [
+    "She was born Maria Sklodowska in Warsaw, Poland",
+    "She had to study in secret because women couldn't go to university in Poland",
+    "She named polonium after her home country Poland",
+    "Her notebooks are still radioactive and kept in lead-lined boxes",
+    "She helped develop mobile X-ray units during World War I"
+  ],
+  "ageContent": {
+    "3-5": "Marie Curie was a very smart scientist who discovered something called radioactivity! She worked hard and won big prizes for her discoveries. She showed everyone that girls can be amazing scientists too!",
+    "6-8": "Marie Curie was a scientist who discovered radioactivity - a special energy that comes from certain elements. She was the first woman to win a Nobel Prize, which is like winning the biggest award in science! She discovered two new elements and named one 'polonium' after her home country Poland. Marie showed the world that women could be great scientists!",
+    "9-12": "Marie Curie was a pioneering physicist and chemist who conducted groundbreaking research on radioactivity. Born in Poland, she moved to Paris to study because women couldn't attend university in her homeland. She became the first woman to win a Nobel Prize (Physics, 1903) and later won another in Chemistry (1911), making her the only person to win Nobel Prizes in two different sciences. Her discoveries of polonium and radium helped develop X-ray technology and cancer treatments. Sadly, working with radioactive materials without protection eventually caused her death, but her work saved countless lives."
+  }
+}

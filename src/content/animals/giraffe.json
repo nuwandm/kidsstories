@@ -1,0 +1,21 @@
+{
+  "slug": "giraffe",
+  "name": "Giraffe",
+  "type": "Mammal",
+  "habitat": ["Savanna"],
+  "diet": "Herbivore",
+  "image": "🦒",
+  "funFacts": [
+    "Giraffes are the tallest animals on Earth!",
+    "Their tongues are about 20 inches long and purple!",
+    "Giraffes only need 30 minutes of sleep per day!",
+    "Baby giraffes can stand within 30 minutes of being born!",
+    "Each giraffe's spots are unique, like fingerprints!"
+  ],
+  "conservationStatus": "Vulnerable",
+  "ageContent": {
+    "3-5": "Giraffes are super tall with long necks! They're the tallest animals in the whole world! Giraffes have pretty spots and long purple tongues to grab leaves from tall trees. Baby giraffes are already taller than most grown-ups!",
+    "6-8": "Giraffes are the tallest animals on Earth - they can grow up to 18 feet tall! Their long necks help them eat leaves from tall trees that other animals can't reach. Their tongues are about 20 inches long and dark purple to protect them from sunburn! Giraffes only sleep about 30 minutes a day. Each giraffe has a unique spot pattern, just like human fingerprints!",
+    "9-12": "Giraffes (Giraffa) are the world's tallest mammals, reaching heights of up to 18 feet. Despite their long necks, they have the same number of vertebrae as humans (7) - each one is just much longer. Their cardiovascular system is remarkable: a giraffe's heart weighs about 25 pounds and pumps blood at high pressure to reach their brain. They can run up to 35 mph and deliver powerful kicks that can kill predators. Recent genetic studies have identified four distinct species of giraffes. Sadly, giraffe populations have declined by 40% in the past 30 years, leading to their classification as vulnerable. Their main threats are habitat loss and poaching."
+  }
+}

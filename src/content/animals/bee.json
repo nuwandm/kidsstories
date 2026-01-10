@@ -1,0 +1,21 @@
+{
+  "slug": "bee",
+  "name": "Bee",
+  "type": "Insect",
+  "habitat": ["Garden", "Meadow", "Forest"],
+  "diet": "Herbivore",
+  "image": "🐝",
+  "funFacts": [
+    "Bees visit 50-100 flowers in one trip!",
+    "They can fly up to 15 miles per hour!",
+    "Bees communicate by dancing!",
+    "A single bee makes only 1/12 teaspoon of honey in its lifetime!",
+    "Bees are responsible for 1 in every 3 bites of food we eat!"
+  ],
+  "conservationStatus": "Varies by species",
+  "ageContent": {
+    "3-5": "Bees are buzzy insects that help flowers grow! They collect sweet stuff from flowers to make yummy honey. Bees live together in big families and work as a team. They do a special wiggle dance to talk to their bee friends!",
+    "6-8": "Bees are incredibly important insects! They fly from flower to flower collecting nectar and pollen. While they do this, they help plants make seeds and fruit - this is called pollination. Bees communicate with each other by dancing! The 'waggle dance' tells other bees where to find good flowers. Honey bees live in hives with up to 60,000 bees and one queen. It takes about 556 worker bees to gather enough nectar to make just one pound of honey!",
+    "9-12": "Bees are among the most important creatures on Earth for human food security - they pollinate approximately 75% of flowering plants and 35% of food crops. There are over 20,000 species of bees, from solitary mining bees to highly social honey bees. Honey bee colonies are sophisticated superorganisms with complex communication (the waggle dance encodes direction and distance), collective decision-making, and temperature regulation. A single hive can pollinate 300 million flowers per day. Sadly, bee populations are declining worldwide due to pesticides, habitat loss, parasites, and climate change - a phenomenon called Colony Collapse Disorder threatens both wild bees and managed honey bees. Supporting bee-friendly gardens and reducing pesticide use can help."
+  }
+}

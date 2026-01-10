@@ -1,0 +1,22 @@
+{
+  "slug": "elephant",
+  "name": "Elephant",
+  "type": "Mammal",
+  "habitat": ["Savanna", "Forest"],
+  "diet": "Herbivore",
+  "image": "🐘",
+  "sound": "trumpet",
+  "funFacts": [
+    "Elephants are the largest land animals on Earth!",
+    "They can drink up to 50 gallons of water a day!",
+    "Elephants use their trunks like a hand to grab things!",
+    "Baby elephants suck their trunks like babies suck their thumbs!",
+    "Elephants have excellent memories and can remember friends for years!"
+  ],
+  "conservationStatus": "Endangered",
+  "ageContent": {
+    "3-5": "Elephants are the biggest animals that walk on land! They have long noses called trunks that they use to drink water and pick up food. Elephants love their families and give each other hugs with their trunks!",
+    "6-8": "Elephants are amazing giant animals! Their trunk has over 40,000 muscles and can pick up things as small as a peanut or as big as a tree branch. Elephants are very smart and have great memories - they can remember their friends even after many years apart! They live in family groups led by the oldest female, called a matriarch. Elephants love water and are excellent swimmers!",
+    "9-12": "Elephants are the largest land mammals, with African elephants weighing up to 14,000 pounds. There are three species: African savanna elephants, African forest elephants, and Asian elephants. Their trunks contain over 40,000 muscles and can lift 700 pounds while also being delicate enough to pick up a single blade of grass. Elephants are highly intelligent and display behaviors associated with grief, learning, and self-awareness. They communicate using sounds humans can't hear (infrasound) over distances of several miles. Unfortunately, elephants face serious threats from poaching for ivory and habitat loss, making them endangered."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "slug": "jane-goodall",
+  "name": "Jane Goodall",
+  "title": "Primatologist",
+  "portrait": "👩‍🔬",
+  "birthYear": 1934,
+  "country": "England",
+  "category": "Scientist",
+  "famousFor": "Studying chimpanzees and animal conservation",
+  "quote": "What you do makes a difference, and you have to decide what kind of difference you want to make.",
+  "achievements": [
+    "Discovered that chimpanzees use tools",
+    "Spent over 60 years studying chimps in Africa",
+    "Founded the Jane Goodall Institute",
+    "United Nations Messenger of Peace"
+  ],
+  "funFacts": [
+    "She got a toy chimpanzee named Jubilee when she was 1 year old - she still has it!",
+    "She named all the chimps instead of giving them numbers",
+    "She was the first to see chimps eating meat",
+    "Chimpanzees share about 98% of their DNA with humans!",
+    "She travels about 300 days a year to spread her message"
+  ],
+  "ageContent": {
+    "3-5": "Jane Goodall loves animals, especially chimpanzees! She went to Africa to watch chimps and became their friend. She learned that chimps are very smart and have feelings just like us. Jane teaches everyone to be kind to animals!",
+    "6-8": "Jane Goodall is a scientist who spent her life studying chimpanzees in Africa! She made an amazing discovery: chimps use tools, like sticks to get termites for food. Before Jane, people thought only humans used tools! She gave all her chimp friends names instead of numbers, like David Greybeard and Flo. Jane teaches kids all over the world to care for animals and protect nature!",
+    "9-12": "Jane Goodall is a world-renowned primatologist who transformed our understanding of chimpanzees and their relationship to humans. In 1960, at age 26, she traveled to Tanzania's Gombe Stream to study wild chimps - a revolutionary approach at the time. Her discoveries - that chimps use tools, have complex social structures, and experience emotions - challenged the boundary between humans and other animals. She documented that chimps can be aggressive but also show compassion and grief. Now in her 90s, she continues to advocate for conservation, founding the Jane Goodall Institute and the Roots & Shoots youth program. Her message: every individual can make a difference."
+  }
+}

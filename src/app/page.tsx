@@ -3,6 +3,7 @@ import { storyIndex, getTotalStoryCount } from '@/content/storyIndex';
 import { StoryCard } from '@/components/StoryCard';
 import { AdSlot } from '@/components/AdSlot';
 import { RecentlyRead } from '@/components/RecentlyRead';
+import { DailyFunFact } from '@/components/DailyFunFact';
 
 /**
  * Modern, Engaging Home Page
@@ -155,6 +156,13 @@ export default function HomePage() {
       <div className="container-story mb-12 sm:mb-16">
         <AdSlot slotId="home-header" format="horizontal" />
       </div>
+
+      {/* Daily Fun Fact Section */}
+      <section className="container-story mb-12 sm:mb-16">
+        <div className="max-w-2xl mx-auto">
+          <DailyFunFact />
+        </div>
+      </section>
 
       {/* Recently Read Section */}
       <RecentlyRead />

@@ -1,0 +1,30 @@
+{
+  "slug": "leonardo-da-vinci",
+  "name": "Leonardo da Vinci",
+  "title": "Artist & Inventor",
+  "portrait": "🎨",
+  "birthYear": 1452,
+  "deathYear": 1519,
+  "country": "Italy",
+  "category": "Artist",
+  "famousFor": "Painted the Mona Lisa and invented flying machines",
+  "quote": "Learning never exhausts the mind.",
+  "achievements": [
+    "Painted the Mona Lisa and The Last Supper",
+    "Designed flying machines 400 years before airplanes",
+    "Drew detailed studies of human anatomy",
+    "Invented tanks, parachutes, and helicopters on paper"
+  ],
+  "funFacts": [
+    "He wrote his notes backwards, like a mirror!",
+    "He was left-handed",
+    "He designed a robot knight that could sit, wave, and lift its visor",
+    "He once bought caged birds just to set them free",
+    "The Mona Lisa has no eyebrows - they were fashionable to remove back then!"
+  ],
+  "ageContent": {
+    "3-5": "Leonardo was an artist who painted beautiful pictures, including a famous lady with a mysterious smile called the Mona Lisa! He also loved to draw birds and imagine flying machines. He was curious about everything!",
+    "6-8": "Leonardo da Vinci lived about 500 years ago in Italy and was amazing at everything! He painted the Mona Lisa, one of the most famous paintings in the world. But he wasn't just an artist - he designed flying machines, tanks, and robots way before anyone else! He wrote all his notes backwards (you'd need a mirror to read them!) and studied how the human body works. Leonardo showed that you can be creative in art AND science!",
+    "9-12": "Leonardo da Vinci is considered one of the greatest geniuses in history, excelling in art, science, engineering, anatomy, and architecture. His paintings, including the Mona Lisa and The Last Supper, are among the most recognized artworks in the world. Beyond art, his notebooks contain designs for inventions centuries ahead of their time: helicopters, tanks, solar power, and calculators. He studied human anatomy in detail, creating drawings that are still admired by medical students today. Leonardo embodied the Renaissance ideal of the 'universal man' - someone who develops all their talents to the fullest. His mirror writing and unfinished projects suggest a mind too brilliant and restless to be contained."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "slug": "japan",
+  "name": "Japan",
+  "continent": "Asia",
+  "flag": "🇯🇵",
+  "flagImage": "/images/learn/country/flags/japan.webp",
+  "capital": "Tokyo",
+  "languages": ["Japanese"],
+  "greeting": "Konnichiwa! (こんにちは)",
+  "funFacts": [
+    "Japan has over 6,800 islands!",
+    "The bullet train (Shinkansen) can go over 300 km/h!",
+    "Japan has more vending machines per person than any other country!",
+    "Cherry blossoms (sakura) bloom in spring and are celebrated with festivals!",
+    "Sumo wrestling is Japan's national sport!"
+  ],
+  "landmarks": [
+    "Mount Fuji - A beautiful snow-capped volcano",
+    "Tokyo Tower - A famous red and white tower",
+    "Shibuya Crossing - The busiest pedestrian crossing in the world"
+  ],
+  "animals": ["Japanese macaque (snow monkey)", "Tanuki (raccoon dog)", "Koi fish", "Red-crowned crane"],
+  "foods": ["Sushi", "Ramen", "Tempura", "Mochi"],
+  "ageContent": {
+    "3-5": "Japan is a beautiful country with tall mountains and pretty pink flowers called cherry blossoms! People there say 'Konnichiwa' to say hello. They eat yummy rice and fish. Japan has cute animals like snow monkeys that love to play in hot water pools!",
+    "6-8": "Japan is an island country in Asia made up of thousands of islands! The capital city Tokyo is one of the biggest cities in the world. Japanese people eat sushi (rice with fish), ramen (noodles), and delicious sweets called mochi. They have super-fast trains called bullet trains that zoom across the country! Mount Fuji is a famous volcano with snow on top.",
+    "9-12": "Japan is an archipelago nation in East Asia consisting of over 6,800 islands, with four main islands: Honshu, Hokkaido, Kyushu, and Shikoku. With a population of over 125 million, it's one of the most technologically advanced nations in the world. Japan invented many things we use today, including the first handheld calculator and the bullet train (Shinkansen). The country has a rich cultural heritage including martial arts, anime, tea ceremonies, and beautiful calligraphy. Japan experiences all four seasons and is famous for cherry blossom season in spring."
+  }
+}

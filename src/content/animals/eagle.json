@@ -1,0 +1,21 @@
+{
+  "slug": "eagle",
+  "name": "Eagle",
+  "type": "Bird",
+  "habitat": ["Mountain", "Forest"],
+  "diet": "Carnivore",
+  "image": "🦅",
+  "funFacts": [
+    "Eagles can see 4-5 times farther than humans!",
+    "The bald eagle is the national bird of the United States!",
+    "Eagle nests can weigh over 2,000 pounds!",
+    "Eagles can fly at speeds of over 100 miles per hour!",
+    "They mate for life and return to the same nest each year!"
+  ],
+  "conservationStatus": "Least Concern",
+  "ageContent": {
+    "3-5": "Eagles are big, strong birds that fly high in the sky! They have super good eyes and can see things from very far away. Eagles have sharp claws to catch their food and big wings to soar through the air!",
+    "6-8": "Eagles are powerful birds of prey with incredible eyesight - they can spot a rabbit from 2 miles away! They build huge nests called eyries at the top of tall trees or cliffs. The bald eagle is famous for being America's national bird. Eagles can dive through the air at over 100 miles per hour when catching prey! They mate for life and both parents help raise their babies called eaglets.",
+    "9-12": "Eagles are apex predators belonging to the family Accipitridae. There are about 60 species of eagles worldwide. Their eyesight is legendary - their eyes have a million light-sensitive cells per square millimeter (humans have 200,000), allowing them to see UV light and spot prey from incredible distances. Eagles have powerful talons that can exert 400 pounds of pressure per square inch. The bald eagle nearly went extinct in the 1960s due to DDT pesticide but has made a remarkable recovery through conservation efforts. Eagles play crucial roles in ecosystems as top predators and are revered symbols in many cultures worldwide."
+  }
+}

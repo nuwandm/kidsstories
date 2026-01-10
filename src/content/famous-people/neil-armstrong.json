@@ -1,0 +1,30 @@
+{
+  "slug": "neil-armstrong",
+  "name": "Neil Armstrong",
+  "title": "Astronaut",
+  "portrait": "🧑‍🚀",
+  "birthYear": 1930,
+  "deathYear": 2012,
+  "country": "USA",
+  "category": "Explorer",
+  "famousFor": "First person to walk on the Moon",
+  "quote": "That's one small step for man, one giant leap for mankind.",
+  "achievements": [
+    "First human to walk on the Moon (July 20, 1969)",
+    "Commander of Apollo 11 mission",
+    "Flew over 200 different types of aircraft",
+    "Received the Presidential Medal of Freedom"
+  ],
+  "funFacts": [
+    "He was interested in flight since he was 2 years old!",
+    "He got his pilot's license at 16, before his driver's license",
+    "He left his footprints on the Moon - they're still there!",
+    "He spent 2.5 hours walking on the Moon",
+    "He was very shy and didn't like being famous"
+  ],
+  "ageContent": {
+    "3-5": "Neil Armstrong was an astronaut who flew all the way to the Moon! He was the first person ever to walk on the Moon. When he stepped onto the Moon, the whole world was watching. He was very brave!",
+    "6-8": "Neil Armstrong made history on July 20, 1969, when he became the first person to walk on the Moon! He flew there in a spaceship called Apollo 11. When he stepped onto the Moon, he said: 'That's one small step for man, one giant leap for mankind.' His footprints are still on the Moon because there's no wind to blow them away! About 600 million people around the world watched him on TV!",
+    "9-12": "Neil Armstrong was an American astronaut and aeronautical engineer who became the first human to walk on the Moon on July 20, 1969, during the Apollo 11 mission. Before becoming an astronaut, he was a Navy pilot who flew 78 combat missions in the Korean War. The Moon landing was one of humanity's greatest achievements, accomplished during the Space Race with the Soviet Union. Armstrong spent about 2.5 hours outside the spacecraft on the lunar surface and collected 21.5 kg of lunar material to bring back to Earth. Despite his fame, Armstrong was known for being humble and private, rarely giving interviews. His achievement inspired generations to dream of space exploration."
+  }
+}

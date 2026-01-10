@@ -1,0 +1,21 @@
+{
+  "slug": "owl",
+  "name": "Owl",
+  "type": "Bird",
+  "habitat": ["Forest", "Desert"],
+  "diet": "Carnivore",
+  "image": "🦉",
+  "funFacts": [
+    "Owls can rotate their heads up to 270 degrees!",
+    "They fly almost silently because of special feathers!",
+    "A group of owls is called a 'parliament'!",
+    "Owls can't move their eyeballs - they're fixed in place!",
+    "Some owls have ears at different heights to help locate sounds!"
+  ],
+  "conservationStatus": "Varies by species",
+  "ageContent": {
+    "3-5": "Owls are special birds that wake up at night and sleep during the day! They say 'hoo hoo!' Owls can turn their heads almost all the way around to see everything. They have big round eyes and fluffy feathers!",
+    "6-8": "Owls are amazing nocturnal birds that hunt at night! They have super hearing and can locate prey in total darkness. Owls can turn their heads 270 degrees because they can't move their eyeballs. Their feathers have special edges that let them fly almost completely silently! There are about 200 species of owls, from the tiny elf owl to the large great grey owl. A group of owls is called a 'parliament'!",
+    "9-12": "Owls belong to the order Strigiformes and are found on every continent except Antarctica. Their adaptations for nocturnal hunting are remarkable: enormous eyes gather more light (though they can't move in their sockets), and facial discs funnel sound to their asymmetrically placed ears, enabling them to pinpoint prey by sound alone. Their flight feathers have specialized serrations that break up turbulence, allowing virtually silent flight. Owls can rotate their heads 270 degrees thanks to extra vertebrae and blood pooling mechanisms that prevent blood supply interruption. They play crucial roles in controlling rodent populations. Some species like barn owls have been used by farmers as natural pest control for centuries."
+  }
+}

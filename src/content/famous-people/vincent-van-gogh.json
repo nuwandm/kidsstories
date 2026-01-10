@@ -1,0 +1,30 @@
+{
+  "slug": "vincent-van-gogh",
+  "name": "Vincent van Gogh",
+  "title": "Artist",
+  "portrait": "🎨",
+  "birthYear": 1853,
+  "deathYear": 1890,
+  "country": "Netherlands",
+  "category": "Artist",
+  "famousFor": "Painted Starry Night and beautiful sunflowers",
+  "quote": "I dream my painting and then I paint my dream.",
+  "achievements": [
+    "Painted over 2,100 artworks in just 10 years",
+    "Created the famous 'Starry Night' painting",
+    "Pioneered expressive, emotional painting",
+    "His paintings are now worth hundreds of millions of dollars"
+  ],
+  "funFacts": [
+    "He only sold one painting during his lifetime!",
+    "He painted 'Starry Night' while looking out his window at a hospital",
+    "He painted over 30 self-portraits",
+    "He started painting seriously at age 27",
+    "His brother Theo supported him his whole life"
+  ],
+  "ageContent": {
+    "3-5": "Vincent van Gogh was an artist who painted beautiful pictures of stars, sunflowers, and the sky! He used bright colors and made his paintings look like they were moving. He painted things that made him happy!",
+    "6-8": "Vincent van Gogh was a famous painter from the Netherlands who created beautiful, colorful art. His most famous painting is 'Starry Night,' which shows a swirly night sky with bright stars. He loved painting sunflowers, landscapes, and pictures of himself. Sadly, people didn't understand his art while he was alive - he only sold one painting! Now his art is worth millions of dollars and hangs in museums all over the world.",
+    "9-12": "Vincent van Gogh was a Post-Impressionist painter whose work profoundly influenced 20th-century art. Despite having virtually no success during his lifetime (he sold only one painting), he is now one of the most famous and recognizable artists in history. Van Gogh created about 2,100 artworks in just 10 years, including 860 oil paintings. His bold colors, dramatic brushstrokes, and emotional intensity were revolutionary for his time. He struggled with mental health issues throughout his life, but continued to paint prolifically. His relationship with his brother Theo, documented in hundreds of letters, provides insight into his artistic vision and personal struggles. Today, his works like 'Starry Night' and his Sunflower series are among the most beloved paintings in the world."
+  }
+}

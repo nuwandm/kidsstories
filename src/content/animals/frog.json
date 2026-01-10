@@ -1,0 +1,21 @@
+{
+  "slug": "frog",
+  "name": "Frog",
+  "type": "Amphibian",
+  "habitat": ["Pond", "Rainforest"],
+  "diet": "Carnivore",
+  "image": "🐸",
+  "funFacts": [
+    "Frogs drink water through their skin!",
+    "Some frogs can jump 20 times their body length!",
+    "Frogs have teeth on the roof of their mouth!",
+    "A group of frogs is called an 'army'!",
+    "Some poison dart frogs are so toxic they could kill 10 adults!"
+  ],
+  "conservationStatus": "Varies by species",
+  "ageContent": {
+    "3-5": "Frogs are jumpy animals that say 'ribbit!' They start as tiny tadpoles that swim in ponds, then grow legs and become frogs! Frogs have super sticky tongues to catch bugs. They love to sit on lily pads!",
+    "6-8": "Frogs are amphibians, which means they can live both in water and on land! Baby frogs called tadpoles hatch from eggs in water, then grow legs and lose their tails to become frogs. Frogs don't drink water - they absorb it through their skin! Some frogs can jump over 20 times their body length. Poison dart frogs are brightly colored to warn predators that they're poisonous!",
+    "9-12": "Frogs are amphibians that undergo a remarkable metamorphosis from aquatic tadpoles to terrestrial adults. There are over 7,000 species of frogs on every continent except Antarctica. Frogs breathe and drink through their permeable skin, making them extremely sensitive to environmental changes - they're considered 'indicator species' for ecosystem health. Their tongue can catch prey in less than 0.07 seconds. Some species, like the poison dart frog, produce toxins so powerful that indigenous peoples used them on blow darts for hunting. Sadly, amphibian populations worldwide are declining due to habitat loss, pollution, climate change, and a deadly fungal disease called chytridiomycosis."
+  }
+}

@@ -169,3 +169,182 @@ export interface MoreStoriesProps {
   /** Maximum number of stories to show */
   limit?: number;
 }
+
+// ==========================================
+// LEARN SECTION TYPES
+// ==========================================
+
+/**
+ * Continent type for countries
+ */
+export type Continent = 'Africa' | 'Asia' | 'Europe' | 'North America' | 'South America' | 'Oceania';
+
+/**
+ * Represents a country in the Countries Explorer
+ */
+export interface Country {
+  slug: string;
+  name: string;
+  continent: Continent;
+  flag: string;
+  /** Path to flag image (e.g., "/images/learn/country/flags/japan.webp") */
+  flagImage?: string;
+  capital: string;
+  languages: string[];
+  greeting: string;
+  funFacts: string[];
+  landmarks: string[];
+  animals: string[];
+  foods: string[];
+  ageContent: {
+    '3-5': string;
+    '6-8': string;
+    '9-12': string;
+  };
+}
+
+/**
+ * Lightweight country metadata for index
+ */
+export interface CountryIndexItem {
+  slug: string;
+  name: string;
+  continent: Continent;
+  flag: string;
+  /** Path to flag image (e.g., "/images/learn/country/flags/japan.webp") */
+  flagImage?: string;
+  capital: string;
+}
+
+/**
+ * Category for famous people
+ */
+export type FamousPersonCategory = 'Scientist' | 'Inventor' | 'Artist' | 'Explorer' | 'Leader';
+
+/**
+ * Represents a famous person in the Famous People section
+ */
+export interface FamousPerson {
+  slug: string;
+  name: string;
+  title: string;
+  portrait: string;
+  birthYear: number;
+  deathYear?: number;
+  country: string;
+  category: FamousPersonCategory;
+  famousFor: string;
+  quote: string;
+  achievements: string[];
+  funFacts: string[];
+  ageContent: {
+    '3-5': string;
+    '6-8': string;
+    '9-12': string;
+  };
+}
+
+/**
+ * Lightweight famous person metadata for index
+ */
+export interface FamousPersonIndexItem {
+  slug: string;
+  name: string;
+  title: string;
+  portrait: string;
+  category: FamousPersonCategory;
+  famousFor: string;
+}
+
+/**
+ * Animal type classification
+ */
+export type AnimalType = 'Mammal' | 'Bird' | 'Reptile' | 'Amphibian' | 'Fish' | 'Insect';
+
+/**
+ * Animal diet type
+ */
+export type AnimalDiet = 'Herbivore' | 'Carnivore' | 'Omnivore';
+
+/**
+ * Represents an animal in the Animal Kingdom section
+ */
+export interface Animal {
+  slug: string;
+  name: string;
+  type: AnimalType;
+  habitat: string[];
+  diet: AnimalDiet;
+  image: string;
+  sound?: string;
+  funFacts: string[];
+  conservationStatus: string;
+  ageContent: {
+    '3-5': string;
+    '6-8': string;
+    '9-12': string;
+  };
+}
+
+/**
+ * Lightweight animal metadata for index
+ */
+export interface AnimalIndexItem {
+  slug: string;
+  name: string;
+  type: AnimalType;
+  image: string;
+  habitat: string[];
+}
+
+/**
+ * Category for fun facts
+ */
+export type FunFactCategory = 'Science' | 'Nature' | 'Animals' | 'Geography' | 'Space' | 'History';
+
+/**
+ * Represents a fun fact
+ */
+export interface FunFact {
+  id: string;
+  category: FunFactCategory;
+  fact: string;
+  image?: string;
+  ageGroups: AgeGroup[];
+}
+
+// ==========================================
+// PLAY SECTION TYPES
+// ==========================================
+
+/**
+ * Memory game card
+ */
+export interface MemoryCard {
+  id: string;
+  image: string;
+  name: string;
+  matched: boolean;
+  flipped: boolean;
+}
+
+/**
+ * Memory game mode
+ */
+export type MemoryGameMode = 'flags' | 'animals' | 'people';
+
+/**
+ * Memory game difficulty
+ */
+export type MemoryDifficulty = 'easy' | 'medium' | 'hard';
+
+/**
+ * Memory game high score
+ */
+export interface MemoryHighScore {
+  mode: MemoryGameMode;
+  difficulty: MemoryDifficulty;
+  moves: number;
+  time: number;
+  date: string;
+}

@@ -21,8 +21,10 @@ export function Navigation() {
 
   const navLinks = [
     { href: '/', label: 'Home', icon: '🏠' },
-    { href: '/stories', label: 'All Stories', icon: '📚' },
-    { href: '/about', label: 'About Us', icon: '✨' },
+    { href: '/stories', label: 'Stories', icon: '📚' },
+    { href: '/learn', label: 'Learn', icon: '🎓' },
+    { href: '/play', label: 'Play', icon: '🎮' },
+    { href: '/about', label: 'About', icon: '✨' },
   ];
 
   return (

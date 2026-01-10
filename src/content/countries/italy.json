@@ -1,0 +1,28 @@
+{
+  "slug": "italy",
+  "name": "Italy",
+  "continent": "Europe",
+  "flag": "🇮🇹",
+  "capital": "Rome",
+  "languages": ["Italian"],
+  "greeting": "Ciao!",
+  "funFacts": [
+    "Italy is shaped like a boot!",
+    "Pizza was invented in Italy!",
+    "The Colosseum in Rome is almost 2,000 years old!",
+    "Italy has more UNESCO World Heritage Sites than any other country!",
+    "Venice is a city built on water with canals instead of roads!"
+  ],
+  "landmarks": [
+    "Colosseum - Ancient Roman arena in Rome",
+    "Leaning Tower of Pisa - Famous tilted tower",
+    "Venice canals - City with water streets and gondolas"
+  ],
+  "animals": ["Italian wolf", "Eurasian brown bear", "Golden eagle", "Sardinian wild donkey"],
+  "foods": ["Pizza", "Pasta", "Gelato", "Lasagna", "Risotto"],
+  "ageContent": {
+    "3-5": "Italy is shaped like a boot! People there say 'Ciao!' and eat yummy pizza and ice cream called gelato. Italy has a cool tower that leans to one side! There's even a city called Venice where people ride boats instead of cars!",
+    "6-8": "Italy is a beautiful country in Europe shaped like a boot! It's where pizza and pasta were invented! Ancient Romans built amazing things like the Colosseum where gladiators fought. Italy has the famous Leaning Tower of Pisa that's been tilting for 800 years! Venice is a magical city built on 118 small islands with canals instead of streets, where people travel by boat called gondolas!",
+    "9-12": "Italy was the heart of the Roman Empire, one of the most powerful civilizations in history, and later the birthplace of the Renaissance, a period of incredible art, science, and cultural achievement. The country is home to some of the world's most famous artworks, including Michelangelo's David and the ceiling of the Sistine Chapel. Italy has more UNESCO World Heritage Sites than any other country (59!). Italian culture has shaped Western civilization through art, architecture, music (opera), fashion, and cuisine. The country is divided into 20 regions, each with its own traditions, dialects, and specialties."
+  }
+}

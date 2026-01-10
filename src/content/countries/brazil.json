@@ -1,0 +1,28 @@
+{
+  "slug": "brazil",
+  "name": "Brazil",
+  "continent": "South America",
+  "flag": "🇧🇷",
+  "capital": "Brasilia",
+  "languages": ["Portuguese"],
+  "greeting": "Ola!",
+  "funFacts": [
+    "Brazil has the largest rainforest in the world - the Amazon!",
+    "The Amazon River is the second longest river in the world!",
+    "Brazil is home to about 60% of the Amazon Rainforest!",
+    "Soccer (football) is the most popular sport in Brazil!",
+    "The Carnival festival in Rio is one of the biggest parties in the world!"
+  ],
+  "landmarks": [
+    "Christ the Redeemer - A giant statue on a mountain in Rio",
+    "Amazon Rainforest - The world's largest tropical rainforest",
+    "Iguazu Falls - Spectacular waterfalls on the border with Argentina"
+  ],
+  "animals": ["Jaguar", "Toucan", "Capybara", "Pink river dolphin", "Sloth"],
+  "foods": ["Acai bowl", "Pao de queijo (cheese bread)", "Brigadeiro (chocolate treats)", "Feijoada"],
+  "ageContent": {
+    "3-5": "Brazil is a big country with a huge jungle called the Amazon! It has colorful birds like toucans and cute animals like monkeys and sloths. People there love to play soccer and have big parties with music and dancing! They say 'Ola' to say hello!",
+    "6-8": "Brazil is the largest country in South America and is famous for the Amazon Rainforest - the biggest jungle in the world! Millions of animals live there including jaguars, toucans, and pink dolphins! Brazilians speak Portuguese and love soccer - they've won the World Cup 5 times! Every year they have Carnival, a huge festival with amazing costumes, music, and dancing!",
+    "9-12": "Brazil is the fifth largest country in the world and covers almost half of South America. It's home to the Amazon Rainforest, which produces about 20% of the world's oxygen and contains 10% of all species on Earth! Brazil has diverse geography from beaches to wetlands to mountains. The country is a major producer of coffee, sugar, and soybeans. Brazil has a rich cultural mix of Indigenous, Portuguese, African, and immigrant influences. The famous Christ the Redeemer statue in Rio de Janeiro is one of the New Seven Wonders of the World."
+  }
+}

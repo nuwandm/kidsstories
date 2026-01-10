@@ -1,0 +1,28 @@
+{
+  "slug": "egypt",
+  "name": "Egypt",
+  "continent": "Africa",
+  "flag": "🇪🇬",
+  "capital": "Cairo",
+  "languages": ["Arabic"],
+  "greeting": "Marhaba! (مرحبا)",
+  "funFacts": [
+    "The Great Pyramid is over 4,500 years old!",
+    "Ancient Egyptians invented toothpaste!",
+    "The Nile is the longest river in the world!",
+    "Cats were sacred animals in ancient Egypt!",
+    "Egyptians invented paper from papyrus plants!"
+  ],
+  "landmarks": [
+    "Great Pyramids of Giza - Ancient wonders of the world",
+    "The Sphinx - Giant statue with a lion body and human head",
+    "Valley of the Kings - Where pharaohs were buried"
+  ],
+  "animals": ["Camel", "Nile crocodile", "Fennec fox", "Scarab beetle", "Egyptian cobra"],
+  "foods": ["Falafel", "Koshari", "Ful medames", "Baklava", "Shawarma"],
+  "ageContent": {
+    "3-5": "Egypt is a sunny country with big pyramids that look like triangles! Long ago, kings called pharaohs lived there. Egyptians loved cats and thought they were special! The country has a long river called the Nile and big sandy deserts with camels!",
+    "6-8": "Egypt is an amazing country in Africa with a history over 5,000 years old! Ancient Egyptians built the Great Pyramids and the Sphinx, which are still standing today. They had pharaohs (kings) who were buried with treasures in pyramids! Egyptians invented lots of things we still use, like paper and toothpaste. The Nile River flows through Egypt and is the longest river in the world!",
+    "9-12": "Egypt is one of the world's oldest civilizations, with a recorded history spanning over 5,000 years. The ancient Egyptians were remarkable engineers who built the Great Pyramids of Giza - the only surviving wonder of the ancient world. They developed hieroglyphic writing, advanced mathematics, and impressive medical knowledge. The Nile River was essential to Egyptian civilization, providing water for farming in the desert. Egypt was ruled by pharaohs for nearly 3,000 years and left behind incredible artifacts including King Tutankhamun's golden death mask. Modern Egypt is a bridge between Africa and the Middle East."
+  }
+}

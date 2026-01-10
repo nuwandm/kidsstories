@@ -1,0 +1,30 @@
+{
+  "slug": "mozart",
+  "name": "Wolfgang Amadeus Mozart",
+  "title": "Composer",
+  "portrait": "🎹",
+  "birthYear": 1756,
+  "deathYear": 1791,
+  "country": "Austria",
+  "category": "Artist",
+  "famousFor": "Composed beautiful classical music",
+  "quote": "The music is not in the notes, but in the silence between.",
+  "achievements": [
+    "Composed over 600 works of music",
+    "Started composing at age 5",
+    "Wrote his first symphony at age 8",
+    "Created famous operas like 'The Magic Flute'"
+  ],
+  "funFacts": [
+    "He could play piano at age 3!",
+    "He toured Europe performing for kings and queens as a child",
+    "He could memorize entire pieces of music after hearing them once",
+    "He had a silly sense of humor and loved jokes",
+    "His full name is Wolfgang Amadeus Johannes Chrysostomus Sigismundus Theophilus Mozart!"
+  ],
+  "ageContent": {
+    "3-5": "Mozart was a boy who loved music more than anything! He started playing piano when he was just 3 years old - younger than you! He wrote beautiful songs that people still love to hear today. His music makes people feel happy!",
+    "6-8": "Wolfgang Mozart was a musical genius from Austria! He started playing piano at age 3 and composed his first music at age 5. When he was just a little kid, he traveled around Europe playing for kings and queens! He wrote over 600 pieces of music including symphonies, operas, and songs. Even though he lived only 35 years, his music is still played and loved all around the world. Many people think he was the greatest composer ever!",
+    "9-12": "Wolfgang Amadeus Mozart was an Austrian composer who is widely regarded as one of the greatest musical geniuses in history. A child prodigy, he began composing at age 5 and spent his childhood touring European royal courts, astonishing audiences with his performances. By age 17, he had already composed 25 symphonies! Despite his incredible talent, Mozart often struggled financially. He composed over 600 works, including 41 symphonies, 27 piano concertos, and iconic operas like 'The Marriage of Figaro,' 'Don Giovanni,' and 'The Magic Flute.' His music is characterized by its melodic beauty, emotional depth, and perfect craftsmanship. Mozart died at just 35, but his influence on Western classical music is immeasurable."
+  }
+}

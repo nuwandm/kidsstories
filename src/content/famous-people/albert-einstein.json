@@ -1,0 +1,30 @@
+{
+  "slug": "albert-einstein",
+  "name": "Albert Einstein",
+  "title": "Physicist",
+  "portrait": "👨‍🔬",
+  "birthYear": 1879,
+  "deathYear": 1955,
+  "country": "Germany/USA",
+  "category": "Scientist",
+  "famousFor": "Theory of Relativity and E=mc²",
+  "quote": "Imagination is more important than knowledge.",
+  "achievements": [
+    "Developed the Theory of Relativity",
+    "Won the Nobel Prize in Physics in 1921",
+    "Created the famous equation E=mc²",
+    "Changed how we understand space, time, and the universe"
+  ],
+  "funFacts": [
+    "He didn't speak until he was 4 years old!",
+    "He loved playing the violin and called it 'Lina'",
+    "His brain was kept after he died so scientists could study it",
+    "He stuck out his tongue in a famous photo on his 72nd birthday",
+    "He was offered the presidency of Israel but declined"
+  ],
+  "ageContent": {
+    "3-5": "Albert Einstein had wild, crazy hair and was super smart! He figured out how the universe works and loved to ask questions about everything. He showed us that being curious is the best way to learn!",
+    "6-8": "Albert Einstein is one of the most famous scientists ever! He came up with the Theory of Relativity, which explains how space and time work together. His famous equation E=mc² shows that energy and matter are connected. Fun fact: he didn't learn to talk until he was 4 years old! Einstein loved music and played the violin. He won the Nobel Prize and changed how we understand the universe!",
+    "9-12": "Albert Einstein revolutionized physics with his Theory of Relativity, fundamentally changing our understanding of space, time, gravity, and the universe. His famous equation E=mc² showed that mass and energy are interchangeable, which later led to both nuclear power and atomic weapons. Born in Germany, he moved to the USA to escape Nazi persecution. Einstein won the Nobel Prize in Physics in 1921 for his explanation of the photoelectric effect. Beyond science, he was a passionate advocate for peace and civil rights. His work laid the foundation for modern physics and cosmology."
+  }
+}

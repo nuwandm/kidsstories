@@ -1,0 +1,28 @@
+{
+  "slug": "australia",
+  "name": "Australia",
+  "continent": "Oceania",
+  "flag": "🇦🇺",
+  "capital": "Canberra",
+  "languages": ["English"],
+  "greeting": "G'day!",
+  "funFacts": [
+    "Australia is both a country and a continent!",
+    "Kangaroos and koalas only live in Australia!",
+    "The Great Barrier Reef is the largest coral reef in the world!",
+    "Australia has over 10,000 beaches!",
+    "Wombat poop is cube-shaped!"
+  ],
+  "landmarks": [
+    "Sydney Opera House - Famous building shaped like sails",
+    "Great Barrier Reef - World's largest coral reef system",
+    "Uluru (Ayers Rock) - Giant sacred red rock in the desert"
+  ],
+  "animals": ["Kangaroo", "Koala", "Platypus", "Wombat", "Tasmanian devil", "Echidna"],
+  "foods": ["Vegemite", "Tim Tams", "Meat pie", "Lamingtons", "Pavlova"],
+  "ageContent": {
+    "3-5": "Australia is a big country with cute animals like kangaroos that hop and koalas that hug trees! People there say 'G'day!' to say hello. Australia has beautiful beaches and a special ocean area called the Great Barrier Reef with lots of colorful fish!",
+    "6-8": "Australia is the only country that is also a continent! It has unique animals found nowhere else on Earth, like kangaroos, koalas, and the platypus (which has a duck bill and lays eggs!). The Great Barrier Reef is so big you can see it from space! Australians love the beach, surfing, and a sport called cricket. The famous Sydney Opera House looks like giant white sails!",
+    "9-12": "Australia is the world's sixth-largest country and the only nation to occupy an entire continent. It's home to unique wildlife that evolved in isolation for millions of years, including marsupials (mammals with pouches) like kangaroos and koalas. The Great Barrier Reef spans over 2,300 kilometers and is the world's largest living structure. Australia has diverse landscapes from tropical rainforests to vast deserts called the Outback. The Indigenous Aboriginal people have lived there for over 65,000 years, making them one of the world's oldest continuous cultures."
+  }
+}

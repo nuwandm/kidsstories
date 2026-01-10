@@ -1,0 +1,28 @@
+{
+  "slug": "kenya",
+  "name": "Kenya",
+  "continent": "Africa",
+  "flag": "🇰🇪",
+  "capital": "Nairobi",
+  "languages": ["English", "Swahili"],
+  "greeting": "Jambo!",
+  "funFacts": [
+    "Kenya is famous for its wildlife safaris!",
+    "The Great Wildebeest Migration passes through Kenya every year!",
+    "Kenya is home to the second-highest mountain in Africa - Mount Kenya!",
+    "Kenyan runners are some of the fastest in the world!",
+    "Kenya has over 40 different ethnic groups!"
+  ],
+  "landmarks": [
+    "Maasai Mara - Famous wildlife reserve",
+    "Mount Kenya - Africa's second-highest peak",
+    "Lake Nakuru - Home to millions of flamingos"
+  ],
+  "animals": ["Lion", "Elephant", "Giraffe", "Zebra", "Rhinoceros", "Cheetah"],
+  "foods": ["Ugali", "Nyama Choma (grilled meat)", "Chapati", "Mandazi (sweet fried bread)"],
+  "ageContent": {
+    "3-5": "Kenya is a sunny country in Africa with lots of amazing animals! You can see lions, elephants, giraffes, and zebras! People there say 'Jambo' to say hello. Kenya has big mountains and beautiful green places where animals live!",
+    "6-8": "Kenya is a beautiful country in East Africa famous for its wildlife! You can go on safari and see the 'Big Five' - lions, elephants, rhinos, leopards, and buffalo! Kenya has the Maasai Mara, where millions of animals migrate every year. The country has both savannas and mountains, and Kenyan people speak Swahili and English!",
+    "9-12": "Kenya is located in East Africa along the equator, giving it a diverse climate from tropical coastlines to snow-capped mountains. The country is world-renowned for wildlife conservation and is home to some of the most spectacular national parks and reserves. The Great Wildebeest Migration, where over 1.5 million animals cross between Kenya and Tanzania, is one of nature's greatest spectacles. Kenya gained independence from Britain in 1963 and has become a leader in East African commerce and technology. Kenyan long-distance runners have won numerous Olympic medals and world records."
+  }
+}

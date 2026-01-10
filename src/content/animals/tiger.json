@@ -1,0 +1,21 @@
+{
+  "slug": "tiger",
+  "name": "Tiger",
+  "type": "Mammal",
+  "habitat": ["Forest", "Jungle"],
+  "diet": "Carnivore",
+  "image": "🐯",
+  "funFacts": [
+    "Tigers are the largest wild cats in the world!",
+    "No two tigers have the same stripe pattern!",
+    "Tigers are great swimmers and love water!",
+    "A tiger's roar can be heard from 2 miles away!",
+    "Tigers can eat up to 90 pounds of meat in one meal!"
+  ],
+  "conservationStatus": "Endangered",
+  "ageContent": {
+    "3-5": "Tigers are big orange cats with black stripes! Each tiger has different stripes, just like your fingerprints are different from everyone else's! Tigers love to swim and play in the water. They say 'ROAR!'",
+    "6-8": "Tigers are the biggest cats in the world! They live in Asia and have beautiful orange fur with black stripes. No two tigers have the same stripe pattern - it's like a fingerprint! Unlike most cats, tigers love water and are excellent swimmers. They're very powerful and can leap up to 30 feet! Sadly, there are fewer than 4,000 wild tigers left, so we need to protect them.",
+    "9-12": "Tigers (Panthera tigris) are the largest living cat species and can weigh up to 660 pounds. They're native to Asia and historically ranged from Turkey to Russia's Pacific coast, but have lost 93% of their historic range. Tigers are solitary animals with individual territories that can span up to 400 square miles. Their stripes help camouflage them in tall grasses and dappled forest light. Tigers are ambush predators capable of bringing down prey much larger than themselves. There are six subspecies: Bengal, Indochinese, Malayan, Siberian, South China, and Sumatran. Conservation efforts have helped tiger numbers slowly recover, but they remain endangered due to habitat loss and poaching."
+  }
+}

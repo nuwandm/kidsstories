@@ -1,0 +1,21 @@
+{
+  "slug": "butterfly",
+  "name": "Butterfly",
+  "type": "Insect",
+  "habitat": ["Garden", "Forest", "Meadow"],
+  "diet": "Herbivore",
+  "image": "🦋",
+  "funFacts": [
+    "Butterflies taste with their feet!",
+    "They start life as caterpillars before transforming!",
+    "Butterfly wings are actually transparent - the colors come from tiny scales!",
+    "Monarch butterflies migrate up to 3,000 miles!",
+    "Butterflies can see colors humans can't see, including ultraviolet!"
+  ],
+  "conservationStatus": "Varies by species",
+  "ageContent": {
+    "3-5": "Butterflies are pretty insects with colorful wings! They start as little caterpillars, then wrap up in a cozy cocoon, and come out as beautiful butterflies! They drink sweet nectar from flowers!",
+    "6-8": "Butterflies are amazing insects that go through an incredible transformation! They start as tiny eggs, hatch into caterpillars, form a chrysalis, and emerge as beautiful butterflies. This is called metamorphosis! Butterflies taste with their feet to find good flowers to land on. Monarch butterflies are super travelers - they fly up to 3,000 miles to find warmer weather! Their wings are covered in tiny scales that create their beautiful colors.",
+    "9-12": "Butterflies belong to the order Lepidoptera and undergo complete metamorphosis through four stages: egg, larva (caterpillar), pupa (chrysalis), and adult. Their wings are covered with thousands of microscopic scales that create their patterns and colors - some scales even reflect ultraviolet light that butterflies can see but humans can't. Butterflies have compound eyes with thousands of lenses and can see a wider range of colors than humans. The monarch butterfly's migration is one of nature's most remarkable phenomena - generations of butterflies navigate to the same trees in Mexico each year, despite never having been there before. Many butterfly species are important pollinators and indicators of ecosystem health."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "lion",
+  "name": "Lion",
+  "type": "Mammal",
+  "habitat": ["Savanna", "Grassland"],
+  "diet": "Carnivore",
+  "image": "🦁",
+  "sound": "roar",
+  "funFacts": [
+    "Lions are called the 'King of the Jungle' but they actually live in grasslands!",
+    "A lion's roar can be heard from 5 miles away!",
+    "Male lions sleep up to 20 hours a day!",
+    "Female lions do most of the hunting for the group!",
+    "A group of lions is called a 'pride'!"
+  ],
+  "conservationStatus": "Vulnerable",
+  "ageContent": {
+    "3-5": "Lions are big cats with fluffy manes around their heads! They say 'ROAR!' very loudly. Lions live with their family and take lots of naps in the sunshine. The boy lions have big hair called a mane!",
+    "6-8": "Lions are powerful big cats that live in Africa! Male lions have a thick mane of fur around their head that makes them look even bigger and scarier. Lions live in groups called 'prides' with females, cubs, and a few males. Even though they're called 'King of the Jungle,' they actually live in grasslands called savannas. A lion's roar is so loud it can be heard 5 miles away!",
+    "9-12": "Lions (Panthera leo) are the second-largest cat species after tigers. They are unique among cats for living in social groups called prides, which typically consist of related females, their cubs, and a small number of adult males. Female lions are the primary hunters, working together to take down prey like zebras, wildebeest, and antelope. Male lions protect the pride's territory, which can span up to 100 square miles. Sadly, lion populations have declined by about 43% in the past 21 years due to habitat loss and human conflict, making conservation efforts crucial for their survival."
+  }
+}

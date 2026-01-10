@@ -1,0 +1,302 @@
+[
+  {
+    "id": "1",
+    "category": "Animals",
+    "fact": "A group of flamingos is called a 'flamboyance'!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "2",
+    "category": "Space",
+    "fact": "One day on Venus is longer than one year on Venus!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "3",
+    "category": "Science",
+    "fact": "Honey never spoils! Archaeologists found 3,000-year-old honey in Egyptian tombs that was still edible!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "4",
+    "category": "Animals",
+    "fact": "Octopuses have three hearts and blue blood!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "5",
+    "category": "Nature",
+    "fact": "Bananas are berries, but strawberries aren't!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "6",
+    "category": "Geography",
+    "fact": "There's a lake in Australia that's naturally pink!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "7",
+    "category": "Science",
+    "fact": "Your nose can remember 50,000 different smells!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "8",
+    "category": "Animals",
+    "fact": "Cows have best friends and get stressed when separated!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "9",
+    "category": "Space",
+    "fact": "Astronauts grow taller in space because there's no gravity pushing down on their spine!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "10",
+    "category": "Nature",
+    "fact": "A single tree can be home to hundreds of different species of insects!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "11",
+    "category": "History",
+    "fact": "Ancient Egyptians used to shave off their eyebrows to mourn their cats when they died!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "12",
+    "category": "Animals",
+    "fact": "Dolphins sleep with one eye open!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "13",
+    "category": "Science",
+    "fact": "Water can boil and freeze at the same time under certain conditions!",
+    "ageGroups": ["9-12"]
+  },
+  {
+    "id": "14",
+    "category": "Geography",
+    "fact": "Russia has 11 different time zones!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "15",
+    "category": "Animals",
+    "fact": "A snail can sleep for three years!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "16",
+    "category": "Space",
+    "fact": "There are more stars in the universe than grains of sand on all Earth's beaches!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "17",
+    "category": "Nature",
+    "fact": "Rainbows are actually full circles, but we usually only see half!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "18",
+    "category": "Animals",
+    "fact": "Elephants are the only animals that can't jump!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "19",
+    "category": "Science",
+    "fact": "Lightning is five times hotter than the surface of the sun!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "20",
+    "category": "Geography",
+    "fact": "Canada has more lakes than all other countries combined!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "21",
+    "category": "Animals",
+    "fact": "A shrimp's heart is in its head!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "22",
+    "category": "Space",
+    "fact": "A year on Mercury is just 88 Earth days!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "23",
+    "category": "Nature",
+    "fact": "Bamboo can grow almost 1 meter (3 feet) in a single day!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "24",
+    "category": "History",
+    "fact": "The Great Wall of China is so long it would take about 18 months to walk the whole thing!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "25",
+    "category": "Animals",
+    "fact": "Butterflies taste with their feet!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "26",
+    "category": "Science",
+    "fact": "Your bones are stronger than steel!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "27",
+    "category": "Geography",
+    "fact": "The Amazon Rainforest produces 20% of the world's oxygen!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "28",
+    "category": "Animals",
+    "fact": "Hummingbirds are the only birds that can fly backwards!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "29",
+    "category": "Space",
+    "fact": "The footprints on the Moon will stay there for millions of years because there's no wind!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "30",
+    "category": "Nature",
+    "fact": "No two snowflakes are exactly alike!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "31",
+    "category": "Animals",
+    "fact": "A group of owls is called a parliament!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "32",
+    "category": "Science",
+    "fact": "Hot water freezes faster than cold water!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "33",
+    "category": "Geography",
+    "fact": "Mount Everest grows about 4 millimeters taller every year!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "34",
+    "category": "Animals",
+    "fact": "Cats spend about 70% of their lives sleeping!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "35",
+    "category": "Space",
+    "fact": "You could fit all the other planets in our solar system between Earth and the Moon!",
+    "ageGroups": ["9-12"]
+  },
+  {
+    "id": "36",
+    "category": "Nature",
+    "fact": "Venus flytraps can count! They wait for two touches before closing!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "37",
+    "category": "History",
+    "fact": "Cleopatra lived closer in time to the Moon landing than to the building of the pyramids!",
+    "ageGroups": ["9-12"]
+  },
+  {
+    "id": "38",
+    "category": "Animals",
+    "fact": "A blue whale's heart is so big that a small child could swim through its arteries!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "39",
+    "category": "Science",
+    "fact": "Sound travels about 4 times faster in water than in air!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "40",
+    "category": "Geography",
+    "fact": "There's an island in Japan inhabited only by rabbits!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "41",
+    "category": "Animals",
+    "fact": "Sea otters hold hands while sleeping so they don't drift apart!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "42",
+    "category": "Space",
+    "fact": "Saturn would float if you put it in water (if you had a big enough bathtub)!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "43",
+    "category": "Nature",
+    "fact": "There's a flower that smells like chocolate! It's called the Chocolate Cosmos!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "44",
+    "category": "Animals",
+    "fact": "Koalas sleep for up to 22 hours a day!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "45",
+    "category": "Science",
+    "fact": "There are more bacteria in your mouth than there are people on Earth!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "46",
+    "category": "Geography",
+    "fact": "The shortest war in history lasted only 38 minutes!",
+    "ageGroups": ["9-12"]
+  },
+  {
+    "id": "47",
+    "category": "Animals",
+    "fact": "Penguins propose to their partners with pebbles!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  },
+  {
+    "id": "48",
+    "category": "Space",
+    "fact": "A day on Jupiter is only about 10 hours long!",
+    "ageGroups": ["6-8", "9-12"]
+  },
+  {
+    "id": "49",
+    "category": "Nature",
+    "fact": "Trees can communicate with each other through underground fungal networks!",
+    "ageGroups": ["9-12"]
+  },
+  {
+    "id": "50",
+    "category": "Animals",
+    "fact": "Giraffes only need 30 minutes of sleep per day!",
+    "ageGroups": ["3-5", "6-8", "9-12"]
+  }
+]

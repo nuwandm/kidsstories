@@ -3,6 +3,8 @@
  * All data is stored client-side, no backend required
  */
 
+import type { MemoryHighScore, MemoryGameMode, MemoryDifficulty } from './types';
+
 // Storage keys
 const STORAGE_KEYS = {
   READING_PROGRESS: 'kidsstories_reading_progress',
@@ -11,6 +13,14 @@ const STORAGE_KEYS = {
   ACHIEVEMENTS: 'kidsstories_achievements',
   READING_STATS: 'kidsstories_reading_stats',
   PREFERENCES: 'kidsstories_preferences',
+  // Learn section
+  COUNTRIES_VISITED: 'kidsstories_countries_visited',
+  PEOPLE_DISCOVERED: 'kidsstories_people_discovered',
+  ANIMALS_LEARNED: 'kidsstories_animals_learned',
+  // Play section
+  MEMORY_HIGH_SCORES: 'kidsstories_memory_scores',
+  // Fun facts
+  SAVED_FUN_FACTS: 'kidsstories_saved_facts',
 } as const;
 
 // Types
@@ -430,4 +440,122 @@ export const calculateReadingTime = (story: { pages: { text?: string }[] }): num
   }
 
   return Math.ceil(totalWords / wordsPerMinute);
+};
+
+// ==========================================
+// LEARN SECTION STORAGE
+// ==========================================
+
+// Countries visited
+export const getCountriesVisited = (): string[] => {
+  if (typeof window === 'undefined') return [];
+  const data = localStorage.getItem(STORAGE_KEYS.COUNTRIES_VISITED);
+  return data ? JSON.parse(data) : [];
+};
+
+export const markCountryVisited = (countrySlug: string) => {
+  if (typeof window === 'undefined') return;
+  const visited = getCountriesVisited();
+  if (!visited.includes(countrySlug)) {
+    visited.push(countrySlug);
+    localStorage.setItem(STORAGE_KEYS.COUNTRIES_VISITED, JSON.stringify(visited));
+  }
+};
+
+// Famous people discovered
+export const getPeopleDiscovered = (): string[] => {
+  if (typeof window === 'undefined') return [];
+  const data = localStorage.getItem(STORAGE_KEYS.PEOPLE_DISCOVERED);
+  return data ? JSON.parse(data) : [];
+};
+
+export const markPersonDiscovered = (personSlug: string) => {
+  if (typeof window === 'undefined') return;
+  const discovered = getPeopleDiscovered();
+  if (!discovered.includes(personSlug)) {
+    discovered.push(personSlug);
+    localStorage.setItem(STORAGE_KEYS.PEOPLE_DISCOVERED, JSON.stringify(discovered));
+  }
+};
+
+// Animals learned
+export const getAnimalsLearned = (): string[] => {
+  if (typeof window === 'undefined') return [];
+  const data = localStorage.getItem(STORAGE_KEYS.ANIMALS_LEARNED);
+  return data ? JSON.parse(data) : [];
+};
+
+export const markAnimalLearned = (animalSlug: string) => {
+  if (typeof window === 'undefined') return;
+  const learned = getAnimalsLearned();
+  if (!learned.includes(animalSlug)) {
+    learned.push(animalSlug);
+    localStorage.setItem(STORAGE_KEYS.ANIMALS_LEARNED, JSON.stringify(learned));
+  }
+};
+
+// ==========================================
+// PLAY SECTION STORAGE
+// ==========================================
+
+export const getMemoryHighScores = (): MemoryHighScore[] => {
+  if (typeof window === 'undefined') return [];
+  const data = localStorage.getItem(STORAGE_KEYS.MEMORY_HIGH_SCORES);
+  return data ? JSON.parse(data) : [];
+};
+
+export const saveMemoryHighScore = (score: MemoryHighScore) => {
+  if (typeof window === 'undefined') return;
+  const scores = getMemoryHighScores();
+
+  // Find existing score for this mode and difficulty
+  const existingIndex = scores.findIndex(
+    s => s.mode === score.mode && s.difficulty === score.difficulty
+  );
+
+  if (existingIndex >= 0) {
+    // Only update if new score is better (fewer moves or same moves but faster)
+    const existing = scores[existingIndex];
+    if (score.moves < existing.moves || (score.moves === existing.moves && score.time < existing.time)) {
+      scores[existingIndex] = score;
+    }
+  } else {
+    scores.push(score);
+  }
+
+  localStorage.setItem(STORAGE_KEYS.MEMORY_HIGH_SCORES, JSON.stringify(scores));
+};
+
+export const getMemoryHighScore = (mode: MemoryGameMode, difficulty: MemoryDifficulty): MemoryHighScore | null => {
+  const scores = getMemoryHighScores();
+  return scores.find(s => s.mode === mode && s.difficulty === difficulty) || null;
+};
+
+// ==========================================
+// FUN FACTS STORAGE
+// ==========================================
+
+export const getSavedFunFacts = (): string[] => {
+  if (typeof window === 'undefined') return [];
+  const data = localStorage.getItem(STORAGE_KEYS.SAVED_FUN_FACTS);
+  return data ? JSON.parse(data) : [];
+};
+
+export const toggleSaveFunFact = (factId: string): boolean => {
+  if (typeof window === 'undefined') return false;
+  const saved = getSavedFunFacts();
+  const index = saved.indexOf(factId);
+
+  if (index > -1) {
+    saved.splice(index, 1);
+  } else {
+    saved.push(factId);
+  }
+
+  localStorage.setItem(STORAGE_KEYS.SAVED_FUN_FACTS, JSON.stringify(saved));
+  return index === -1;
+};
+
+export const isFunFactSaved = (factId: string): boolean => {
+  return getSavedFunFacts().includes(factId);
 };

@@ -1,0 +1,28 @@
+{
+  "slug": "france",
+  "name": "France",
+  "continent": "Europe",
+  "flag": "🇫🇷",
+  "capital": "Paris",
+  "languages": ["French"],
+  "greeting": "Bonjour!",
+  "funFacts": [
+    "The Eiffel Tower was built in 1889 and is 330 meters tall!",
+    "France is famous for over 400 different types of cheese!",
+    "French people eat about 25,000 tons of snails every year!",
+    "The Louvre Museum has over 35,000 works of art!",
+    "France hosted the first modern Olympic Games in 1900!"
+  ],
+  "landmarks": [
+    "Eiffel Tower - The famous iron tower in Paris",
+    "Louvre Museum - Home to the Mona Lisa painting",
+    "Palace of Versailles - A magnificent royal palace with beautiful gardens"
+  ],
+  "animals": ["French Bulldog", "Camargue horse", "Alpine ibex", "European rabbit"],
+  "foods": ["Croissants", "Baguette", "Crepes", "Macarons"],
+  "ageContent": {
+    "3-5": "France is a country with a big pretty tower called the Eiffel Tower! People there say 'Bonjour' which means hello. They love to eat yummy bread called baguettes and sweet treats called croissants for breakfast. France has lots of beautiful flowers and castles!",
+    "6-8": "France is a beautiful country in Europe famous for the Eiffel Tower in Paris! French people speak French and love art and delicious food. They invented the hot air balloon and the parachute! France has amazing museums with famous paintings like the Mona Lisa. French kids eat croissants and crepes, and France makes over 400 types of cheese!",
+    "9-12": "France is one of the largest countries in Europe, known for its rich history, art, and cuisine. Paris, the capital, is called the 'City of Light' and is home to iconic landmarks like the Eiffel Tower, the Louvre Museum (the world's largest art museum), and Notre-Dame Cathedral. France has produced famous artists like Claude Monet and writers like Victor Hugo. The country is a leader in fashion, wine-making, and gastronomy. France was one of the founding members of the European Union and has the world's largest art museum."
+  }
+}

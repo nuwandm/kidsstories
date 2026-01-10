@@ -1,0 +1,21 @@
+{
+  "slug": "dolphin",
+  "name": "Dolphin",
+  "type": "Mammal",
+  "habitat": ["Ocean"],
+  "diet": "Carnivore",
+  "image": "🐬",
+  "funFacts": [
+    "Dolphins are actually mammals that breathe air, not fish!",
+    "They can swim up to 20 miles per hour!",
+    "Dolphins sleep with one eye open and half their brain awake!",
+    "Each dolphin has a unique whistle, like a name!",
+    "Dolphins use echolocation to 'see' with sound!"
+  ],
+  "conservationStatus": "Varies by species",
+  "ageContent": {
+    "3-5": "Dolphins are friendly animals that live in the ocean! They love to jump and play in the waves. Dolphins talk to each other with clicks and whistles. They're not fish - they breathe air just like you!",
+    "6-8": "Dolphins are super smart marine mammals! Unlike fish, they breathe air through a blowhole on top of their head. Dolphins are very social and live in groups called pods. They have their own special whistle that's like their name - other dolphins recognize them by it! Dolphins use echolocation to find food - they make clicking sounds and listen for the echo to know where things are. They can even see with sound!",
+    "9-12": "Dolphins are highly intelligent marine mammals known for their social behavior, playfulness, and cognitive abilities. They belong to the cetacean family, which includes whales. Dolphins use echolocation - emitting clicks and interpreting the returning echoes - to navigate and hunt in murky water. Their brains are remarkably large relative to body size, and they demonstrate self-awareness, problem-solving, and teaching behaviors. Dolphins sleep by resting one half of their brain at a time, allowing them to continue swimming and breathing. There are around 40 species of dolphins, ranging from the 4-foot Maui's dolphin to the 30-foot orca (yes, orcas are dolphins!)."
+  }
+}

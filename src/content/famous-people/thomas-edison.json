@@ -1,0 +1,30 @@
+{
+  "slug": "thomas-edison",
+  "name": "Thomas Edison",
+  "title": "Inventor",
+  "portrait": "💡",
+  "birthYear": 1847,
+  "deathYear": 1931,
+  "country": "USA",
+  "category": "Inventor",
+  "famousFor": "Invented the practical light bulb and phonograph",
+  "quote": "I have not failed. I've just found 10,000 ways that won't work.",
+  "achievements": [
+    "Invented the practical incandescent light bulb",
+    "Invented the phonograph (first device to record and play sound)",
+    "Improved the motion picture camera",
+    "Held over 1,000 patents"
+  ],
+  "funFacts": [
+    "He was mostly homeschooled by his mother",
+    "He tested over 3,000 materials before finding the right one for light bulbs",
+    "He was partially deaf but didn't let it stop him",
+    "He once had a laboratory in a train car",
+    "He took very short naps instead of sleeping all night"
+  ],
+  "ageContent": {
+    "3-5": "Thomas Edison invented the light bulb so we can see at night! Before his invention, people used candles. He also made a machine that could record sounds and play them back. He never gave up, even when things were hard!",
+    "6-8": "Thomas Edison was one of the greatest inventors ever! He invented the light bulb that let people have light in their homes at night. He also invented the phonograph, which was the first machine that could record your voice and play it back - like a very old music player! Edison tried thousands of times before his light bulb worked. He said failure just meant he found another way that didn't work!",
+    "9-12": "Thomas Edison was a prolific American inventor who held 1,093 patents - more than any other individual inventor. His most famous invention, the practical incandescent light bulb, revolutionized daily life and enabled the creation of electrical power systems. He also invented the phonograph (the first device to both record and reproduce sound), improved the motion picture camera, and created the first industrial research laboratory. Edison was known for his incredible work ethic and persistence - he famously tested over 3,000 materials before finding one that worked for his light bulb filament. His approach to invention, combining systematic experimentation with practical application, shaped modern research and development."
+  }
+}

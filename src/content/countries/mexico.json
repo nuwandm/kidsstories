@@ -1,0 +1,28 @@
+{
+  "slug": "mexico",
+  "name": "Mexico",
+  "continent": "North America",
+  "flag": "🇲🇽",
+  "capital": "Mexico City",
+  "languages": ["Spanish"],
+  "greeting": "Hola!",
+  "funFacts": [
+    "Mexico introduced chocolate to the world!",
+    "Mexico City was built on top of an ancient Aztec city!",
+    "Chihuahuas are named after a Mexican state!",
+    "Mexico has 35 UNESCO World Heritage Sites!",
+    "The Day of the Dead is a colorful celebration honoring loved ones!"
+  ],
+  "landmarks": [
+    "Chichen Itza - Ancient Mayan pyramid",
+    "Teotihuacan - City of the Gods with massive pyramids",
+    "Cancun - Beautiful beaches and coral reefs"
+  ],
+  "animals": ["Jaguar", "Mexican axolotl", "Monarch butterfly", "Quetzal bird", "Spider monkey"],
+  "foods": ["Tacos", "Guacamole", "Enchiladas", "Churros", "Tamales"],
+  "ageContent": {
+    "3-5": "Mexico is a colorful country where people speak Spanish and say 'Hola!' They have yummy tacos and pretty festivals with music! Mexico has cool animals like butterflies and colorful birds. Long ago, people there built big pyramids too!",
+    "6-8": "Mexico is a beautiful country south of the United States! Ancient civilizations like the Aztecs and Mayans built amazing pyramids there. Mexico gave the world chocolate, avocados, and corn! They celebrate the Day of the Dead with colorful decorations and remember family members. Mexican food like tacos and guacamole is loved around the world!",
+    "9-12": "Mexico has a rich history shaped by ancient civilizations including the Olmecs, Mayans, and Aztecs. The Mayan calendar and mathematical system were remarkably advanced for their time. When Spanish explorers arrived in 1519, the Aztec capital Tenochtitlan was one of the largest cities in the world - modern Mexico City is built on its ruins. Mexico is the largest Spanish-speaking country by population and is known for its vibrant culture, delicious cuisine, and contributions to art through painters like Frida Kahlo and Diego Rivera. The country is a biodiversity hotspot with many unique species like the axolotl."
+  }
+}

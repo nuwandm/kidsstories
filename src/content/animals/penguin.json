@@ -1,0 +1,21 @@
+{
+  "slug": "penguin",
+  "name": "Penguin",
+  "type": "Bird",
+  "habitat": ["Antarctic", "Coastal"],
+  "diet": "Carnivore",
+  "image": "🐧",
+  "funFacts": [
+    "Penguins are birds that can't fly but are excellent swimmers!",
+    "Emperor penguins can dive deeper than any other bird - over 1,800 feet!",
+    "Penguins waddle to save energy and stay warm!",
+    "Some penguins propose to their partners with a special pebble!",
+    "Penguin dads keep their eggs warm on their feet for months!"
+  ],
+  "conservationStatus": "Varies by species",
+  "ageContent": {
+    "3-5": "Penguins are cute birds that can't fly in the sky, but they fly through the water! They waddle on the ice and slide on their tummies. Penguin daddies take care of the eggs to keep them warm!",
+    "6-8": "Penguins are special birds that swim instead of fly! They live in cold places and have waterproof feathers to stay dry. Penguins waddle because it saves energy and keeps them warm. Emperor penguin dads balance their eggs on their feet for over two months in freezing weather while the moms get food. Some penguins give special pebbles to their partners as gifts!",
+    "9-12": "Penguins are flightless seabirds adapted for life in water. Their wings have evolved into flippers that make them incredibly efficient swimmers - emperor penguins can dive to depths of over 1,800 feet and hold their breath for 20 minutes! There are 18 species of penguins, and contrary to popular belief, not all live in cold climates - some species live near the equator. Penguins have dense bones (unlike flying birds) which helps them dive, and they can drink salt water because special glands filter out the salt. Emperor penguins demonstrate remarkable parental dedication, with males fasting for up to 115 days while incubating eggs in -40°F temperatures."
+  }
+}

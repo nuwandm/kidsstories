@@ -1,0 +1,28 @@
+{
+  "slug": "india",
+  "name": "India",
+  "continent": "Asia",
+  "flag": "🇮🇳",
+  "capital": "New Delhi",
+  "languages": ["Hindi", "English"],
+  "greeting": "Namaste! (नमस्ते)",
+  "funFacts": [
+    "India has over 1.4 billion people - more than any other country!",
+    "Chess was invented in India!",
+    "India has 22 official languages!",
+    "The Taj Mahal took 22 years to build!",
+    "Yoga started in India over 5,000 years ago!"
+  ],
+  "landmarks": [
+    "Taj Mahal - Beautiful white marble monument",
+    "Hawa Mahal - Palace of the Winds with 953 windows",
+    "Gateway of India - Famous arch monument in Mumbai"
+  ],
+  "animals": ["Bengal tiger", "Indian elephant", "Peacock", "Indian cobra", "Asiatic lion"],
+  "foods": ["Curry", "Naan bread", "Samosas", "Biryani", "Mango lassi"],
+  "ageContent": {
+    "3-5": "India is a colorful country with beautiful buildings and yummy food! People there say 'Namaste' and put their hands together to say hello. India has pretty elephants and peacocks with colorful feathers! They have a beautiful white building called the Taj Mahal!",
+    "6-8": "India is a big country in Asia with over a billion people! Indians invented chess and the number zero! The country has amazing festivals with lots of colors, like Holi where people throw colored powder. Indian food uses yummy spices to make curry and biryani. The Taj Mahal is one of the most beautiful buildings in the world, made of white marble!",
+    "9-12": "India is the most populous country in the world and one of the oldest civilizations, with a history spanning over 5,000 years. It's the birthplace of Hinduism, Buddhism, Jainism, and Sikhism, and is known for its spiritual traditions including yoga and meditation. India has made significant contributions to mathematics (the decimal system, zero), science, and literature. The country is incredibly diverse with hundreds of languages, religions, and cultural traditions. India's film industry, Bollywood, produces more movies per year than Hollywood!"
+  }
+}

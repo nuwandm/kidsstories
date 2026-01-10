@@ -1,0 +1,21 @@
+{
+  "slug": "shark",
+  "name": "Shark",
+  "type": "Fish",
+  "habitat": ["Ocean"],
+  "diet": "Carnivore",
+  "image": "🦈",
+  "funFacts": [
+    "Sharks have been around for over 400 million years!",
+    "They can smell a drop of blood from a quarter mile away!",
+    "Sharks lose and grow thousands of teeth in their lifetime!",
+    "Whale sharks are the largest fish but only eat tiny plankton!",
+    "Sharks don't have bones - their skeleton is made of cartilage!"
+  ],
+  "conservationStatus": "Varies by species",
+  "ageContent": {
+    "3-5": "Sharks are fish with lots of sharp teeth! They swim in the ocean and are very good at finding food. Sharks have been around longer than dinosaurs! Don't worry - most sharks are friendly and don't want to bother people!",
+    "6-8": "Sharks are amazing ocean fish that have been around for 400 million years - even before dinosaurs! They have a super sense of smell and can detect one drop of blood in an Olympic swimming pool worth of water! Sharks don't have bones - their skeleton is made of cartilage, like your nose and ears. They can have thousands of teeth in their lifetime because new ones grow to replace lost ones. The biggest shark is the whale shark, which only eats tiny plankton!",
+    "9-12": "Sharks are cartilaginous fish that have survived five mass extinctions over their 400+ million year history. There are over 500 species ranging from the 8-inch dwarf lantern shark to the 40-foot whale shark. Sharks possess extraordinary sensory abilities: they can detect electrical fields from other animals' muscle movements (electroreception), have a lateral line system that senses water movements, and their sense of smell is approximately 10,000 times stronger than humans'. Unlike bony fish, sharks must keep swimming to breathe. Despite their fearsome reputation, most sharks pose no threat to humans, and more people are killed by vending machines than sharks annually. Many shark species are threatened by overfishing and finning."
+  }
+}

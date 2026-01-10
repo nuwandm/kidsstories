@@ -1,0 +1,28 @@
+{
+  "slug": "usa",
+  "name": "United States",
+  "continent": "North America",
+  "flag": "🇺🇸",
+  "capital": "Washington D.C.",
+  "languages": ["English"],
+  "greeting": "Hello!",
+  "funFacts": [
+    "The USA has 50 states!",
+    "The Statue of Liberty was a gift from France!",
+    "Americans invented basketball, baseball, and American football!",
+    "The Grand Canyon is over 1 mile deep!",
+    "The USA put the first person on the Moon in 1969!"
+  ],
+  "landmarks": [
+    "Statue of Liberty - Symbol of freedom in New York",
+    "Grand Canyon - A massive canyon in Arizona",
+    "Mount Rushmore - Giant carved faces of four presidents"
+  ],
+  "animals": ["Bald eagle", "American bison", "Grizzly bear", "Alligator", "Wild turkey"],
+  "foods": ["Hamburgers", "Hot dogs", "Apple pie", "Mac and cheese", "Barbecue"],
+  "ageContent": {
+    "3-5": "America is a big country with 50 states! It has the Statue of Liberty, which holds a torch up high. Americans love to eat hamburgers and watch movies. They went to the Moon in a rocket ship! The bald eagle is their special bird!",
+    "6-8": "The United States of America is made up of 50 different states! From snowy Alaska to sunny Hawaii, it has all kinds of weather and landscapes. Americans invented many things like airplanes, light bulbs, and the internet! The country has famous places like Disneyland, Hollywood, and the Grand Canyon. In 1969, American astronauts were the first humans to walk on the Moon!",
+    "9-12": "The United States is the third-largest country by population and fourth-largest by land area. It's known for its diverse geography, from the Atlantic to Pacific coasts, including mountains, deserts, plains, and tropical regions. The USA has been a leader in technology, space exploration, entertainment, and innovation. American culture, including music (jazz, rock, hip-hop), movies, and sports, has influenced the entire world. The country is a federal republic with a democratic government established by its Constitution in 1787, one of the oldest written national constitutions still in use."
+  }
+}
