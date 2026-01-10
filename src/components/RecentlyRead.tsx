@@ -38,9 +38,9 @@ export function RecentlyRead() {
               href={`/stories/${item.slug}/`}
               className="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-400 focus-visible:ring-offset-4 rounded-kid-lg"
             >
-              <div className="relative bg-white rounded-kid-lg overflow-hidden shadow-soft transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-2 border-2 border-white/80 hover:border-primary-200">
+              <div className="relative h-full bg-white rounded-kid-lg overflow-hidden shadow-soft transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-2 border-2 border-white/80 hover:border-primary-200 flex flex-col">
                 {/* Image */}
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
                   <Image
                     src={item.coverImage}
                     alt={item.title}
@@ -59,8 +59,8 @@ export function RecentlyRead() {
                 </div>
 
                 {/* Title */}
-                <div className="p-3">
-                  <h3 className="font-display text-sm font-bold text-slate-800 group-hover:text-primary-600 transition-colors line-clamp-2">
+                <div className="p-3 flex-1 flex items-start">
+                  <h3 className="font-display text-sm font-bold text-slate-800 group-hover:text-primary-600 transition-colors line-clamp-2 min-h-[2.5rem]">
                     {item.title}
                   </h3>
                 </div>

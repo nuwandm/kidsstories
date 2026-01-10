@@ -60,7 +60,7 @@ export function StoryCard({ story, priority = false }: StoryCardProps) {
         aria-label={`Read "${story.title}"`}
       >
         {/* Card container */}
-        <div className="relative bg-white rounded-kid-xl overflow-hidden shadow-soft transition-all duration-500 ease-out group-hover:shadow-soft-xl group-hover:-translate-y-3 border-2 border-white/80 group-hover:border-primary-200">
+        <div className="relative h-full bg-white rounded-kid-xl overflow-hidden shadow-soft transition-all duration-500 ease-out group-hover:shadow-soft-xl group-hover:-translate-y-3 border-2 border-white/80 group-hover:border-primary-200 flex flex-col">
           {/* Favorite button - top left */}
           <button
             onClick={handleFavoriteClick}
@@ -102,7 +102,7 @@ export function StoryCard({ story, priority = false }: StoryCardProps) {
           )}
 
           {/* Image container */}
-          <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
             {/* Image */}
             <Image
               src={story.coverImage}
@@ -131,7 +131,7 @@ export function StoryCard({ story, priority = false }: StoryCardProps) {
           </div>
 
           {/* Content area */}
-          <div className="relative p-5 sm:p-6">
+          <div className="relative p-5 sm:p-6 flex-1 flex flex-col">
             {/* Decorative dots */}
             <div className="absolute top-0 right-6 flex gap-1.5 -translate-y-1/2">
               <div className="w-2 h-2 rounded-full bg-candy-400" />
@@ -140,7 +140,7 @@ export function StoryCard({ story, priority = false }: StoryCardProps) {
             </div>
 
             {/* Title */}
-            <h2 className="font-display text-lg sm:text-xl font-bold text-slate-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2 mb-3">
+            <h2 className="font-display text-lg sm:text-xl font-bold text-slate-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2 mb-3 min-h-[3.5rem]">
               {story.title}
             </h2>
 
@@ -163,7 +163,7 @@ export function StoryCard({ story, priority = false }: StoryCardProps) {
             </div>
 
             {/* Read action */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mt-auto">
               <div className="flex items-center gap-2 text-primary-500 group-hover:text-primary-600 transition-colors">
                 <span className="font-display font-semibold text-sm">
                   {progress > 0 && progress < 100 ? 'Continue Reading' : 'Start Reading'}
