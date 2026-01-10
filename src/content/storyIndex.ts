@@ -25,6 +25,16 @@ import { StoryIndexItem } from "@/lib/types";
  */
 export const storyIndex: StoryIndexItem[] = [
   {
+    slug: "sample-test",
+    title: "Sample Test",
+    coverImage: "/images/stories/sample-test/cover.webp",
+    uploadedDate: "2026-01-10T10:00:00Z",
+    ageGroup: "6-8",
+    category: "Educational",
+    pageCount: 1,
+    isPdf: true, // PDF story from Cloudflare R2
+  },
+  {
     slug: "miko-banana-rescue",
     title: "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
     coverImage: "/images/stories/miko-banana-rescue/cover.webp",
