@@ -35,16 +35,6 @@ export const storyIndex: StoryIndexItem[] = [
     isPdf: true, // PDF story from Cloudflare R2
   },
   {
-    slug: "jungle-friends-adventure",
-    title: "Jungle Friends: Miko and Ella's Amazing Adventure",
-    coverImage: "/images/stories/jungle-friends/cover.webp",
-    uploadedDate: "2026-01-09T12:00:00Z",
-    ageGroup: "6-8",
-    category: "Friendship",
-    pageCount: 12,
-    isPdf: true, // PDF story from Cloudflare R2
-  },
-  {
     slug: "nila-and-kavi",
     title: "The Little Adventure of Nila and Kavi",
     // Using picsum.photos for placeholder images during development
