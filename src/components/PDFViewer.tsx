@@ -96,12 +96,19 @@ export function PDFViewer({
       const scaleY = containerHeight / pageHeight;
       const scale = Math.min(scaleX, scaleY) * 0.95; // 95% to add some padding
 
-      // Create scaled viewport
-      const scaledViewport = page.getViewport({ scale });
+      // Get device pixel ratio for sharp rendering on high-DPI displays (mobile devices)
+      const pixelRatio = window.devicePixelRatio || 1;
 
-      // Set canvas dimensions
+      // Create scaled viewport with device pixel ratio for crisp text
+      const scaledViewport = page.getViewport({ scale: scale * pixelRatio });
+
+      // Set canvas dimensions (actual size with pixel ratio)
       canvas.width = scaledViewport.width;
       canvas.height = scaledViewport.height;
+
+      // Set CSS dimensions (display size)
+      canvas.style.width = `${scaledViewport.width / pixelRatio}px`;
+      canvas.style.height = `${scaledViewport.height / pixelRatio}px`;
 
       // Clear canvas
       context.clearRect(0, 0, canvas.width, canvas.height);
