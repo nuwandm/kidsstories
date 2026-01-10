@@ -46,6 +46,17 @@ export const storyIndex: StoryIndexItem[] = [
     pageCount: 7,
   },
   {
+    slug: "cinderella",
+    title: "Cinderella and the Magic Shoes",
+    // Using picsum.photos for placeholder images during development
+    // Replace with local images for production: '/images/stories/cinderella/cover.webp'
+    coverImage: "/images/stories/cinderella.webp",
+    uploadedDate: "2026-01-09T10:00:00Z",
+    ageGroup: "3-5",
+    category: "Adventure",
+    pageCount: 12,
+  },
+  {
     slug: "Bunny-big-day",
     title: "Bunny's Big Day",
     // Using picsum.photos for placeholder images during development
