@@ -58,6 +58,8 @@ export function PDFBookReader({ story }: PDFBookReaderProps) {
   const hasCheckedFullscreen = useRef(false);
   const fullscreenBtnRef = useRef<HTMLButtonElement>(null);
   const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const wasPinching = useRef(false);
 
   const nextStory = getNextStory(story.slug);
   const isFirstPage = currentPage === 1;
@@ -329,14 +331,39 @@ export function PDFBookReader({ story }: PDFBookReaderProps) {
 
   // Touch/swipe support
   const handleTouchStart = (e: React.TouchEvent) => {
+    // Detect multi-touch (pinch-to-zoom)
+    if (e.touches.length > 1) {
+      wasPinching.current = true;
+      return;
+    }
+
+    wasPinching.current = false;
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
     resetUITimer();
   };
 
+  const handleTouchMove = (e: React.TouchEvent) => {
+    // Detect if multi-touch occurred during the gesture
+    if (e.touches.length > 1) {
+      wasPinching.current = true;
+    }
+  };
+
   const handleTouchEnd = (e: React.TouchEvent) => {
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) nextPage();
+    // Ignore swipe if user was pinching/zooming
+    if (wasPinching.current) {
+      wasPinching.current = false;
+      return;
+    }
+
+    const diffX = touchStartX.current - e.changedTouches[0].clientX;
+    const diffY = touchStartY.current - e.changedTouches[0].clientY;
+
+    // Only trigger page change if horizontal swipe is dominant and significant
+    // This prevents accidental page changes during vertical scrolling
+    if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+      if (diffX > 0) nextPage();
       else prevPage();
     }
   };
@@ -349,6 +376,7 @@ export function PDFBookReader({ story }: PDFBookReaderProps) {
       }`}
       onMouseMove={resetUITimer}
       onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onClick={resetUITimer}
     >
