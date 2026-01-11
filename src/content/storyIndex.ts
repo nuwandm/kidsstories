@@ -35,17 +35,6 @@ export const storyIndex: StoryIndexItem[] = [
     isPdf: true, // PDF story from Cloudflare R2
   },
   {
-    slug: "bunny-adventure",
-    title: "The Brave Little Bunny",
-    // Using picsum.photos for placeholder images during development
-    // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
-    coverImage: "https://picsum.photos/seed/bunny-cover/800/600",
-    uploadedDate: "2025-12-25T10:00:00Z",
-    ageGroup: "3-5",
-    category: "Animal",
-    pageCount: 7,
-  },
-  {
     slug: "cinderella",
     title: "Cinderella and the Magic Shoes",
     // Using R2 for cover image: stories/cinderella/cover.webp
