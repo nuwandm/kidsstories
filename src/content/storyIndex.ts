@@ -1,4 +1,4 @@
-import { StoryIndexItem } from "@/lib/types";
+import { AgeGroup, Category, StoryIndexItem } from "@/lib/types";
 
 /**
  * Lightweight story index for the home page
@@ -29,8 +29,8 @@ export const storyIndex: StoryIndexItem[] = [
     title: "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
     coverImage: "stories/miko-banana-rescue/cover.webp",
     uploadedDate: "2026-01-09T10:00:00Z",
-    ageGroup: "3-5",
-    category: "Adventure",
+    ageGroup: AgeGroup.PRESCHOOL,
+    category: Category.ADVENTURE,
     pageCount: 12,
     isPdf: true, // PDF story from Cloudflare R2
   },
@@ -40,8 +40,8 @@ export const storyIndex: StoryIndexItem[] = [
     // Using R2 for cover image: stories/cinderella/cover.webp
     coverImage: "stories/cinderella/cover.webp",
     uploadedDate: "2026-01-09T10:00:00Z",
-    ageGroup: "3-5",
-    category: "Fantasy",
+    ageGroup: AgeGroup.PRESCHOOL,
+    category: Category.FANTASY,
     pageCount: 12,
     isPdf: true, // PDF story from Cloudflare R2
   },
@@ -52,8 +52,8 @@ export const storyIndex: StoryIndexItem[] = [
     // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
     coverImage: "/images/stories/Bunny-big-day/cover.webp",
     uploadedDate: "2026-01-06T10:00:00Z",
-    ageGroup: "3-5",
-    category: "Educational",
+    ageGroup: AgeGroup.PRESCHOOL,
+    category: Category.ANIMAL,
     pageCount: 7,
   },
   {
@@ -63,8 +63,8 @@ export const storyIndex: StoryIndexItem[] = [
     // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
     coverImage: "stories/lumi-and-robot/cover.webp",
     uploadedDate: "2026-01-06T10:00:00Z",
-    ageGroup: "3-5",
-    category: "Friendship",
+    ageGroup: AgeGroup.EARLY_ELEMENTARY,
+    category: Category.FRIENDSHIP, // "Friendship",
     pageCount: 12,
   },
   {
@@ -74,9 +74,9 @@ export const storyIndex: StoryIndexItem[] = [
     // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
     coverImage: "stories/robin/cover.webp",
     uploadedDate: "2026-01-06T10:00:00Z",
-    ageGroup: "3-5",
-    category: "Adventure",
-    pageCount: 7,
+    ageGroup: AgeGroup.LATE_ELEMENTARY,
+    category: Category.ADVENTURE,
+    pageCount: 13,
   },
 ];
 
