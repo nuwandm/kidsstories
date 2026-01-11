@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { storyIndex } from '@/content/storyIndex';
 import { AgeGroup, Category } from '@/lib/types';
 import { getFavorites } from '@/lib/storage';
+import { getImageUrl } from '@/lib/imageUrl';
 
 export default function StoriesPage() {
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<AgeGroup | 'all'>('all');
@@ -173,7 +174,7 @@ export default function StoriesPage() {
                 {/* Cover Image */}
                 <div className="relative aspect-[4/3] overflow-hidden rounded-t-kid-xl bg-gradient-to-br from-purple-100 to-pink-100">
                   <Image
-                    src={story.coverImage}
+                    src={getImageUrl(story.coverImage)}
                     alt={story.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"

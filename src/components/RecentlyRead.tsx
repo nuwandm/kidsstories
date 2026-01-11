@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getReadingHistory, type ReadingHistoryItem } from '@/lib/storage';
+import { getImageUrl } from '@/lib/imageUrl';
 
 /**
  * Recently Read Stories Component
@@ -42,7 +43,7 @@ export function RecentlyRead() {
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
                   <Image
-                    src={item.coverImage}
+                    src={getImageUrl(item.coverImage)}
                     alt={item.title}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"

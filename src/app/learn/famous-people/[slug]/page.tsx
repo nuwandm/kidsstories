@@ -57,42 +57,20 @@ export default async function PersonPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 via-pink-50 to-orange-50">
-      {/* Hero Section */}
-      <header className="bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 py-12 sm:py-16">
+      {/* Minimal Header */}
+      <header className="py-6">
         <div className="container-story">
           <Link
             href="/learn/famous-people"
-            className="inline-flex items-center gap-2 text-purple-600 font-fredoka font-semibold mb-6 hover:underline"
+            className="inline-flex items-center gap-2 text-purple-600 font-fredoka font-semibold hover:underline"
           >
             ← Back to Famous People
           </Link>
-
-          <div className="text-center">
-            <div className="inline-block mb-4 animate-bounce-gentle">
-              <span className="text-7xl sm:text-8xl md:text-9xl">{person.portrait}</span>
-            </div>
-            <h1 className="font-fredoka text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-2">
-              {person.name}
-            </h1>
-            <p className="font-nunito text-xl sm:text-2xl text-gray-600 mb-4">
-              {person.title}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-4">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full font-nunito">
-                <span>📍</span>
-                <span>{person.country}</span>
-              </span>
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full font-nunito">
-                <span>📅</span>
-                <span>{person.birthYear}{person.deathYear ? ` - ${person.deathYear}` : ' - Present'}</span>
-              </span>
-            </div>
-          </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="container-story py-12 sm:py-16">
+      {/* Main Content - Facebook Style Profile */}
+      <main className="container-story pb-12">
         <PersonDetail person={person} />
       </main>
     </div>

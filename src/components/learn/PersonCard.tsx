@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { FamousPersonIndexItem } from '@/lib/types';
+import { getImageUrl } from '@/lib/imageUrl';
 
 interface PersonCardProps {
   person: FamousPersonIndexItem;
@@ -36,14 +38,27 @@ export function PersonCard({ person, discovered = false }: PersonCardProps) {
       <div className={`${bgColorClass} rounded-kid-xl shadow-soft p-6 hover:shadow-soft-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden`}>
         {/* Discovered Badge */}
         {discovered && (
-          <div className="absolute top-3 right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-fredoka font-bold">
+          <div className="absolute top-3 right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-fredoka font-bold z-10">
             Discovered!
           </div>
         )}
 
         {/* Portrait */}
-        <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${colorClass} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform`}>
-          <span className="text-4xl">{person.portrait}</span>
+        <div className="mb-4 group-hover:scale-105 transition-transform">
+          {person.profileImage ? (
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full border-2 border-white shadow-md overflow-hidden">
+              <Image
+                src={getImageUrl(person.profileImage)}
+                alt={person.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ) : (
+            <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${colorClass} flex items-center justify-center mx-auto`}>
+              <span className="text-4xl">{person.portrait}</span>
+            </div>
+          )}
         </div>
 
         {/* Name */}

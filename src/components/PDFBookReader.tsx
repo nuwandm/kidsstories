@@ -556,7 +556,7 @@ export function PDFBookReader({ story }: PDFBookReaderProps) {
             {/* PDF Viewer */}
             <div className={`w-full h-full rounded-xl overflow-hidden shadow-2xl ${eyeComfortMode ? 'sepia-[0.15]' : ''}`}>
               <PDFViewer
-                url={buildPdfUrl(story.pdfFileName)}
+                url={buildPdfUrl(story.pdfFileName, story.slug)}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
                 onLoadSuccess={handleLoadSuccess}

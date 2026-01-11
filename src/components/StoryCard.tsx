@@ -10,6 +10,7 @@ import {
   toggleFavorite,
   isFavorite,
 } from '@/lib/storage';
+import { getImageUrl } from '@/lib/imageUrl';
 
 /**
  * Modern, Engaging Story Card Component
@@ -105,7 +106,7 @@ export function StoryCard({ story, priority = false }: StoryCardProps) {
           <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
             {/* Image */}
             <Image
-              src={story.coverImage}
+              src={getImageUrl(story.coverImage)}
               alt={`Cover image for ${story.title}`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

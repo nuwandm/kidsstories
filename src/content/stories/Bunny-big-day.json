@@ -1,11 +1,11 @@
 {
   "slug": "Bunny-big-day",
   "title": "Bunny's Big Day",
-  "coverImage": "/images/stories/Bunny-big-day/cover.webp",
+  "coverImage": "stories/bunny-adventure/cover.webp",
   "uploadedDate": "2026-01-06T10:00:00Z",
   "ageGroup": "0-2",
   "category": "Educational",
-  "pages": [
+  "pages": [ 
     {
       "image": "/images/stories/Bunny-big-day/page1.webp"
     },

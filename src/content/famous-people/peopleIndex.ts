@@ -18,6 +18,7 @@ export const peopleIndex: FamousPersonIndexItem[] = [
     name: "Albert Einstein",
     title: "Physicist",
     portrait: "👨‍🔬",
+    profileImage: "FamousPersons/albert-einstein/profile.webp",
     category: "Scientist",
     famousFor: "Theory of Relativity",
   },

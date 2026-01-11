@@ -229,6 +229,10 @@ export interface FamousPerson {
   name: string;
   title: string;
   portrait: string;
+  /** Path to profile image (e.g., "/images/learn/people/profile/marie-curie.webp") */
+  profileImage?: string;
+  /** Path to cover image (e.g., "/images/learn/people/cover/marie-curie.webp") */
+  coverImage?: string;
   birthYear: number;
   deathYear?: number;
   country: string;
@@ -252,6 +256,8 @@ export interface FamousPersonIndexItem {
   name: string;
   title: string;
   portrait: string;
+  /** Path to profile image (e.g., "/images/learn/people/profile/marie-curie.webp") */
+  profileImage?: string;
   category: FamousPersonCategory;
   famousFor: string;
 }

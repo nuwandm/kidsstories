@@ -1,11 +1,11 @@
 {
   "slug": "miko-banana-rescue",
   "title": "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
-  "coverImage": "/images/stories/miko-banana-rescue/cover.webp",
+  "coverImage": "stories/miko-banana-rescue/cover.webp",
   "uploadedDate": "2026-01-09T10:00:00Z",
   "ageGroup": "3-5",
   "category": "Adventure",
-  "pdfFileName": "Miko the Monkey and Ella the Elephant - The Great Banana Rescue.pdf",
+  "pdfFileName": "miko-banana-rescue.pdf",
   "pageCount": 12,
   "isPdf": true
 }

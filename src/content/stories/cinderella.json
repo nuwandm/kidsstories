@@ -1,11 +1,11 @@
 {
   "slug": "cinderella",
   "title": "Cinderella and the Magic Shoes",
-  "coverImage": "/images/stories/cinderella.webp",
+  "coverImage": "stories/cinderella/cover.webp",
   "uploadedDate": "2026-01-09T10:00:00Z",
   "ageGroup": "3-5",
   "category": "Adventure",
-  "pdfFileName": "Cinderella.pdf",
+  "pdfFileName": "cinderella.pdf",
   "pageCount": 12,
   "isPdf": true
 }

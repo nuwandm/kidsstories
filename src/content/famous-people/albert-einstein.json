@@ -3,6 +3,8 @@
   "name": "Albert Einstein",
   "title": "Physicist",
   "portrait": "👨‍🔬",
+  "profileImage": "FamousPersons/albert-einstein/profile.webp",
+  "coverImage": "FamousPersons/albert-einstein/cover.webp",
   "birthYear": 1879,
   "deathYear": 1955,
   "country": "Germany/USA",

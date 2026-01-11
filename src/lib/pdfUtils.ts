@@ -15,16 +15,17 @@ export function getPdfBucketUrl(): string {
 }
 
 /**
- * Build full PDF URL from filename
+ * Build full PDF URL from filename and slug
  *
  * @param pdfFileName - The PDF filename (will be URL encoded)
+ * @param slug - The story slug (used for folder structure)
  * @returns Full URL to the PDF in R2 bucket
  *
  * @example
- * buildPdfUrl('miko-banana-rescue.pdf')
- * // Returns: https://bucket.r2.dev/storysite/miko-banana-rescue.pdf
+ * buildPdfUrl('cinderella.pdf', 'cinderella')
+ * // Returns: https://pub-045678fbe1134176990c8f92088d9b70.r2.dev/stories/cinderella/cinderella.pdf
  */
-export function buildPdfUrl(pdfFileName: string): string {
+export function buildPdfUrl(pdfFileName: string, slug?: string): string {
   const baseUrl = getPdfBucketUrl();
 
   if (!baseUrl) {
@@ -35,7 +36,14 @@ export function buildPdfUrl(pdfFileName: string): string {
   // Encode the filename to handle spaces and special characters
   const encodedFileName = encodeURIComponent(pdfFileName);
 
-  return `${baseUrl}/${encodedFileName}`;
+  // PDFs are stored in 'stories/{slug}/' folder structure in R2
+  // If slug is provided, use folder structure: stories/slug/filename
+  // Otherwise, use old structure: stories/filename (for backwards compatibility)
+  if (slug) {
+    return `${baseUrl}/stories/${slug}/${encodedFileName}`;
+  } else {
+    return `${baseUrl}/stories/${encodedFileName}`;
+  }
 }
 
 /**

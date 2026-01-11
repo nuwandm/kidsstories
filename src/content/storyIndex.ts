@@ -27,7 +27,7 @@ export const storyIndex: StoryIndexItem[] = [
   {
     slug: "miko-banana-rescue",
     title: "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
-    coverImage: "/images/stories/miko-banana-rescue/cover.webp",
+    coverImage: "stories/miko-banana-rescue/cover.webp",
     uploadedDate: "2026-01-09T10:00:00Z",
     ageGroup: "3-5",
     category: "Adventure",
@@ -48,13 +48,13 @@ export const storyIndex: StoryIndexItem[] = [
   {
     slug: "cinderella",
     title: "Cinderella and the Magic Shoes",
-    // Using picsum.photos for placeholder images during development
-    // Replace with local images for production: '/images/stories/cinderella/cover.webp'
-    coverImage: "/images/stories/cinderella.webp",
+    // Using R2 for cover image: stories/cinderella/cover.webp
+    coverImage: "stories/cinderella/cover.webp",
     uploadedDate: "2026-01-09T10:00:00Z",
     ageGroup: "3-5",
     category: "Adventure",
     pageCount: 12,
+    isPdf: true, // PDF story from Cloudflare R2
   },
   {
     slug: "Bunny-big-day",
