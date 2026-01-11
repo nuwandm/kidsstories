@@ -21,14 +21,37 @@ export interface StoryPage {
 }
 
 /**
- * Age group categories for filtering stories
+ * Age group enum for filtering stories
  */
-export type AgeGroup = '3-5' | '6-8' | '9-12';
+export enum AgeGroup {
+  PRESCHOOL = '3-5',
+  EARLY_ELEMENTARY = '6-8',
+  LATE_ELEMENTARY = '9-12',
+}
 
 /**
- * Story categories for filtering
+ * Age group type (for backward compatibility)
  */
-export type Category = 'Adventure' | 'Fantasy' | 'Educational' | 'Bedtime' | 'Funny' | 'Animal' | 'Friendship' | 'Science';
+export type AgeGroupType = '3-5' | '6-8' | '9-12';
+
+/**
+ * Story category enum for filtering
+ */
+export enum Category {
+  ADVENTURE = 'Adventure',
+  FANTASY = 'Fantasy',
+  EDUCATIONAL = 'Educational',
+  BEDTIME = 'Bedtime',
+  FUNNY = 'Funny',
+  ANIMAL = 'Animal',
+  FRIENDSHIP = 'Friendship',
+  SCIENCE = 'Science',
+}
+
+/**
+ * Story category type (for backward compatibility)
+ */
+export type CategoryType = 'Adventure' | 'Fantasy' | 'Educational' | 'Bedtime' | 'Funny' | 'Animal' | 'Friendship' | 'Science';
 
 /**
  * Represents a complete story with all its content
@@ -43,10 +66,10 @@ export interface Story {
   coverImage: string;
   /** Date when the story was uploaded (ISO 8601 format) */
   uploadedDate: string;
-  /** Target age group for the story */
-  ageGroup: AgeGroup;
-  /** Story category for filtering */
-  category: Category;
+  /** Target age group for the story (accepts enum or string) */
+  ageGroup: AgeGroup | AgeGroupType;
+  /** Story category for filtering (accepts enum or string) */
+  category: Category | CategoryType;
   /** Array of story pages in reading order */
   pages: StoryPage[];
 }
@@ -64,10 +87,10 @@ export interface PdfStory {
   coverImage: string;
   /** Date when the story was uploaded (ISO 8601 format) */
   uploadedDate: string;
-  /** Target age group for the story */
-  ageGroup: AgeGroup;
-  /** Story category for filtering */
-  category: Category;
+  /** Target age group for the story (accepts enum or string) */
+  ageGroup: AgeGroup | AgeGroupType;
+  /** Story category for filtering (accepts enum or string) */
+  category: Category | CategoryType;
   /**
    * PDF filename in R2 bucket (e.g., "story.pdf")
    * Will be combined with NEXT_PUBLIC_PDF_BUCKET_URL environment variable
@@ -110,10 +133,10 @@ export interface StoryIndexItem {
   coverImage: string;
   /** Date when the story was uploaded (ISO 8601 format) */
   uploadedDate: string;
-  /** Target age group for the story */
-  ageGroup: AgeGroup;
-  /** Story category for filtering */
-  category: Category;
+  /** Target age group for the story (accepts enum or string) */
+  ageGroup: AgeGroup | AgeGroupType;
+  /** Story category for filtering (accepts enum or string) */
+  category: Category | CategoryType;
   /** Number of pages in the story (optional for backwards compatibility) */
   pageCount?: number;
   /** Indicates this is a PDF story (optional) */
@@ -353,4 +376,66 @@ export interface MemoryHighScore {
   moves: number;
   time: number;
   date: string;
+}
+
+// ==========================================
+// ENUM HELPER FUNCTIONS
+// ==========================================
+
+/**
+ * Get all age group values as an array
+ * Useful for generating filter options
+ */
+export function getAllAgeGroups(): AgeGroup[] {
+  return [
+    AgeGroup.PRESCHOOL,
+    AgeGroup.EARLY_ELEMENTARY,
+    AgeGroup.LATE_ELEMENTARY,
+  ];
+}
+
+/**
+ * Get all category values as an array
+ * Useful for generating filter options
+ */
+export function getAllCategories(): Category[] {
+  return [
+    Category.ADVENTURE,
+    Category.FANTASY,
+    Category.EDUCATIONAL,
+    Category.BEDTIME,
+    Category.FUNNY,
+    Category.ANIMAL,
+    Category.FRIENDSHIP,
+    Category.SCIENCE,
+  ];
+}
+
+/**
+ * Get age group display label
+ */
+export function getAgeGroupLabel(ageGroup: AgeGroup | AgeGroupType): string {
+  const labels: Record<string, string> = {
+    [AgeGroup.PRESCHOOL]: 'Preschool (3-5 years)',
+    [AgeGroup.EARLY_ELEMENTARY]: 'Early Elementary (6-8 years)',
+    [AgeGroup.LATE_ELEMENTARY]: 'Late Elementary (9-12 years)',
+  };
+  return labels[ageGroup] || ageGroup;
+}
+
+/**
+ * Get category icon emoji
+ */
+export function getCategoryIcon(category: Category | CategoryType): string {
+  const icons: Record<string, string> = {
+    [Category.ADVENTURE]: '🗺️',
+    [Category.FANTASY]: '✨',
+    [Category.EDUCATIONAL]: '📚',
+    [Category.BEDTIME]: '🌙',
+    [Category.FUNNY]: '😄',
+    [Category.ANIMAL]: '🐾',
+    [Category.FRIENDSHIP]: '🤝',
+    [Category.SCIENCE]: '🔬',
+  };
+  return icons[category] || '📖';
 }

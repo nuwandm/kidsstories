@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FamousPerson, AgeGroup } from '@/lib/types';
+import { FamousPerson, AgeGroup, AgeGroupType } from '@/lib/types';
 import { markPersonDiscovered, getPeopleDiscovered } from '@/lib/storage';
 import { getImageUrl } from '@/lib/imageUrl';
 
@@ -11,7 +11,7 @@ interface PersonDetailProps {
 }
 
 export function PersonDetail({ person }: PersonDetailProps) {
-  const [selectedAge, setSelectedAge] = useState<AgeGroup>('6-8');
+  const [selectedAge, setSelectedAge] = useState<AgeGroup | AgeGroupType>('6-8');
   const [isDiscovered, setIsDiscovered] = useState(false);
   const [activeTab, setActiveTab] = useState<'about' | 'achievements' | 'facts'>('about');
 
@@ -20,7 +20,7 @@ export function PersonDetail({ person }: PersonDetailProps) {
     setIsDiscovered(getPeopleDiscovered().includes(person.slug));
   }, [person.slug]);
 
-  const ageGroups: { value: AgeGroup; label: string; icon: string }[] = [
+  const ageGroups: { value: AgeGroup | AgeGroupType; label: string; icon: string }[] = [
     { value: '3-5', label: 'Ages 3-5', icon: '🧒' },
     { value: '6-8', label: 'Ages 6-8', icon: '👦' },
     { value: '9-12', label: 'Ages 9-12', icon: '🧑' },

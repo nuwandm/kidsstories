@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Animal, AgeGroup } from '@/lib/types';
+import { Animal, AgeGroup, AgeGroupType } from '@/lib/types';
 import { markAnimalLearned, getAnimalsLearned } from '@/lib/storage';
 
 interface AnimalDetailProps {
@@ -9,7 +9,7 @@ interface AnimalDetailProps {
 }
 
 export function AnimalDetail({ animal }: AnimalDetailProps) {
-  const [selectedAge, setSelectedAge] = useState<AgeGroup>('6-8');
+  const [selectedAge, setSelectedAge] = useState<AgeGroup | AgeGroupType>('6-8');
   const [isLearned, setIsLearned] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function AnimalDetail({ animal }: AnimalDetailProps) {
     setIsLearned(getAnimalsLearned().includes(animal.slug));
   }, [animal.slug]);
 
-  const ageGroups: { value: AgeGroup; label: string; icon: string }[] = [
+  const ageGroups: { value: AgeGroup | AgeGroupType; label: string; icon: string }[] = [
     { value: '3-5', label: 'Ages 3-5', icon: '🧒' },
     { value: '6-8', label: 'Ages 6-8', icon: '👦' },
     { value: '9-12', label: 'Ages 9-12', icon: '🧑' },

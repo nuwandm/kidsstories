@@ -1,0 +1,11 @@
+{
+  "slug": "robin",
+  "title": "Robin Hood - The Hero of Sherwood Forest",
+  "coverImage": "stories/robin/cover.webp",
+  "uploadedDate": "2026-01-09T10:00:00Z",
+  "ageGroup": "3-5",
+  "category": "Adventure",
+  "pdfFileName": "robin.pdf",
+  "pageCount": 13,
+  "isPdf": true
+}

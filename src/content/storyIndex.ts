@@ -52,7 +52,7 @@ export const storyIndex: StoryIndexItem[] = [
     coverImage: "stories/cinderella/cover.webp",
     uploadedDate: "2026-01-09T10:00:00Z",
     ageGroup: "3-5",
-    category: "Adventure",
+    category: "Fantasy",
     pageCount: 12,
     isPdf: true, // PDF story from Cloudflare R2
   },
@@ -65,6 +65,17 @@ export const storyIndex: StoryIndexItem[] = [
     uploadedDate: "2026-01-06T10:00:00Z",
     ageGroup: "3-5",
     category: "Educational",
+    pageCount: 7,
+  },
+  {
+    slug: "robin",
+    title: "Robin Hood - The Hero of Sherwood Forest",
+    // Using picsum.photos for placeholder images during development
+    // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
+    coverImage: "stories/robin/cover.webp",
+    uploadedDate: "2026-01-06T10:00:00Z",
+    ageGroup: "3-5",
+    category: "Adventure",
     pageCount: 7,
   },
 ];

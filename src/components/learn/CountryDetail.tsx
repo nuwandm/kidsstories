@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Country, AgeGroup } from '@/lib/types';
+import { Country, AgeGroup, AgeGroupType } from '@/lib/types';
 import { markCountryVisited, getCountriesVisited } from '@/lib/storage';
 
 interface CountryDetailProps {
@@ -9,7 +9,7 @@ interface CountryDetailProps {
 }
 
 export function CountryDetail({ country }: CountryDetailProps) {
-  const [selectedAge, setSelectedAge] = useState<AgeGroup>('6-8');
+  const [selectedAge, setSelectedAge] = useState<AgeGroup | AgeGroupType>('6-8');
   const [isVisited, setIsVisited] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function CountryDetail({ country }: CountryDetailProps) {
     setIsVisited(getCountriesVisited().includes(country.slug));
   }, [country.slug]);
 
-  const ageGroups: { value: AgeGroup; label: string; icon: string }[] = [
+  const ageGroups: { value: AgeGroup | AgeGroupType; label: string; icon: string }[] = [
     { value: '3-5', label: 'Ages 3-5', icon: '🧒' },
     { value: '6-8', label: 'Ages 6-8', icon: '👦' },
     { value: '9-12', label: 'Ages 9-12', icon: '🧑' },

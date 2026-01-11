@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { storyIndex } from '@/content/storyIndex';
-import { AgeGroup, Category } from '@/lib/types';
+import { AgeGroup, Category, getCategoryIcon } from '@/lib/types';
 import { getFavorites } from '@/lib/storage';
 import { getImageUrl } from '@/lib/imageUrl';
 
@@ -221,19 +221,4 @@ export default function StoriesPage() {
         </footer>
     </div>
   );
-}
-
-// Helper function to get emoji for category
-function getCategoryIcon(category: Category): string {
-  const icons: Record<Category, string> = {
-    Adventure: '🗺️',
-    Fantasy: '✨',
-    Educational: '📚',
-    Bedtime: '🌙',
-    Funny: '😄',
-    Animal: '🐾',
-    Friendship: '🤝',
-    Science: '🔬',
-  };
-  return icons[category] || '📖';
 }
