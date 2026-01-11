@@ -57,6 +57,17 @@ export const storyIndex: StoryIndexItem[] = [
     pageCount: 7,
   },
   {
+    slug: "lumi-and-robot",
+    title: "Lumi and the Little Ai Robot Who Learned to Care",
+    // Using picsum.photos for placeholder images during development
+    // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
+    coverImage: "stories/lumi-and-robot/cover.webp",
+    uploadedDate: "2026-01-06T10:00:00Z",
+    ageGroup: "3-5",
+    category: "Friendship",
+    pageCount: 12,
+  },
+  {
     slug: "robin",
     title: "Robin Hood - The Hero of Sherwood Forest",
     // Using picsum.photos for placeholder images during development
