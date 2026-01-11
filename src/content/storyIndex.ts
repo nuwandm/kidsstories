@@ -25,16 +25,6 @@ import { AgeGroup, Category, StoryIndexItem } from "@/lib/types";
  */
 export const storyIndex: StoryIndexItem[] = [
   {
-    slug: "miko-banana-rescue",
-    title: "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
-    coverImage: "stories/miko-banana-rescue/cover.webp",
-    uploadedDate: "2026-01-09T10:00:00Z",
-    ageGroup: AgeGroup.PRESCHOOL,
-    category: Category.ADVENTURE,
-    pageCount: 12,
-    isPdf: true, // PDF story from Cloudflare R2
-  },
-  {
     slug: "cinderella",
     title: "Cinderella and the Magic Shoes",
     // Using R2 for cover image: stories/cinderella/cover.webp
@@ -55,6 +45,25 @@ export const storyIndex: StoryIndexItem[] = [
     ageGroup: AgeGroup.PRESCHOOL,
     category: Category.ANIMAL,
     pageCount: 7,
+  },
+  {
+    slug: "Panda-and-the-Big-Hug",
+    title: "Panda and the Big Hug",
+    coverImage: "stories/Panda-and-the-Big-Hug/cover.webp",
+    uploadedDate: "2026-01-06T10:00:00Z",
+    ageGroup: AgeGroup.PRESCHOOL,
+    category: Category.ANIMAL,
+    pageCount: 7,
+  },
+  {
+    slug: "miko-banana-rescue",
+    title: "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
+    coverImage: "stories/miko-banana-rescue/cover.webp",
+    uploadedDate: "2026-01-09T10:00:00Z",
+    ageGroup: AgeGroup.PRESCHOOL,
+    category: Category.ADVENTURE,
+    pageCount: 12,
+    isPdf: true, // PDF story from Cloudflare R2
   },
   {
     slug: "lumi-and-robot",
