@@ -36,17 +36,6 @@ export const storyIndex: StoryIndexItem[] = [
     isPdf: true, // PDF story from Cloudflare R2
   },
   {
-    slug: "Bunny-big-day",
-    title: "Bunny's Big Day",
-    // Using picsum.photos for placeholder images during development
-    // Replace with local images for production: '/images/stories/bunny-adventure/cover.webp'
-    coverImage: "/images/stories/Bunny-big-day/cover.webp",
-    uploadedDate: "2026-01-06T10:00:00Z",
-    ageGroup: AgeGroup.PRESCHOOL,
-    category: Category.ANIMAL,
-    pageCount: 7,
-  },
-  {
     slug: "Panda-and-the-Big-Hug",
     title: "Panda and the Big Hug",
     coverImage: "stories/Panda-and-the-Big-Hug/cover.webp",
