@@ -56,6 +56,15 @@ export const storyIndex: StoryIndexItem[] = [
     pageCount: 7,
   },
   {
+    slug: "Mike-and-John-Great-Adventure",
+    title: "Mike and John: The Great Adventure",
+    coverImage: "stories/Mike-and-John-Great-Adventure/cover.webp",
+    uploadedDate: "2026-01-06T10:00:00Z",
+    ageGroup: AgeGroup.LATE_ELEMENTARY,
+    category: Category.ADVENTURE,
+    pageCount: 10,
+  },
+  {
     slug: "miko-banana-rescue",
     title: "Miko the Monkey and Ella the Elephant: The Great Banana Rescue",
     coverImage: "stories/miko-banana-rescue/cover.webp",
