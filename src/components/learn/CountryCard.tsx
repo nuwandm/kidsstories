@@ -28,7 +28,7 @@ export function CountryCard({ country, visited = false }: CountryCardProps) {
           {country.flagImage ? (
             <div className="relative w-24 h-16 sm:w-28 sm:h-20 mx-auto rounded-lg overflow-hidden shadow-md border-2 border-gray-100">
               <Image
-                src={country.flagImage}
+                src={`${process.env.NEXT_PUBLIC_PDF_BUCKET_URL}${country.flagImage}`}
                 alt={`Flag of ${country.name}`}
                 fill
                 className="object-cover"

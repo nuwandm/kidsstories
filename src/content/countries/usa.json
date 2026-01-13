@@ -3,6 +3,7 @@
   "name": "United States",
   "continent": "North America",
   "flag": "🇺🇸",
+  "flagImage": "/countries/usa/flag.webp",
   "capital": "Washington D.C.",
   "languages": ["English"],
   "greeting": "Hello!",

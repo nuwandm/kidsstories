@@ -3,6 +3,7 @@
   "name": "Egypt",
   "continent": "Africa",
   "flag": "🇪🇬",
+  "flagImage": "/countries/egypt/flag.webp",
   "capital": "Cairo",
   "languages": ["Arabic"],
   "greeting": "Marhaba! (مرحبا)",

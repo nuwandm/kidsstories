@@ -10,7 +10,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "Japan",
     continent: "Asia",
     flag: "🇯🇵",
-    flagImage: "/images/learn/country/flags/japan.webp",
+    flagImage: "/countries/japan/flag.webp",
     capital: "Tokyo",
   },
   {
@@ -18,6 +18,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "France",
     continent: "Europe",
     flag: "🇫🇷",
+    flagImage: "/countries/france/flag.webp",
     capital: "Paris",
   },
   {
@@ -25,6 +26,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "Brazil",
     continent: "South America",
     flag: "🇧🇷",
+    flagImage: "/countries/brazil/flag.webp",
     capital: "Brasilia",
   },
   {
@@ -32,6 +34,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "Kenya",
     continent: "Africa",
     flag: "🇰🇪",
+    flagImage: "/countries/kenya/flag.webp",
     capital: "Nairobi",
   },
   {
@@ -39,6 +42,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "Australia",
     continent: "Oceania",
     flag: "🇦🇺",
+    flagImage: "/countries/australia/flag.webp",
     capital: "Canberra",
   },
   {
@@ -46,6 +50,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "United States",
     continent: "North America",
     flag: "🇺🇸",
+    flagImage: "/countries/usa/flag.webp",
     capital: "Washington D.C.",
   },
   {
@@ -53,6 +58,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "India",
     continent: "Asia",
     flag: "🇮🇳",
+    flagImage: "/countries/india/flag.webp",
     capital: "New Delhi",
   },
   {
@@ -60,6 +66,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "Egypt",
     continent: "Africa",
     flag: "🇪🇬",
+    flagImage: "/countries/egypt/flag.webp",
     capital: "Cairo",
   },
   {
@@ -67,6 +74,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "Mexico",
     continent: "North America",
     flag: "🇲🇽",
+    flagImage: "/countries/mexico/flag.webp",
     capital: "Mexico City",
   },
   {
@@ -74,6 +82,7 @@ export const countryIndex: CountryIndexItem[] = [
     name: "Italy",
     continent: "Europe",
     flag: "🇮🇹",
+    flagImage: "/countries/italy/flag.webp",
     capital: "Rome",
   },
 ];

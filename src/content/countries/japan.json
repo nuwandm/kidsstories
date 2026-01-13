@@ -3,7 +3,7 @@
   "name": "Japan",
   "continent": "Asia",
   "flag": "🇯🇵",
-  "flagImage": "/images/learn/country/flags/japan.webp",
+  "flagImage": "/countries/japan/flag.webp",
   "capital": "Tokyo",
   "languages": ["Japanese"],
   "greeting": "Konnichiwa! (こんにちは)",

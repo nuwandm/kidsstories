@@ -3,6 +3,7 @@
   "name": "India",
   "continent": "Asia",
   "flag": "🇮🇳",
+  "flagImage": "/countries/india/flag.webp",
   "capital": "New Delhi",
   "languages": ["Hindi", "English"],
   "greeting": "Namaste! (नमस्ते)",

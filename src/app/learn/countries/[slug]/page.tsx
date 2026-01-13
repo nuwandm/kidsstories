@@ -74,7 +74,7 @@ export default async function CountryPage({
               {country.flagImage ? (
                 <div className="relative w-48 h-32 sm:w-64 sm:h-44 md:w-80 md:h-56 mx-auto rounded-kid-xl overflow-hidden shadow-lg border-4 border-white">
                   <Image
-                    src={country.flagImage}
+                    src={`${process.env.NEXT_PUBLIC_PDF_BUCKET_URL}${country.flagImage}`}
                     alt={`Flag of ${country.name}`}
                     fill
                     className="object-cover"

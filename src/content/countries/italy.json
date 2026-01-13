@@ -3,6 +3,7 @@
   "name": "Italy",
   "continent": "Europe",
   "flag": "🇮🇹",
+  "flagImage": "/countries/italy/flag.webp",
   "capital": "Rome",
   "languages": ["Italian"],
   "greeting": "Ciao!",

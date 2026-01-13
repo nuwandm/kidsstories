@@ -3,6 +3,7 @@
   "name": "Kenya",
   "continent": "Africa",
   "flag": "🇰🇪",
+  "flagImage": "/countries/kenya/flag.webp",
   "capital": "Nairobi",
   "languages": ["English", "Swahili"],
   "greeting": "Jambo!",

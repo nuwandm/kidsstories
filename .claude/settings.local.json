@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(copy:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(del \"D:\\\\Github\\\\LyricsSite\\\\kidsstories\\\\public\\\\pdf.worker.min.mjs\")",
+      "Bash(npm run build)",
+      "Bash(if exist .next rmdir /s /q .next)",
+      "Bash(ls:*)"
+    ]
+  }
+}

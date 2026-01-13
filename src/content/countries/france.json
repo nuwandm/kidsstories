@@ -3,6 +3,7 @@
   "name": "France",
   "continent": "Europe",
   "flag": "🇫🇷",
+  "flagImage": "/countries/france/flag.webp",
   "capital": "Paris",
   "languages": ["French"],
   "greeting": "Bonjour!",

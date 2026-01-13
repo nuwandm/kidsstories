@@ -3,6 +3,7 @@
   "name": "Brazil",
   "continent": "South America",
   "flag": "🇧🇷",
+  "flagImage": "/countries/brazil/flag.webp",
   "capital": "Brasilia",
   "languages": ["Portuguese"],
   "greeting": "Ola!",

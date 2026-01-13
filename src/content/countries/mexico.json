@@ -3,6 +3,7 @@
   "name": "Mexico",
   "continent": "North America",
   "flag": "🇲🇽",
+  "flagImage": "/countries/mexico/flag.webp",
   "capital": "Mexico City",
   "languages": ["Spanish"],
   "greeting": "Hola!",

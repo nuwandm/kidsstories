@@ -3,6 +3,7 @@
   "name": "Australia",
   "continent": "Oceania",
   "flag": "🇦🇺",
+  "flagImage": "/countries/australia/flag.webp",
   "capital": "Canberra",
   "languages": ["English"],
   "greeting": "G'day!",
