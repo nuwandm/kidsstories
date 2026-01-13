@@ -30,7 +30,10 @@ export async function generateMetadata({
 
   return {
     title: `${countryMeta.name} - Learn - Kids Stories`,
-    description: `Learn about ${countryMeta.name}! Discover fun facts, landmarks, animals, and culture.`,
+    description: `Learn about ${countryMeta.name} for kids! Discover fun facts, landmarks, animals, food, and culture. Educational content for ages 3-12.`,
+    alternates: {
+      canonical: `/learn/countries/${slug}/`,
+    },
   };
 }
 

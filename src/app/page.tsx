@@ -32,9 +32,45 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const totalStories = getTotalStoryCount();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com';
 
   return (
-    <div className="relative overflow-hidden">
+    <>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Kids Stories',
+            description: 'Educational stories and learning content for children',
+            url: siteUrl,
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: {
+                '@type': 'EntryPoint',
+                urlTemplate: `${siteUrl}/stories/?q={search_term_string}`,
+              },
+              'query-input': 'required name=search_term_string',
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'EducationalOrganization',
+            name: 'Kids Stories',
+            description: 'Educational stories and learning content for children ages 3-12',
+            url: siteUrl,
+            logo: `${siteUrl}/logo.png`,
+          }),
+        }}
+      />
+      <div className="relative overflow-hidden">
       {/* Decorative floating elements - hidden on mobile for cleaner layout */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
         <span className="float-decoration top-32 left-[10%] text-4xl md:text-5xl">🌟</span>
@@ -240,6 +276,7 @@ export default function HomePage() {
           </div>
         )}
       </section>
-    </div>
+      </div>
+    </>
   );
 }

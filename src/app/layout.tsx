@@ -15,6 +15,8 @@ import './globals.css';
 
 // Default metadata for the site (can be overridden per page)
 export const metadata: Metadata = {
+  // Base URL for absolute URLs in metadata
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://yourdomain.com'),
   // Base title template - individual pages append their titles
   title: {
     default: 'Kids Stories - Fun Stories for Children',
