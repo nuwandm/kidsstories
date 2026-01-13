@@ -1,0 +1,29 @@
+{
+  "slug": "china",
+  "name": "China",
+  "continent": "Asia",
+  "flag": "🇨🇳",
+  "flagImage": "/countries/china/flag.webp",
+  "capital": "Beijing",
+  "languages": ["Mandarin Chinese"],
+  "greeting": "Nǐ hǎo! (你好)",
+  "funFacts": [
+    "The Great Wall of China is over 13,000 miles long!",
+    "China invented paper, gunpowder, printing, and the compass!",
+    "Giant pandas only live in the wild in China!",
+    "Chinese New Year celebrations last for 15 days!",
+    "China has the largest population of any country in the world!"
+  ],
+  "landmarks": [
+    "Great Wall of China - Ancient wall stretching across mountains",
+    "Forbidden City - Massive palace complex in Beijing",
+    "Terracotta Army - Thousands of clay warrior statues"
+  ],
+  "animals": ["Giant panda", "Red panda", "Golden snub-nosed monkey", "Snow leopard", "Chinese alligator"],
+  "foods": ["Dumplings", "Fried rice", "Spring rolls", "Sweet and sour pork", "Noodles"],
+  "ageContent": {
+    "3-5": "China is a huge country with pandas! People there speak Chinese and say 'Nǐ hǎo' to say hello. China has a very long wall called the Great Wall that goes up and down mountains. They celebrate New Year with dragons and red lanterns!",
+    "6-8": "China is the most populated country in the world with over a billion people! The Great Wall of China is so long you can see it from space! Chinese people invented many important things like paper and fireworks. Giant pandas are China's national treasure and only live there in the wild. Chinese New Year is a big celebration with dragon dances and red decorations for good luck!",
+    "9-12": "China is one of the world's oldest civilizations with over 5,000 years of recorded history. It's the world's most populous country and has the second-largest economy. Ancient China contributed numerous inventions that changed the world: paper, printing, gunpowder, and the compass. The Great Wall was built over many centuries to protect against invasions. China has diverse geography from the Himalayan mountains to vast deserts and tropical forests. Modern China is a technological leader and has sent astronauts to space!"
+  }
+}

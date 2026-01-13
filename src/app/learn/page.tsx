@@ -56,7 +56,7 @@ export default function LearnPage() {
         {/* Categories Grid */}
         <section className="mb-16">
           <h2 className="font-fredoka text-3xl sm:text-4xl font-bold text-gray-800 text-center mb-8">
-            Choose Your Adventure!
+            Choose Your Topic!
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {learnCategories.map((category) => (

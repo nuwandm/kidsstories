@@ -1,0 +1,29 @@
+{
+  "slug": "canada",
+  "name": "Canada",
+  "continent": "North America",
+  "flag": "🇨🇦",
+  "flagImage": "/countries/canada/flag.webp",
+  "capital": "Ottawa",
+  "languages": ["English", "French"],
+  "greeting": "Hello! / Bonjour!",
+  "funFacts": [
+    "Canada is the second-largest country in the world!",
+    "Canada has more lakes than any other country!",
+    "The word 'Canada' means 'village' in an Indigenous language!",
+    "Basketball was invented by a Canadian!",
+    "Canada produces most of the world's maple syrup!"
+  ],
+  "landmarks": [
+    "Niagara Falls - Massive waterfalls on the border with USA",
+    "CN Tower - Tall tower in Toronto",
+    "Rocky Mountains - Majestic mountain range"
+  ],
+  "animals": ["Moose", "Beaver", "Polar bear", "Grizzly bear", "Canadian lynx", "Caribou"],
+  "foods": ["Poutine", "Maple syrup", "Butter tarts", "Tourtière", "Nanaimo bars"],
+  "ageContent": {
+    "3-5": "Canada is a huge country up north with lots of snow and forests! Canadians love hockey and say 'sorry' a lot! The country has a special leaf on its flag - the maple leaf! They eat yummy pancakes with maple syrup. Canada has cute animals like beavers and moose!",
+    "6-8": "Canada is the second-biggest country in the world! It's so big it has six time zones! Canadians speak both English and French. Canada has beautiful nature with mountains, forests, and thousands of lakes. In winter, people love ice hockey and skating! The beaver is Canada's national animal. Canada is famous for being polite and friendly. Niagara Falls is a huge waterfall on the border between Canada and the USA!",
+    "9-12": "Canada is the world's second-largest country by land area, spanning from the Atlantic to Pacific to Arctic oceans. It's a bilingual nation with both English and French as official languages, reflecting its British and French colonial history. Canada has a multicultural society welcoming immigrants from around the world. The country is rich in natural resources and is a leader in environmental conservation with numerous national parks. Canada is known for inventing basketball, having peaceful international relations, and producing over 70% of the world's maple syrup. Indigenous peoples have lived in Canada for thousands of years and their cultures are an important part of Canadian identity."
+  }
+}

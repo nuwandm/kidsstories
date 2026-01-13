@@ -1,0 +1,29 @@
+{
+  "slug": "germany",
+  "name": "Germany",
+  "continent": "Europe",
+  "flag": "🇩🇪",
+  "flagImage": "/countries/germany/flag.webp",
+  "capital": "Berlin",
+  "languages": ["German"],
+  "greeting": "Guten Tag!",
+  "funFacts": [
+    "Germany has over 1,500 types of sausages!",
+    "The first printed book was made in Germany!",
+    "Gummy bears were invented in Germany!",
+    "Germany has more than 25,000 castles!",
+    "Oktoberfest in Germany is the world's largest beer festival!"
+  ],
+  "landmarks": [
+    "Brandenburg Gate - Historic gate in Berlin",
+    "Neuschwanstein Castle - Fairy-tale castle in Bavaria",
+    "Black Forest - Dense forest with scenic hiking trails"
+  ],
+  "animals": ["Wild boar", "Red deer", "European badger", "White stork"],
+  "foods": ["Bratwurst", "Pretzels", "Sauerkraut", "Black Forest cake", "Schnitzel"],
+  "ageContent": {
+    "3-5": "Germany is a country with lots of castles! People say 'Guten Tag' to say hello. Germans love eating sausages and pretzels. They invented gummy bears - yummy! Germany has a big forest called the Black Forest with tall trees!",
+    "6-8": "Germany is a country in the heart of Europe known for its castles, forests, and inventions! Germans invented the printing press, the automobile, and even gummy bears! Germany has beautiful castles that look like they're from fairy tales. Oktoberfest is a huge festival where people wear traditional clothes and celebrate. Germany is also famous for Christmas markets with lights and decorations!",
+    "9-12": "Germany is Europe's largest economy and most populous country in the European Union. It has a rich history of scientific and cultural achievements - Germans include inventors, composers (Bach, Beethoven), philosophers (Kant), and scientists (Einstein). The country was divided after World War II but reunified in 1990 when the Berlin Wall fell. Germany is a leader in engineering, manufacturing cars like BMW and Mercedes-Benz, and renewable energy. The country values education, innovation, and environmental sustainability."
+  }
+}

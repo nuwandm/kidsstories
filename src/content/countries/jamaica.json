@@ -1,0 +1,29 @@
+{
+  "slug": "jamaica",
+  "name": "Jamaica",
+  "continent": "North America",
+  "flag": "🇯🇲",
+  "flagImage": "/countries/jamaica/flag.webp",
+  "capital": "Kingston",
+  "languages": ["English", "Jamaican Patois"],
+  "greeting": "Wah gwaan!",
+  "funFacts": [
+    "Jamaica is the birthplace of reggae music!",
+    "The fastest runners in the world come from Jamaica!",
+    "Jamaica has over 120 rivers!",
+    "Blue Mountain coffee from Jamaica is one of the world's most expensive!",
+    "Jamaica is home to the world's fastest man, Usain Bolt!"
+  ],
+  "landmarks": [
+    "Dunn's River Falls - Stunning climbable waterfall",
+    "Blue Mountains - Beautiful mountain range",
+    "Seven Mile Beach - Famous white sand beach"
+  ],
+  "animals": ["Doctor bird (hummingbird)", "Jamaican iguana", "American crocodile", "Mongoose"],
+  "foods": ["Jerk chicken", "Ackee and saltfish", "Patties", "Rice and peas", "Bammy"],
+  "ageContent": {
+    "3-5": "Jamaica is a tropical island with beautiful beaches and sunshine! People there love music and dancing! Jamaicans speak English and eat spicy jerk chicken. The island has pretty waterfalls you can climb! Colorful hummingbirds fly around the flowers!",
+    "6-8": "Jamaica is a Caribbean island nation famous for reggae music and fast runners! Bob Marley, a world-famous musician, was from Jamaica. Jamaican athletes like Usain Bolt are the fastest sprinters in the world! The island has lush rainforests, beautiful beaches with turquoise water, and spectacular waterfalls. Jamaica grows delicious fruits like mangoes and produces special Blue Mountain coffee. The island has a laid-back culture and people say 'Wah gwaan' (What's going on?) as a greeting!",
+    "9-12": "Jamaica is a Caribbean island nation known worldwide for its cultural contributions, particularly reggae music and Olympic athletics. The country gained independence from Britain in 1962. Jamaica has produced legendary musicians like Bob Marley and the fastest sprinters in history, including Usain Bolt who holds world records. The island has a unique Creole language (Patois) alongside English. Jamaica's economy relies on tourism, agriculture (coffee, sugar, bananas), and bauxite mining. The island's motto 'Out of Many, One People' reflects its diverse population descended from Indigenous Taíno, Africans, Europeans, Indians, and Chinese."
+  }
+}

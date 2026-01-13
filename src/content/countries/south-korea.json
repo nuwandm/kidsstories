@@ -1,0 +1,29 @@
+{
+  "slug": "south-korea",
+  "name": "South Korea",
+  "continent": "Asia",
+  "flag": "🇰🇷",
+  "flagImage": "/countries/south-korea/flag.webp",
+  "capital": "Seoul",
+  "languages": ["Korean"],
+  "greeting": "Annyeonghaseyo! (안녕하세요)",
+  "funFacts": [
+    "South Korea has the fastest internet in the world!",
+    "Taekwondo martial art originated in Korea!",
+    "K-pop music is popular all around the world!",
+    "South Korea hosted both the Summer Olympics and Winter Olympics!",
+    "Korean alphabet (Hangul) is one of the most scientific writing systems!"
+  ],
+  "landmarks": [
+    "Gyeongbokgung Palace - Beautiful royal palace in Seoul",
+    "N Seoul Tower - Iconic tower on Namsan Mountain",
+    "Jeju Island - Volcanic island with beautiful beaches"
+  ],
+  "animals": ["Korean tiger", "Asian black bear", "Red-crowned crane", "Korean water deer"],
+  "foods": ["Kimchi", "Bibimbap", "Korean BBQ", "Tteokbokki (spicy rice cakes)", "Bulgogi"],
+  "ageContent": {
+    "3-5": "South Korea is a country where people love singing and dancing! They say 'Annyeonghaseyo' to say hello. Korean people eat yummy spicy food like kimchi and love cute characters! They have pretty palaces with colorful roofs!",
+    "6-8": "South Korea is a high-tech country in East Asia famous for fast internet and cool technology! Korean culture is popular worldwide through K-pop music, movies, and TV shows. Taekwondo, a famous martial art, comes from Korea. Koreans celebrate holidays like Chuseok (harvest festival) with traditional dances and special food. The capital Seoul is a huge, modern city with ancient palaces!",
+    "9-12": "South Korea is a highly developed East Asian nation known for technological innovation and cultural exports. The country transformed from war-torn poverty in the 1950s to become one of the world's largest economies. Korea has a unique alphabet (Hangul) created in the 15th century that is considered one of the most logical writing systems. The Korean Wave (Hallyu) has made Korean pop culture globally influential through K-pop, films, and Korean dramas. South Korea is a leader in electronics, automobiles, and shipbuilding, home to companies like Samsung and Hyundai."
+  }
+}

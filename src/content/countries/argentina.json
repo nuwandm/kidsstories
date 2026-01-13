@@ -1,0 +1,29 @@
+{
+  "slug": "argentina",
+  "name": "Argentina",
+  "continent": "South America",
+  "flag": "🇦🇷",
+  "flagImage": "/countries/argentina/flag.webp",
+  "capital": "Buenos Aires",
+  "languages": ["Spanish"],
+  "greeting": "¡Hola!",
+  "funFacts": [
+    "Argentina has the widest street in the world!",
+    "The tango dance was born in Argentina!",
+    "Argentina is home to the highest peak in the Americas!",
+    "The country's name comes from the Latin word for silver!",
+    "Argentina has won the FIFA World Cup 3 times!"
+  ],
+  "landmarks": [
+    "Iguazu Falls - Spectacular waterfalls on Brazilian border",
+    "Perito Moreno Glacier - Massive advancing glacier",
+    "Aconcagua - Tallest mountain in the Americas"
+  ],
+  "animals": ["Guanaco", "Southern right whale", "Magellanic penguin", "Puma", "Andean condor"],
+  "foods": ["Asado (barbecue)", "Empanadas", "Dulce de leche", "Choripán", "Milanesa"],
+  "ageContent": {
+    "3-5": "Argentina is a long country in South America! People there love soccer and say '¡Hola!' Argentinians eat yummy meat cooked on grills called asado. They dance a special dance called tango! Argentina has cute penguins living on its coast!",
+    "6-8": "Argentina is the eighth-largest country in the world! It stretches from tropical jungles in the north to icy glaciers in the south. Soccer is super popular in Argentina - the famous player Lionel Messi is Argentine! The tango dance and music started in Argentina's capital, Buenos Aires. Argentina has amazing natural wonders like Iguazu Falls (275 waterfalls!), huge glaciers, and the Andes Mountains. Gauchos (Argentine cowboys) ride horses on the vast grassy plains called pampas!",
+    "9-12": "Argentina is South America's second-largest country with diverse geography ranging from subtropical forests to Antarctic territory claims. The country was heavily influenced by European immigration, especially from Spain and Italy, shaping its culture, architecture, and cuisine. Argentina is famous for beef production and gaucho culture from the pampas grasslands. Buenos Aires, the capital, is called the 'Paris of South America' for its European-style buildings and culture. Argentina has produced world-renowned figures including soccer legend Diego Maradona, revolutionary Che Guevara, and Pope Francis. The country has struggled economically but maintains a high literacy rate and strong traditions in literature, art, and music."
+  }
+}

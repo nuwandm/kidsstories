@@ -1,0 +1,29 @@
+{
+  "slug": "peru",
+  "name": "Peru",
+  "continent": "South America",
+  "flag": "🇵🇪",
+  "flagImage": "/countries/peru/flag.webp",
+  "capital": "Lima",
+  "languages": ["Spanish", "Quechua", "Aymara"],
+  "greeting": "¡Hola!",
+  "funFacts": [
+    "Machu Picchu, a famous ancient city, is in Peru!",
+    "Peru has over 3,000 varieties of potatoes!",
+    "The Amazon River starts in Peru!",
+    "Guinea pigs were first domesticated in Peru!",
+    "Peru is home to the mysterious Nazca Lines!"
+  ],
+  "landmarks": [
+    "Machu Picchu - Ancient Incan city in the clouds",
+    "Nazca Lines - Mysterious giant drawings in the desert",
+    "Lake Titicaca - Highest navigable lake in the world"
+  ],
+  "animals": ["Llama", "Alpaca", "Spectacled bear", "Vicuña", "Andean condor", "Pink river dolphin"],
+  "foods": ["Ceviche", "Lomo saltado", "Cuy (guinea pig)", "Anticuchos", "Causa"],
+  "ageContent": {
+    "3-5": "Peru is a country with tall mountains and fluffy animals called llamas and alpacas! Long ago, people called the Incas built a special city high in the mountains. Peruvians eat yummy fish with lime called ceviche. The Amazon jungle starts in Peru with colorful parrots and monkeys!",
+    "6-8": "Peru is a fascinating country in South America with ancient history! The Inca civilization built the amazing city of Machu Picchu high in the Andes Mountains over 500 years ago. Peru has three main regions: the coast, the Andes Mountains, and the Amazon rainforest. The Amazon River, the world's largest river by volume, begins in Peru! Peru has mysterious giant drawings called the Nazca Lines that can only be fully seen from the air. Peruvians raise llamas and alpacas for their soft wool!",
+    "9-12": "Peru was the heart of the mighty Inca Empire, which ruled much of western South America before Spanish conquest in the 1530s. The Incas built incredible cities like Machu Picchu using advanced engineering without the wheel or written language. Peru has over 90 microclimates and is one of the world's most biodiverse countries. The Amazon rainforest covers 60% of Peru. Ancient Peru domesticated important crops like potatoes (with over 3,000 varieties) and quinoa. Peru is a culinary destination with influences from Indigenous, Spanish, African, and Asian cuisines. The country maintains strong Indigenous heritage with Quechua and Aymara still widely spoken."
+  }
+}

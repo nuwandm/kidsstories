@@ -1,0 +1,29 @@
+{
+  "slug": "fiji",
+  "name": "Fiji",
+  "continent": "Oceania",
+  "flag": "🇫🇯",
+  "flagImage": "/countries/fiji/flag.webp",
+  "capital": "Suva",
+  "languages": ["English", "Fijian", "Fiji Hindi"],
+  "greeting": "Bula!",
+  "funFacts": [
+    "Fiji is made up of over 300 islands!",
+    "Fiji is famous for its friendly people and 'Bula' greeting!",
+    "Fire walking ceremonies were invented in Fiji!",
+    "Fiji has some of the world's best coral reefs!",
+    "Rugby is Fiji's most popular sport!"
+  ],
+  "landmarks": [
+    "Yasawa Islands - Beautiful chain of volcanic islands",
+    "Great Astrolabe Reef - One of world's largest barrier reefs",
+    "Garden of the Sleeping Giant - Orchid gardens"
+  ],
+  "animals": ["Crested iguana", "Flying fox bat", "Banded iguana", "Sea turtles", "Tropical fish"],
+  "foods": ["Kokoda (coconut fish)", "Lovo (earth oven feast)", "Rourou (taro leaves)", "Cassava", "Tropical fruits"],
+  "ageContent": {
+    "3-5": "Fiji is a group of pretty tropical islands with white sand beaches! People say 'Bula!' which means hello with a big smile! The water is super clear and blue with colorful fish. Coconuts grow on palm trees! Fijian people are very friendly and welcoming!",
+    "6-8": "Fiji is a beautiful island nation in the South Pacific Ocean made up of over 300 islands! The islands have white sand beaches, coconut palm trees, and coral reefs full of tropical fish. Fijian people are known for being extremely friendly and welcoming - they greet everyone with a big 'Bula!' Fiji has a traditional ceremony where people walk on hot stones! Rugby is super popular in Fiji, and the national team is one of the best in the world! People cook food in underground earth ovens called lovo!",
+    "9-12": "Fiji is an archipelago of over 330 islands in the South Pacific, though only about 110 are inhabited. The islands were formed by volcanic activity and have mountainous interiors surrounded by coral reefs. Fiji has a diverse population including Indigenous Fijians (iTaukei), Indo-Fijians (descendants of Indian laborers), and other Pacific Islanders. The country gained independence from Britain in 1970. Fiji's economy depends on tourism, sugar exports, and garment manufacturing. The islands are known for their marine biodiversity, hosting some of the world's most pristine coral reefs. Fijian culture emphasizes community, respect for elders, and traditional ceremonies including kava drinking and meke dancing."
+  }
+}

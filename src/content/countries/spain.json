@@ -1,0 +1,29 @@
+{
+  "slug": "spain",
+  "name": "Spain",
+  "continent": "Europe",
+  "flag": "🇪🇸",
+  "flagImage": "/countries/spain/flag.webp",
+  "capital": "Madrid",
+  "languages": ["Spanish"],
+  "greeting": "¡Hola!",
+  "funFacts": [
+    "Spain is the second most visited country in the world!",
+    "The Spanish language is spoken by over 500 million people worldwide!",
+    "Spain produces almost half of the world's olive oil!",
+    "Flamenco dancing originated in Spain!",
+    "Spain has 49 UNESCO World Heritage Sites!"
+  ],
+  "landmarks": [
+    "Sagrada Familia - Stunning unfinished church in Barcelona",
+    "Alhambra - Beautiful Moorish palace in Granada",
+    "Park Güell - Colorful mosaic park by Gaudí"
+  ],
+  "animals": ["Iberian lynx", "Spanish bull", "Iberian wolf", "Flamingo"],
+  "foods": ["Paella", "Tapas", "Churros with chocolate", "Gazpacho", "Jamón ibérico"],
+  "ageContent": {
+    "3-5": "Spain is a sunny country where people say '¡Hola!' They love to dance flamenco with colorful dresses! Spanish people eat yummy churros dipped in chocolate. Spain has beautiful beaches and old castles!",
+    "6-8": "Spain is a beautiful country in southwestern Europe famous for its sunny weather and beaches! Spanish is one of the most spoken languages in the world. Spain has incredible art and architecture, including the amazing Sagrada Familia church that's still being built after 140 years! Spanish people love soccer and invented several famous dances like flamenco. They eat late dinners and take afternoon naps called siestas!",
+    "9-12": "Spain is located on the Iberian Peninsula in southwestern Europe and has a rich history influenced by Romans, Moors, and Christian kingdoms. The Spanish Empire was once one of the world's most powerful, exploring and colonizing much of the Americas. Spain has contributed immensely to art through painters like Picasso, Dalí, and Velázquez. The country has diverse regions with distinct cultures, languages, and traditions. Spain is known for festivals like La Tomatina and Running of the Bulls, flamenco music and dance, and world-class cuisine including tapas and paella."
+  }
+}

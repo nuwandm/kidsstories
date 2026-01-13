@@ -1,0 +1,29 @@
+{
+  "slug": "new-zealand",
+  "name": "New Zealand",
+  "continent": "Oceania",
+  "flag": "🇳🇿",
+  "flagImage": "/countries/new-zealand/flag.webp",
+  "capital": "Wellington",
+  "languages": ["English", "Māori"],
+  "greeting": "Kia ora!",
+  "funFacts": [
+    "New Zealand has more sheep than people!",
+    "The Lord of the Rings movies were filmed in New Zealand!",
+    "New Zealand was the first country to give women the right to vote!",
+    "The kiwi bird can't fly and only lives in New Zealand!",
+    "New Zealand has no snakes!"
+  ],
+  "landmarks": [
+    "Milford Sound - Stunning fjord with waterfalls",
+    "Hobbiton Movie Set - Lord of the Rings filming location",
+    "Rotorua - Geothermal wonderland with hot springs"
+  ],
+  "animals": ["Kiwi bird", "Kea parrot", "Tuatara", "Hector's dolphin", "Yellow-eyed penguin"],
+  "foods": ["Pavlova", "Meat pie", "Fish and chips", "Hangi", "Hokey pokey ice cream"],
+  "ageContent": {
+    "3-5": "New Zealand is made of two big islands far away in the ocean! It has more fluffy sheep than people! A funny bird called a kiwi lives there - it can't fly but it's very cute! New Zealand has mountains, beaches, and bubbling hot springs. The Māori people say 'Kia ora' to say hello!",
+    "6-8": "New Zealand is an island country in the Pacific Ocean with stunning nature! The country has two main islands with mountains, volcanoes, beaches, and glaciers. New Zealand is home to unique animals like the flightless kiwi bird and the world's only alpine parrot, the kea. The Māori people arrived in New Zealand about 700 years ago and their culture is very important. New Zealand was the first country to let women vote in 1893! The famous Lord of the Rings and Hobbit movies were filmed in New Zealand's beautiful landscapes!",
+    "9-12": "New Zealand is an isolated island nation in the southwestern Pacific Ocean, consisting of two main islands and over 700 smaller islands. It was one of the last places on Earth to be settled by humans when Polynesian voyagers (Māori) arrived around 1250-1300 AD. Due to its isolation, New Zealand evolved unique wildlife including many flightless birds like the kiwi. The country is geologically active with volcanoes, geysers, and frequent earthquakes. New Zealand was the first self-governing nation to grant women the right to vote. The country has a mixed economy based on agriculture, tourism, and technology, and is known for progressive social policies and environmental conservation."
+  }
+}

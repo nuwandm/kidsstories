@@ -1,0 +1,29 @@
+{
+  "slug": "morocco",
+  "name": "Morocco",
+  "continent": "Africa",
+  "flag": "🇲🇦",
+  "flagImage": "/countries/morocco/flag.webp",
+  "capital": "Rabat",
+  "languages": ["Arabic", "Berber"],
+  "greeting": "Salaam alaikum! (السلام عليكم)",
+  "funFacts": [
+    "Morocco is the closest African country to Europe!",
+    "The oldest university in the world is in Morocco!",
+    "Morocco has snow-capped mountains and vast deserts!",
+    "Moroccan mint tea is a symbol of hospitality!",
+    "The city of Fes has the world's oldest operating library!"
+  ],
+  "landmarks": [
+    "Jemaa el-Fnaa - Bustling marketplace in Marrakech",
+    "Hassan II Mosque - Beautiful seaside mosque",
+    "Sahara Desert - Vast desert with golden sand dunes"
+  ],
+  "animals": ["Barbary macaque", "Dromedary camel", "Fennec fox", "Atlas lion (extinct in wild)"],
+  "foods": ["Tagine", "Couscous", "Pastilla", "Harira soup", "Moroccan mint tea"],
+  "ageContent": {
+    "3-5": "Morocco is a colorful country with markets full of spices and treasures! People ride camels in the big sandy desert. Moroccan buildings have pretty tiles and patterns. They drink sweet mint tea and say 'Salaam alaikum' to greet friends!",
+    "6-8": "Morocco is a North African country just across from Spain! It has amazing cities with winding streets called medinas filled with shops and colorful markets. Moroccans travel across the Sahara Desert on camels. The country has beautiful blue cities, snowy Atlas Mountains, and sunny beaches! Morocco is famous for its delicious tagine stew cooked in special cone-shaped pots. The world's oldest university was founded in Morocco over 1,200 years ago!",
+    "9-12": "Morocco is a North African kingdom with a strategic location between the Atlantic Ocean and Mediterranean Sea. It has a rich history influenced by Berber, Arab, and European cultures. Morocco was an important trading center connecting Africa, Europe, and the Middle East. The country features diverse landscapes from the Sahara Desert to the Atlas Mountains to Atlantic beaches. Morocco is known for its distinctive architecture with geometric patterns, intricate tilework, and colorful mosaics. The University of al-Qarawiyyin, founded in 859 AD, is recognized as the oldest continually operating university in the world."
+  }
+}

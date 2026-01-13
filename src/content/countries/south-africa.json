@@ -1,0 +1,29 @@
+{
+  "slug": "south-africa",
+  "name": "South Africa",
+  "continent": "Africa",
+  "flag": "🇿🇦",
+  "flagImage": "/countries/south-africa/flag.webp",
+  "capital": "Pretoria",
+  "languages": ["English", "Afrikaans", "Zulu", "Xhosa"],
+  "greeting": "Hello! / Sawubona!",
+  "funFacts": [
+    "South Africa has 11 official languages!",
+    "It's the only country with three capital cities!",
+    "South Africa is home to the world's largest diamond!",
+    "Table Mountain is over 200 million years old!",
+    "South Africa is called the 'Rainbow Nation' because of its diversity!"
+  ],
+  "landmarks": [
+    "Table Mountain - Flat-topped mountain in Cape Town",
+    "Kruger National Park - Famous safari park",
+    "Robben Island - Historic prison island"
+  ],
+  "animals": ["African elephant", "Lion", "Rhinoceros", "Leopard", "Buffalo", "Great white shark"],
+  "foods": ["Biltong", "Bobotie", "Bunny chow", "Boerewors", "Malva pudding"],
+  "ageContent": {
+    "3-5": "South Africa is at the bottom of Africa! It has lions, elephants, and rhinos living in big parks. The country has a flat mountain called Table Mountain! South African people speak many different languages. They have beautiful beaches with penguins!",
+    "6-8": "South Africa is a diverse country at the southern tip of Africa! It has 11 official languages and is called the Rainbow Nation. You can go on safari to see the 'Big Five' animals: lions, elephants, rhinos, leopards, and buffalo. South Africa has three capital cities for different parts of government! Nelson Mandela, a famous leader who fought for equality, came from South Africa. The country has beautiful coastlines and is famous for diamonds and gold!",
+    "9-12": "South Africa is the most diverse country in Africa with 11 official languages and many ethnic groups. It has a complex history including apartheid (racial separation), which ended in 1994 when Nelson Mandela became the first Black president. South Africa has three capitals: Pretoria (executive), Cape Town (legislative), and Bloemfontein (judicial). The country is rich in natural resources including gold, diamonds, and platinum. It's the only country with two oceans (Atlantic and Indian) meeting at its tip. South Africa has remarkable biodiversity and is known for wildlife conservation."
+  }
+}
