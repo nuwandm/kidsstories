@@ -45,6 +45,16 @@ export const storyIndex: StoryIndexItem[] = [
     pageCount: 7,
   },
   {
+    slug: "The-Clever-Boy-and-the-Terrible-Dangerous-Animal",
+    title: "The Clever Boy and the Terrible Dangerous Animal",
+    coverImage:
+      "stories/The-Clever-Boy-and-the-Terrible-Dangerous-Animal/cover.webp",
+    uploadedDate: "2026-01-14T10:00:00Z",
+    ageGroup: AgeGroup.LATE_ELEMENTARY,
+    category: Category.ADVENTURE,
+    pageCount: 10,
+  },
+  {
     slug: "Mike-and-John-Great-Adventure",
     title: "Mike and John: The Great Adventure",
     coverImage: "stories/Mike-and-John-Great-Adventure/cover.webp",
