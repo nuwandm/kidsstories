@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Animal, AgeGroup, AgeGroupType } from '@/lib/types';
 import { markAnimalLearned, getAnimalsLearned } from '@/lib/storage';
+import { PhotoGallery } from './PhotoGallery';
 
 interface AnimalDetailProps {
   animal: Animal;
@@ -107,6 +108,11 @@ export function AnimalDetail({ animal }: AnimalDetailProps) {
           </div>
         </div>
       </section>
+
+      {/* Photo Gallery */}
+      {animal.gallery && animal.gallery.length > 0 && (
+        <PhotoGallery images={animal.gallery} animalName={animal.name} />
+      )}
 
       {/* Fun Facts */}
       <section className="bg-white rounded-kid-xl shadow-soft p-6 sm:p-8">

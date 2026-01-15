@@ -5,6 +5,14 @@
   "habitat": ["Garden", "Forest", "Meadow"],
   "diet": "Herbivore",
   "image": "🦋",
+  "coverImage": "animals/butterfly/cover.webp",
+  "gallery": [
+    "animals/butterfly/gallery1.webp",
+    "animals/butterfly/gallery2.webp",
+    "animals/butterfly/gallery3.webp",
+    "animals/butterfly/gallery4.webp",
+    "animals/butterfly/gallery5.webp"
+  ],
   "funFacts": [
     "Butterflies taste with their feet!",
     "They start life as caterpillars before transforming!",

@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { AnimalIndexItem } from '@/lib/types';
+import { getImageUrl } from '@/lib/imageUrl';
 
 interface AnimalCardProps {
   animal: AnimalIndexItem;
@@ -38,15 +40,31 @@ export function AnimalCard({ animal, learned = false }: AnimalCardProps) {
       <div className={`${bgColorClass} rounded-kid-xl shadow-soft p-6 hover:shadow-soft-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden`}>
         {/* Learned Badge */}
         {learned && (
-          <div className="absolute top-3 right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-fredoka font-bold">
+          <div className="absolute top-3 right-3 z-10 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-fredoka font-bold shadow-lg">
             Learned!
           </div>
         )}
 
         {/* Animal Image/Emoji */}
-        <div className="text-6xl sm:text-7xl text-center mb-4 group-hover:scale-110 transition-transform">
-          {animal.image}
-        </div>
+        {animal.coverImage ? (
+          <div className="relative w-full aspect-square mb-4 rounded-kid-lg overflow-hidden group-hover:scale-105 transition-transform">
+            <Image
+              src={getImageUrl(animal.coverImage)}
+              alt={animal.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            />
+            {/* Emoji overlay */}
+            <div className="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm w-10 h-10 rounded-full flex items-center justify-center text-2xl shadow-lg">
+              {animal.image}
+            </div>
+          </div>
+        ) : (
+          <div className="text-6xl sm:text-7xl text-center mb-4 group-hover:scale-110 transition-transform">
+            {animal.image}
+          </div>
+        )}
 
         {/* Animal Name */}
         <h3 className="font-fredoka text-xl sm:text-2xl font-bold text-gray-800 text-center mb-2">

@@ -38,6 +38,7 @@ export const animalIndex: AnimalIndexItem[] = [
     name: "Butterfly",
     type: "Insect",
     image: "🦋",
+    coverImage: "animals/butterfly/cover.webp",
     habitat: ["Garden", "Forest", "Meadow"],
   },
   {

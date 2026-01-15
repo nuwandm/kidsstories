@@ -304,7 +304,12 @@ export interface Animal {
   type: AnimalType;
   habitat: string[];
   diet: AnimalDiet;
+  /** Emoji fallback for the animal */
   image: string;
+  /** Cover image path in R2 (e.g., "animals/butterfly/cover.webp") */
+  coverImage?: string;
+  /** Gallery images in R2 (e.g., ["animals/butterfly/gallery1.webp", ...]) */
+  gallery?: string[];
   sound?: string;
   funFacts: string[];
   conservationStatus: string;
@@ -322,7 +327,10 @@ export interface AnimalIndexItem {
   slug: string;
   name: string;
   type: AnimalType;
+  /** Emoji fallback for the animal */
   image: string;
+  /** Cover image path in R2 (e.g., "animals/butterfly/cover.webp") */
+  coverImage?: string;
   habitat: string[];
 }
 

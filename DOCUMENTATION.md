@@ -606,17 +606,58 @@ Valid continent values:
 
 ## Adding Animals
 
-Animals include images, sounds, and educational facts.
+Animals include cover images, photo galleries, sounds, and educational facts. Images are stored in Cloudflare R2 for global CDN delivery.
+
+### R2 Directory Structure for Animals
+
+```
+R2 Bucket Root/
+└── animals/
+    ├── butterfly/
+    │   ├── cover.webp        # Cover/hero image
+    │   ├── gallery1.webp     # Gallery photo 1
+    │   ├── gallery2.webp     # Gallery photo 2
+    │   ├── gallery3.webp     # Gallery photo 3
+    │   ├── gallery4.webp     # Gallery photo 4
+    │   └── gallery5.webp     # Gallery photo 5
+    ├── lion/
+    │   ├── cover.webp
+    │   ├── gallery1.webp
+    │   └── ...
+    └── {animal-slug}/
+        ├── cover.webp
+        └── gallery{1-5}.webp
+```
+
+### Image Specifications
+
+| Image Type | Recommended Size | Aspect Ratio | Format | Description |
+|------------|------------------|--------------|--------|-------------|
+| **Cover Image** | 1200x1200px | 1:1 (square) | WebP | Main hero image, shown on detail page |
+| **Gallery Images** | 1200x800px | 3:2 (landscape) | WebP | Photo gallery images (up to 5) |
+| **Emoji Fallback** | N/A | N/A | Unicode | Used when no cover image exists |
+
+**Tips for Best Results:**
+- Use high-quality photos with good lighting
+- Cover images work best as square crops focused on the animal
+- Gallery images should show different angles, behaviors, or habitats
+- Compress images using [Squoosh.app](https://squoosh.app) before uploading
+- Target file size: 100-300KB per image
 
 ### Adding an Animal
 
-#### Step 1: Prepare Files
+#### Step 1: Upload Images to R2
 
-Create folder: `public/images/learn/animals/{slug}/`
+1. Go to Cloudflare Dashboard → R2 → Your bucket
+2. Navigate to `animals/` folder
+3. Create folder: `{animal-slug}/`
+4. Upload images:
+   - `cover.webp` - Main cover image (required for hero display)
+   - `gallery1.webp` through `gallery5.webp` - Gallery photos (optional)
 
-Add files:
-- `animal.webp` - Main image (800x600px)
-- `sound.mp3` - Animal sound (optional)
+**Result URLs:**
+- Cover: `https://pub-xxxxx.r2.dev/animals/{slug}/cover.webp`
+- Gallery: `https://pub-xxxxx.r2.dev/animals/{slug}/gallery1.webp`
 
 #### Step 2: Create Animal JSON
 
@@ -624,26 +665,38 @@ Create `src/content/animals/{slug}.json`:
 
 ```json
 {
-  "slug": "lion",
-  "name": "Lion",
-  "type": "Mammal",
-  "habitat": ["Savanna", "Grasslands"],
-  "diet": "Carnivore",
-  "image": "/images/learn/animals/lion/animal.webp",
-  "sound": "/images/learn/animals/lion/sound.mp3",
-  "funFacts": [
-    "Lions are called the 'King of the Jungle'!",
-    "Male lions have beautiful manes",
-    "Lions sleep up to 20 hours a day!"
+  "slug": "butterfly",
+  "name": "Butterfly",
+  "type": "Insect",
+  "habitat": ["Garden", "Forest", "Meadow"],
+  "diet": "Herbivore",
+  "image": "🦋",
+  "coverImage": "animals/butterfly/cover.webp",
+  "gallery": [
+    "animals/butterfly/gallery1.webp",
+    "animals/butterfly/gallery2.webp",
+    "animals/butterfly/gallery3.webp",
+    "animals/butterfly/gallery4.webp",
+    "animals/butterfly/gallery5.webp"
   ],
-  "conservationStatus": "Vulnerable",
+  "funFacts": [
+    "Butterflies taste with their feet!",
+    "They start life as caterpillars before transforming!",
+    "Butterfly wings are actually transparent!"
+  ],
+  "conservationStatus": "Varies by species",
   "ageContent": {
-    "3-5": "Lions are big cats with loud roars...",
-    "6-8": "Lions live in groups called prides...",
-    "9-12": "Lions are apex predators found primarily in Africa..."
+    "3-5": "Butterflies are pretty insects with colorful wings...",
+    "6-8": "Butterflies are amazing insects that go through metamorphosis...",
+    "9-12": "Butterflies belong to the order Lepidoptera and undergo complete metamorphosis..."
   }
 }
 ```
+
+**Important Fields:**
+- `image` - Emoji fallback (always required)
+- `coverImage` - R2 path for cover (no leading `/`, optional)
+- `gallery` - Array of R2 paths for gallery images (optional, up to 5)
 
 #### Step 3: Add to Animal Index
 
@@ -651,12 +704,12 @@ Update `src/content/animals/animalIndex.ts`:
 
 ```typescript
 {
-  slug: "lion",
-  name: "Lion",
-  type: "Mammal",
-  habitat: ["Savanna", "Grasslands"],
-  diet: "Carnivore",
-  image: "/images/learn/animals/lion/animal.webp",
+  slug: "butterfly",
+  name: "Butterfly",
+  type: "Insect",
+  image: "🦋",
+  coverImage: "animals/butterfly/cover.webp",  // Optional: R2 path
+  habitat: ["Garden", "Forest", "Meadow"],
 }
 ```
 
@@ -682,6 +735,26 @@ Valid diet values:
 - `Herbivore` - Plants only
 - `Carnivore` - Meat only
 - `Omnivore` - Both plants and meat
+
+### Photo Gallery Features
+
+When an animal has gallery images, the detail page displays:
+
+- **Hero Section**: Large cover image with animated effects
+- **Photo Gallery Section**: Grid of clickable thumbnails
+- **Lightbox Viewer**: Full-screen image viewer with:
+  - Arrow navigation (← →)
+  - Keyboard shortcuts (Arrow keys, ESC)
+  - Thumbnail strip for quick navigation
+  - Progress indicator
+  - Smooth animations
+
+### Fallback Behavior
+
+If images are missing:
+- **No coverImage**: Large emoji displayed in hero section
+- **No gallery**: Photo Gallery section hidden
+- **Image load error**: Gracefully handled, no broken images shown
 
 ---
 
@@ -1153,5 +1226,59 @@ Check the troubleshooting section above or review the specific feature documenta
 ---
 
 **Last Updated:** January 15, 2026
-**Version:** 1.1
+**Version:** 1.2
 **Author:** Kids Stories Development Team
+
+---
+
+## Changelog
+
+### Version 1.2 (January 15, 2026)
+
+**New Features:**
+- **Animal Photo Gallery**: Added support for cover images and photo galleries for animals
+  - Cover images displayed in hero section with animated effects
+  - Photo gallery grid with up to 5 images per animal
+  - Full-screen lightbox viewer with keyboard navigation
+  - Progress indicator and thumbnail strip
+- **Professional Animations**: Enhanced UI with smooth animations
+  - Hero section: floating decorations, glow effects, staggered badge animations
+  - Gallery: staggered fade-in, shimmer loading, hover effects
+  - Lightbox: smooth transitions, animated navigation buttons
+
+**UI Improvements:**
+- Enhanced hero section with gradient text, wave decoration, scroll indicator
+- Improved AnimalCard with z-index fix for "Learned!" badge
+- Better lightbox image display without empty space around photos
+
+**Files Modified:**
+- `src/lib/types.ts` - Added `coverImage` and `gallery` fields to Animal interfaces
+- `src/content/animals/animalIndex.ts` - Added `coverImage` support
+- `src/content/animals/butterfly.json` - Added R2 image paths
+- `src/components/learn/PhotoGallery.tsx` - New component for photo galleries
+- `src/components/learn/AnimalDetail.tsx` - Integrated PhotoGallery
+- `src/components/learn/AnimalCard.tsx` - Cover image display, z-index fix
+- `src/app/learn/animals/[slug]/page.tsx` - Enhanced hero section
+- `src/app/globals.css` - Added 20+ animation keyframes and utility classes
+
+**New R2 Structure:**
+```
+animals/{slug}/
+├── cover.webp      # 1200x1200px square
+├── gallery1.webp   # 1200x800px landscape
+├── gallery2.webp
+├── gallery3.webp
+├── gallery4.webp
+└── gallery5.webp
+```
+
+### Version 1.1 (January 14, 2026)
+
+- Merged enum documentation into main documentation
+- Added COPPA compliance features
+- Created Privacy Policy and Terms of Use pages
+- Added MONETIZATION-GUIDE.md for AdSense setup
+
+### Version 1.0 (January 2026)
+
+- Initial release with stories, countries, famous people, and animals sections
