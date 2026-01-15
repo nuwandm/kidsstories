@@ -113,6 +113,8 @@ Make descriptions more keyword-rich and specific:
 ### Before Going Live
 - [ ] Update `NEXT_PUBLIC_SITE_URL` in `.env.local` with actual domain
 - [ ] Update sitemap URL in `robots.txt`
+- [x] Create Privacy Policy page (`/privacy-policy`) ✅
+- [x] Create Terms of Use page (`/terms-of-use`) ✅
 - [ ] Test sitemap: Visit `yourdomain.com/sitemap.xml`
 - [ ] Test robots.txt: Visit `yourdomain.com/robots.txt`
 - [ ] Validate structured data: https://validator.schema.org/

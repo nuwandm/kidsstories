@@ -14,10 +14,11 @@
 6. [Adding Famous People](#adding-famous-people)
 7. [Adding Countries](#adding-countries)
 8. [Adding Animals](#adding-animals)
-9. [Features & UI Components](#features--ui-components)
-10. [Deployment](#deployment)
-11. [Performance Optimization](#performance-optimization)
-12. [Troubleshooting](#troubleshooting)
+9. [TypeScript Enums & Type Safety](#typescript-enums--type-safety)
+10. [Features & UI Components](#features--ui-components)
+11. [Deployment](#deployment)
+12. [Performance Optimization](#performance-optimization)
+13. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -684,6 +685,208 @@ Valid diet values:
 
 ---
 
+## TypeScript Enums & Type Safety
+
+The project uses TypeScript enums for better type safety, autocomplete support, and developer experience.
+
+### AgeGroup Enum
+
+```typescript
+export enum AgeGroup {
+  PRESCHOOL = '3-5',
+  EARLY_ELEMENTARY = '6-8',
+  LATE_ELEMENTARY = '9-12',
+}
+```
+
+### Category Enum
+
+```typescript
+export enum Category {
+  ADVENTURE = 'Adventure',
+  FANTASY = 'Fantasy',
+  EDUCATIONAL = 'Educational',
+  BEDTIME = 'Bedtime',
+  FUNNY = 'Funny',
+  ANIMAL = 'Animal',
+  FRIENDSHIP = 'Friendship',
+  SCIENCE = 'Science',
+}
+```
+
+### AnimalType Enum
+
+```typescript
+export enum AnimalType {
+  MAMMAL = 'Mammal',
+  BIRD = 'Bird',
+  REPTILE = 'Reptile',
+  AMPHIBIAN = 'Amphibian',
+  FISH = 'Fish',
+  INSECT = 'Insect',
+}
+```
+
+### AnimalDiet Enum
+
+```typescript
+export enum AnimalDiet {
+  HERBIVORE = 'Herbivore',
+  CARNIVORE = 'Carnivore',
+  OMNIVORE = 'Omnivore',
+}
+```
+
+### Helper Functions
+
+#### `getAllAgeGroups()`
+
+Returns all age group enum values as an array.
+
+```typescript
+import { getAllAgeGroups } from '@/lib/types';
+
+const ageGroups = getAllAgeGroups();
+// [AgeGroup.PRESCHOOL, AgeGroup.EARLY_ELEMENTARY, AgeGroup.LATE_ELEMENTARY]
+```
+
+#### `getAllCategories()`
+
+Returns all category enum values as an array.
+
+```typescript
+import { getAllCategories } from '@/lib/types';
+
+const categories = getAllCategories();
+// [Category.ADVENTURE, Category.FANTASY, ...]
+```
+
+#### `getAgeGroupLabel(ageGroup)`
+
+Returns a human-readable label for an age group.
+
+```typescript
+import { AgeGroup, getAgeGroupLabel } from '@/lib/types';
+
+getAgeGroupLabel(AgeGroup.PRESCHOOL);
+// "Preschool (3-5 years)"
+
+getAgeGroupLabel('6-8');
+// "Early Elementary (6-8 years)"
+```
+
+#### `getCategoryIcon(category)`
+
+Returns the emoji icon for a category.
+
+```typescript
+import { Category, getCategoryIcon } from '@/lib/types';
+
+getCategoryIcon(Category.ADVENTURE);
+// "🗺️"
+
+getCategoryIcon('Science');
+// "🔬"
+```
+
+### Usage Examples
+
+#### Creating a Story with Enums (Recommended)
+
+```typescript
+import { AgeGroup, Category } from '@/lib/types';
+
+const story = {
+  slug: "my-story",
+  title: "My Amazing Story",
+  ageGroup: AgeGroup.EARLY_ELEMENTARY,  // Type-safe with autocomplete
+  category: Category.ADVENTURE,          // Type-safe with autocomplete
+};
+```
+
+#### Filter Component Example
+
+```typescript
+import {
+  AgeGroup,
+  Category,
+  getAllAgeGroups,
+  getAllCategories,
+  getAgeGroupLabel,
+  getCategoryIcon,
+} from '@/lib/types';
+
+function StoryFilter() {
+  const [ageGroup, setAgeGroup] = useState<AgeGroup | 'all'>('all');
+  const [category, setCategory] = useState<Category | 'all'>('all');
+
+  return (
+    <>
+      {/* Age Group Filter */}
+      <select value={ageGroup} onChange={(e) => setAgeGroup(e.target.value as AgeGroup | 'all')}>
+        <option value="all">All Ages</option>
+        {getAllAgeGroups().map((age) => (
+          <option key={age} value={age}>
+            {getAgeGroupLabel(age)}
+          </option>
+        ))}
+      </select>
+
+      {/* Category Filter */}
+      <select value={category} onChange={(e) => setCategory(e.target.value as Category | 'all')}>
+        <option value="all">All Categories</option>
+        {getAllCategories().map((cat) => (
+          <option key={cat} value={cat}>
+            {getCategoryIcon(cat)} {cat}
+          </option>
+        ))}
+      </select>
+    </>
+  );
+}
+```
+
+### Backward Compatibility
+
+JSON files continue to use string values - no migration needed:
+
+```json
+{
+  "slug": "my-story",
+  "title": "My Story",
+  "ageGroup": "3-5",
+  "category": "Adventure"
+}
+```
+
+The TypeScript interfaces accept both enum values and string literals:
+
+```typescript
+export interface Story {
+  ageGroup: AgeGroup | AgeGroupType;  // Accepts both
+  category: Category | CategoryType;   // Accepts both
+}
+```
+
+### Benefits of Using Enums
+
+| Benefit | Description |
+|---------|-------------|
+| **Autocomplete** | IDE suggests valid values as you type |
+| **Typo Prevention** | TypeScript catches invalid values at compile time |
+| **Refactoring Safety** | Renaming enum values shows errors everywhere they're used |
+| **Documentation** | Clear what values are expected in function parameters |
+| **Single Source of Truth** | Use helper functions instead of duplicate arrays |
+
+### Best Practices
+
+1. **Use enums in TypeScript code** for type safety
+2. **Use strings in JSON files** (JSON doesn't support enums)
+3. **Use helper functions** (`getAllCategories()`) instead of hardcoded arrays
+4. **Use type unions** for flexibility: `AgeGroup | AgeGroupType | 'all'`
+
+---
+
 ## Features & UI Components
 
 ### Stories Features
@@ -949,6 +1152,6 @@ Check the troubleshooting section above or review the specific feature documenta
 
 ---
 
-**Last Updated:** January 11, 2026
-**Version:** 1.0
+**Last Updated:** January 15, 2026
+**Version:** 1.1
 **Author:** Kids Stories Development Team
